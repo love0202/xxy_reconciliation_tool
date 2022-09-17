@@ -1,1 +1,48 @@
+=============================文档链接====================================
+https://nwidart.com/laravel-modules/v2/advanced-tools/artisan-commands
+
+=============================artisan命令====================================
+php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"
+php artisan module:make User
+php artisan module:make-migration create_posts_table Blog
+php artisan module:make-seed seed_fake_blog_posts Blog
+php artisan module:make-controller PostsController Blog
+
+
+php artisan make:migration create_flights_table
+php artisan migrate:status
+php artisan migrate
+php artisan migrate:reset
+php artisan migrate:fresh
+php artisan migrate:fresh --seed
+
+php artisan make:controller Login\IndexController
+php artisan make:controller Login\IndexController --resource --model=Home\Photo
+
+php artisan ui bootstrap --auth
+
+=============================git命令====================================
+git config --global user.name "相伟"
+git config --global user.email "qpzmvv123@qq.com"
+git remote add origin https://gitee.com/yao-xiaoxian/hello.git
+git push -u origin master
+
+
+=============================composer命令====================================
 composer create-project laravel/laravel yxx_reconciliation_tool 8.5
+composer require laravel/ui:^3.0  --dev
+composer require overtrue/laravel-lang:~5.0
+
+
+=============================npm命令====================================
+npm config set registry=https://registry.npm.taobao.org
+npm install
+npm run watch-poll
+npm fund
+
+=============================提交代码默认日志====================================
+【提交类型】：修改BUG/添加扩展包/添加新功能/需求修改/代码重构/代码优化/修改配置/修改样式
+【相关缺陷】：BUG号+BUG标题
+【详细描述】：原因分析或者是对修改的技术性描述
+【影响范围】：本次改动影响的范围(不影响到其他页面或功能)
+【备　　注】：
