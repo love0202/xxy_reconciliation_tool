@@ -33,6 +33,11 @@ if (file_exists(__DIR__.'/../storage/framework/maintenance.php')) {
 
 require __DIR__.'/../vendor/autoload.php';
 
+/**
+ * 引入公共方法
+ */
+require_once __DIR__.'/../bootstrap/helpers.php';
+
 /*
 |--------------------------------------------------------------------------
 | Run The Application

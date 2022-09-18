@@ -13,4 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\LoginController::class, 'index'])->name('login.index');
+Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])->name('login.index');
+Route::post('/login/store', [App\Http\Controllers\LoginController::class, 'store'])->name('login.store');
