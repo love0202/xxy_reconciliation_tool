@@ -16,7 +16,7 @@ php artisan migrate:reset
 php artisan migrate:fresh
 php artisan migrate:fresh --seed
 
-php artisan make:controller Login\IndexController
+php artisan make:controller DashboardController
 php artisan make:controller Login\IndexController --resource --model=Home\Photo
 
 php artisan ui bootstrap --auth

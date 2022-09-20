@@ -13,5 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])->name('login.index');
-Route::post('/login/store', [App\Http\Controllers\LoginController::class, 'store'])->name('login.store');
+Route::get('/login', [App\Http\Controllers\AuthUserController::class, 'login'])->name('auth_user.login');
+Route::post('/login/login_store', [App\Http\Controllers\AuthUserController::class, 'login_store'])->name('auth_user.login_store');
+Route::post('/logout', [App\Http\Controllers\AuthUserController::class, 'logout'])->name('auth_user.logout');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
+});
