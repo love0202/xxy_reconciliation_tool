@@ -9,7 +9,8 @@ php artisan module:make-seed seed_fake_blog_posts Blog
 php artisan module:make-controller PostsController Blog
 
 
-php artisan make:migration create_flights_table
+php artisan make:migration create_reconciliation_project_table
+php artisan make:migration create_user_table
 php artisan migrate:status
 php artisan migrate
 php artisan migrate:reset
@@ -18,14 +19,22 @@ php artisan migrate:fresh --seed
 
 php artisan make:controller DashboardController
 php artisan make:controller Login\IndexController --resource --model=Home\Photo
+php artisan make:controller Auth\AdminController --model=Auth\Admin
+php artisan make:controller Project\ProjectController --model=Project\Project
 
 php artisan ui bootstrap --auth
 
 =============================git命令====================================
+ssh-keygen -t rsa -C "qpzmvv123@qq.com"
+ssh-keygen -t rsa -b 4096 -C "qpzmvv123@qq.com"
+eval "$(ssh-agent -s)"
+eval 'ssh-agent'
+git clone git@github.com:love0202/yxx_reconciliation_tool.git
 git config --global user.name "相伟"
 git config --global user.email "qpzmvv123@qq.com"
 git remote add origin https://gitee.com/yao-xiaoxian/hello.git
 git push -u origin master
+git pull -u origin master
 
 
 =============================composer命令====================================

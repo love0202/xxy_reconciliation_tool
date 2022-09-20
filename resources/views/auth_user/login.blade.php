@@ -12,47 +12,43 @@
     <!-- Favicons -->
     <link rel="icon" href="{{ yxx_path_static('logo.ico') }}">
 
-    <!-- Scripts -->
-    <script src="{{ asset('static/js/app.js') }}"></script>
-
     <!-- Styles -->
-    <link href="{{ asset('static/css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('static/css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-<div id="app">
-    <div style="width: 500px;margin: 130px auto">
-        <div class="row justify-content-center">
-            <form method="POST" action="{{ route('auth_user.login_store') }}">
-                @csrf
-                <div class="row mb-3">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">账号：</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="username" class="form-control">
-                        @error('username')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
+<body style="background-color: #f5f5f5">
+<div class="p-3" style="min-height:500px;max-width: 450px;margin: 130px auto;background-color: #ffffff">
+    <div class="row justify-content-center">
+        <form method="POST" action="{{ route('auth_user.login_store') }}">
+            @csrf
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">账号：</label>
+                <div class="col-sm-10">
+                    <input type="text" name="username" class="form-control">
+                    @error('username')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
-                <div class="row mb-3">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">密码：</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="password" class="form-control">
-                        @error('password')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">密码：</label>
+                <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control">
+                    @error('password')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
-                <div class="row mb-3">
-                    <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary w-100">登录</button>
-                    </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary text-white w-100">登录</button>
                 </div>
-            </form>
-
-        </div>
+            </div>
+        </form>
     </div>
 </div>
-@yield('script')
+
+<!-- Scripts -->
+<script src="{{ mix('static/js/app.js') }}"></script>
 </body>
 </html>
 
