@@ -4,7 +4,7 @@
     <div class="mb-3">
         <form class="row g-3" action="/">
             <div class="col-auto">
-                <h2>我的对账方案（3）</h2>
+                <h2>我的对账方案（{{ $list->total() }}）</h2>
             </div>
             <div class="col-auto">
                 <input type="text" name="name" class="form-control" value="" placeholder="对账方案">
@@ -21,7 +21,7 @@
             </div>
         </form>
     </div>
-    <table class="table table-hover">
+    <table class="table table-hover mb-3">
         <thead style="background-color: #F5F5F5">
         <tr>
             <th scope="col">对账方案</th>
@@ -31,29 +31,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">
-                <a class="text-decoration-none" href="/">8月对账</a>
-            </th>
-            <td>2202-09-18</td>
-            <td>admin</td>
-            <td>
-                <a class="text-decoration-none" href="/">进入</a>
-            </td>
-        </tr>
+        @foreach ($list as $l)
+            <tr>
+                <th scope="row">
+                    <a class="text-decoration-none" href="/">{{ $l->name }}</a>
+                </th>
+                <td>{{ $l->created_at }}</td>
+                <td>user</td>
+                <td>
+                    <a class="text-decoration-none" href="/">进入</a>
+                </td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
+    {{ $list->links('vendor.pagination.bootstrap-4') }}
 @endsection
