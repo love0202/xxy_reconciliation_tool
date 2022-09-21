@@ -25,7 +25,7 @@
                 <div class="col-sm-10">
                     <input type="text" name="username" class="form-control">
                     @error('username')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <div class="alert alert-danger m-0 p-0"><i class="bi bi-exclamation-circle me-1" style="font-size: .875em;"></i><small>{{ $message }}</small></div>
                     @enderror
                 </div>
             </div>
@@ -34,7 +34,7 @@
                 <div class="col-sm-10">
                     <input type="password" name="password" class="form-control">
                     @error('password')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <div class="alert alert-danger m-0 p-0"><i class="bi bi-exclamation-circle me-1" style="font-size: .875em;"></i><small>{{ $message }}</small></div>
                     @enderror
                 </div>
             </div>
