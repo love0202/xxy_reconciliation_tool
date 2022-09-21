@@ -10,12 +10,12 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        $input = $request->all();
+        $input = $request->only(['year']);
 
         $data = [];
-        $list = DB::table('project');
+        $query = DB::table('project');
+        $list = $query->paginate(10);
         $data['list'] = $list;
-        $list->appends($input);
         return view('dashboard.index', $data);
     }
 }
