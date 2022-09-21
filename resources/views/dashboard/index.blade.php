@@ -22,6 +22,7 @@
         </form>
     </div>
     <div class="mb-3">
+        <x-forms.input type="error"/>
         2022年对账方案统计
     </div>
 @endsection

@@ -45,6 +45,10 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
         $input = $request->only(['name']);
         $input['guid'] = make_guid(true);
         $model = new Project();
