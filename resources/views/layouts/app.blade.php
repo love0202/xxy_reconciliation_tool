@@ -30,10 +30,10 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">首页</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('dashboard.index') }}">首页</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/">对账方案</a>
+                        <a class="nav-link" href="{{ route('project.index') }}">对账方案</a>
                     </li>
                 </ul>
                 @auth
@@ -68,7 +68,7 @@
             <div class="p-2">
             </div>
             <div class="p-2">
-                <a href="/" class="btn btn-primary text-light">
+                <a href="{{ route('project.create') }}" class="btn btn-primary text-light">
                     <i class="bi bi-plus-circle-dotted me-1"></i>创建对账方案
                 </a>
             </div>

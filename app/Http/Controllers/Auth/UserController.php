@@ -1,30 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;;
 
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
-class AuthUserController extends Controller
+class UserController extends Controller
 {
     public function login()
     {
         return view('auth_user.login');
     }
 
-    public function login_store(LoginRequest $request)
+    public function store(LoginRequest $request)
     {
         $request->validated();
 
-        $params = [];
-        $input = $request->all();
-        $params['username'] = $input['username'];
-        $params['password'] = $input['password'];
+        $input = $request->only(['username','password']);
 
-        if (Auth::guard()->attempt($params)) {
+        if (Auth::guard()->attempt($input)) {
             $request->session()->regenerate();
-
-            return redirect()->intended('/');
+            return redirect()->route('dashboard.index');
         }
 
         return back()->withErrors([
@@ -34,6 +31,6 @@ class AuthUserController extends Controller
     public function logout()
     {
         Auth::guard()->logout();
-        return redirect()->intended('/');
+        return redirect()->route('dashboard.index');
     }
 }

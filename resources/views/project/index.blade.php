@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mb-3">
-        <form class="row g-3" action={{ route('dashboard.index') }}>
+        <form class="row g-3" action={{ route('project.index') }}>
             <div class="col-auto">
                 <h2>我的对账方案（{{ $list->total() }}）</h2>
             </div>
@@ -21,7 +21,29 @@
             </div>
         </form>
     </div>
-    <div class="mb-3">
-        2022年对账方案统计
-    </div>
+    <table class="table table-hover mb-3">
+        <thead style="background-color: #F5F5F5">
+        <tr>
+            <th scope="col">对账方案</th>
+            <th scope="col">创建时间</th>
+            <th scope="col">创建人</th>
+            <th scope="col">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach ($list as $l)
+            <tr>
+                <th scope="row">
+                    {{ $l->name }}
+                </th>
+                <td>{{ $l->created_at }}</td>
+                <td>user</td>
+                <td>
+                    <a class="text-decoration-none" href="{{ route('project.enter',['guid'=>$l->guid]) }}">进入</a>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+    {{ $list->links('vendor.pagination.bootstrap-4') }}
 @endsection

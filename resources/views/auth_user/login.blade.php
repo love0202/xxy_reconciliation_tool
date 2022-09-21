@@ -18,7 +18,7 @@
 <body style="background-color: #f5f5f5">
 <div class="p-3" style="min-height:500px;max-width: 450px;margin: 130px auto;background-color: #ffffff">
     <div class="row justify-content-center">
-        <form method="POST" action="{{ route('auth_user.login_store') }}">
+        <form method="POST" action="{{ route('auth_user.store') }}">
             @csrf
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">账号：</label>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project\Project;
@@ -16,7 +16,6 @@ class DashboardController extends Controller
         $list = Project::paginate(10);
         $data['list'] = $list;
         $list->appends($input);
-//        dd($list->total());
         return view('dashboard.index', $data);
     }
 }

@@ -5,82 +5,52 @@ namespace App\Http\Controllers\Project;
 use App\Models\Project\Project;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $input = $request->only(['name', 'sort']);
+
+        $data = [];
+
+        $query = DB::table('project');
+        if (isset($input['name']) && !empty($input['name'])) {
+            $query->where('name', 'like', $input['name'] . '%');
+        }
+        if (isset($input['sort']) && !empty($input['sort'])) {
+            if ($input['sort'] == 1) {
+                $query->orderBy('created_at', 'asc');
+            } elseif ($input['sort'] == 2) {
+                $query->orderBy('created_at', 'desc');
+            }
+        }
+        $list = $query->paginate(10);
+        $list->appends($input);
+        $data['list'] = $list;
+        return view('project.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function enter(Project $project)
+    {
+        return view('project.enter');
+    }
+
     public function create()
     {
-        //
+        return view('project.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Project\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Project $project)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Project\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Project $project)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Project $project)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Project\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Project $project)
-    {
-        //
+        $input = $request->only(['name']);
+        $input['guid'] = make_guid(true);
+        $ret = DB::table('project')->insert($input);
+        if ($ret) {
+            return redirect()->route('profile.enter', ['guid' => $ret->guid]);
+        } else {
+            return redirect()->route('dashboard.index');
+        }
     }
 }
