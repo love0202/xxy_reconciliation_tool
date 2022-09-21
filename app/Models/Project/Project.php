@@ -15,21 +15,4 @@ class Project extends Model
         'guid',
         'name',
     ];
-
-    public function setSearch($query,$input)
-    {
-        if (isset($input['name']) && !empty($input['name'])) {
-            $query->where(['name'=>$input['name']]);
-        }
-        if (isset($input['sort']) && !empty($input['sort'])) {
-            if ($input['sort'] == 1) {
-                $query->orderBy('created_at');
-            }else{
-                $query->orderByDesc('created_at');
-            }
-        }else{
-            $query->orderByDesc('created_at');
-        }
-        return $query;
-    }
 }

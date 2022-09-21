@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\Project\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -13,7 +13,7 @@ class DashboardController extends Controller
         $input = $request->all();
 
         $data = [];
-        $list = Project::paginate(10);
+        $list = DB::table('project');
         $data['list'] = $list;
         $list->appends($input);
         return view('dashboard.index', $data);

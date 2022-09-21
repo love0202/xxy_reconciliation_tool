@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\Models\Project\Project;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +31,7 @@ class ProjectController extends Controller
         return view('project.index', $data);
     }
 
-    public function enter(Project $project)
+    public function enter(Request $request)
     {
         return view('project.enter');
     }
