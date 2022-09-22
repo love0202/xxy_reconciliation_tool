@@ -17,6 +17,9 @@ class CreateProjectTable extends Migration
             $table->id();
             $table->string('guid');
             $table->string('name');
+            $table->string('adminName');
+            $table->integer('adminId');
+            $table->integer('year');
             $table->timestamps();
         });
     }

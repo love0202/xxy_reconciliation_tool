@@ -13,6 +13,6 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Project\Project::factory()->count(50)->create();
+        \App\Models\Project\Project::factory()->count(15)->create();
     }
 }

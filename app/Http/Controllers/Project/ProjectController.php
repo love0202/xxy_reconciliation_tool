@@ -11,10 +11,11 @@ class ProjectController extends Controller
 {
     public function index(Request $request)
     {
-        $input = $request->only(['name', 'sort']);
+        $input = $request->only(['name', 'sort', 'year']);
 
+        $year = $request->input('year', date('Y'));
         $data = [];
-        $query = DB::table('project');
+        $query = DB::table('project')->where(['year'=>$year]);
         if (isset($input['name']) && !empty($input['name'])) {
             $query->where('name', 'like', $input['name'] . '%');
         }

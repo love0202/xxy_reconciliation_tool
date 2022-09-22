@@ -15,4 +15,7 @@ class Project extends Model
         'guid',
         'name',
     ];
+    protected $attributes = [
+        'name' => '测试',
+    ];
 }

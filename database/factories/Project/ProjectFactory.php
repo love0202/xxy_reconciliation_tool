@@ -21,9 +21,14 @@ class ProjectFactory extends Factory
      */
     public function definition()
     {
+        $guid = time();
+        $num = 1 . '对账方案';
         return [
-            'guid' => 'admin',
-            'name' => 'admin',
+            'guid' => $guid,
+            'name' => $num,
+            'adminName' => 'admin',
+            'adminId' => 1,
+            'year' => '2022',
         ];
     }
 }
