@@ -19,7 +19,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a href="{{ url('/') }}" class="navbar-brand"
+            <a href="{{ route('dashboard.index') }}" class="navbar-brand"
                rel="{{ config('app.name', 'Laravel') }}">
                 <img src="{{ yxx_path_static('logo.png') }}" alt="mdo" width="32" height="32">
             </a>
@@ -39,18 +39,22 @@
                 @auth
                     <div class="d-flex">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
                                 <i class="bi bi-person-circle me-1"></i>{{ Auth::user()->name }}
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><button class="dropdown-item" type="button">管理中心</button></li>
+                                <li>
+                                    <button class="dropdown-item" type="button">管理中心</button>
+                                </li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('auth_user.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         退出登录
                                     </a>
-                                    <form id="logout-form" action="{{ route('auth_user.logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('auth_user.logout') }}" method="POST"
+                                          class="d-none">
                                         @csrf
                                     </form>
                                 </li>

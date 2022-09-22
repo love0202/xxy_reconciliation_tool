@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mb-3">
-        <form class="row g-3" action={{ route('dashboard.index') }}>
+        <form class="row g-3" action="{{ route('dashboard.index') }}">
             <div class="col-auto">
                 <h2>我的对账方案（{{ $list->total() }}）</h2>
             </div>
