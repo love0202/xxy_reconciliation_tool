@@ -19,7 +19,7 @@ class UserController extends Controller
 
         $input = $request->only(['username','password']);
 
-        if (Auth::guard()->attempt($input)) {
+        if (Auth::attempt($input)) {
             $request->session()->regenerate();
             return redirect()->route('dashboard.index');
         }
