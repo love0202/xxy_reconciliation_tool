@@ -4,6 +4,7 @@ https://nwidart.com/laravel-modules/v2/advanced-tools/artisan-commands
 http://local.yxxtool.test/telescope
 
 =============================artisan命令====================================
+php artisan key:generate
 php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"
 php artisan module:make User
 php artisan module:make-migration create_posts_table Blog
