@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Project;
 use App\Http\Controllers\Controller;
 use App\Models\Project\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
@@ -14,6 +15,7 @@ class ProjectController extends Controller
         $input = $request->only(['name', 'sort', 'year']);
 
         $year = $request->input('year', date('Y'));
+        $input['year'] = $year;
         $data = [];
         $query = DB::table('project')->where(['year'=>$year]);
         if (isset($input['name']) && !empty($input['name'])) {
@@ -31,6 +33,7 @@ class ProjectController extends Controller
         $list = $query->paginate(10);
         $list->appends($input);
         $data['list'] = $list;
+        $data['input'] = $input;
         return view('project.index', $data);
     }
 
@@ -52,6 +55,9 @@ class ProjectController extends Controller
 
         $input = $request->only(['name']);
         $input['guid'] = make_guid(true);
+        $input['year'] = date('Y');
+        $input['adminName'] = Auth::user()->name;
+        $input['adminId'] = Auth::user()->id;
         $model = new Project();
         $ret = $model->create($input);
         if ($ret) {

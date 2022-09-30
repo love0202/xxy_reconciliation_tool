@@ -26,7 +26,7 @@ class ProjectFactory extends Factory
         return [
             'guid' => $guid,
             'name' => $num,
-            'adminName' => 'admin',
+            'adminName' => '姚小仙',
             'adminId' => 1,
             'year' => '2022',
         ];

@@ -41,6 +41,9 @@
                     <span class="page-link" aria-hidden="true">&rsaquo;</span>
                 </li>
             @endif
+            <li class="page-item disabled ml-3">
+                <span class="page-link">共 {{ $paginator->total() }} 条</span>
+            </li>
         </ul>
     </nav>
 @endif

@@ -7,7 +7,7 @@
         <!-- Navbar content -->
         @guest
             <div class="col-md-3 text-end">
-                <a href="{{ route('auth_admin.login') }}" class="btn btn-outline-primary me-2">{{ __('Login') }}</a>
+                <a href="{{ route('auth.admin.login') }}" class="btn btn-outline-primary me-2">{{ __('Login') }}</a>
             </div>
         @else
             <div class="dropdown text-end">
@@ -17,12 +17,12 @@
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
                     <li>
-                        <a class="dropdown-item" href="{{ route('auth_admin.logout') }}"
+                        <a class="dropdown-item" href="{{ route('auth.admin.logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
-                        <form id="logout-form" action="{{ route('auth_admin.logout') }}" method="POST" class="d-none">
+                        <form id="logout-form" action="{{ route('auth.admin.logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
                     </li>

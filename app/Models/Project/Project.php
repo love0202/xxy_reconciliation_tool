@@ -14,6 +14,9 @@ class Project extends Model
     protected $fillable = [
         'guid',
         'name',
+        'adminName',
+        'year',
+        'adminId',
     ];
     protected $attributes = [
         'name' => '测试',

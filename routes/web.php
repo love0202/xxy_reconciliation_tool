@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/login', [App\Http\Controllers\Auth\AdminController::class, 'login'])->name('auth_admin.login');
-Route::post('/login/store', [App\Http\Controllers\Auth\AdminController::class, 'store'])->name('auth_admin.store');
-Route::post('/logout', [App\Http\Controllers\Auth\AdminController::class, 'logout'])->name('auth_admin.logout');
+Route::get('/login', [App\Http\Controllers\Auth\AdminController::class, 'login'])->name('auth.admin.login');
+Route::post('/login/store', [App\Http\Controllers\Auth\AdminController::class, 'store'])->name('auth.admin.store');
+Route::post('/logout', [App\Http\Controllers\Auth\AdminController::class, 'logout'])->name('auth.admin.logout');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard.index');
@@ -18,4 +18,7 @@ Route::middleware(['auth'])->group(function () {
 // 测试页面
 Route::get('/test/bootstrap', function () {
     return view('test.bootstrap');
+});
+Route::get('/test/components', function () {
+    return view('test.components');
 });

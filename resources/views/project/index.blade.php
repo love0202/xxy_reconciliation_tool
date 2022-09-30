@@ -4,7 +4,11 @@
     <div class="mb-3">
         <form class="row g-3" action={{ route('project.index') }}>
             <div class="col-auto">
-                <h2>我的对账方案（{{ $list->total() }}）</h2>
+                <select class="form-select" name="year">
+                    <option value="2022">2022年</option>
+                    <option value="2021">2021年</option>
+                    <option value="2020">2020年</option>
+                </select>
             </div>
             <div class="col-auto">
                 <input type="text" name="name" class="form-control" value="" placeholder="对账方案">
@@ -18,6 +22,11 @@
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-primary text-white"><i class="bi bi-search"></i></button>
+            </div>
+            <div class="col-auto">
+                <a href="{{ route('project.create') }}" class="btn btn-success text-light">
+                    <i class="bi bi-plus-circle-dotted me-1"></i>创建对账方案
+                </a>
             </div>
         </form>
     </div>
@@ -37,7 +46,7 @@
                     {{ $l->name }}
                 </th>
                 <td>{{ $l->created_at }}</td>
-                <td>user</td>
+                <td>{{ $l->adminName }}</td>
                 <td>
                     <a class="text-decoration-none" href="{{ route('project.enter',['guid'=>$l->guid]) }}">进入</a>
                 </td>

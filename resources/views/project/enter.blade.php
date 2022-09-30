@@ -1,4 +1,4 @@
-@extends('layouts.app_enter')
+@extends('layouts.app')
 
 @section('content')
     <div class="mb-3">

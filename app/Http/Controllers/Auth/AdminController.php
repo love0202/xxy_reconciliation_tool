@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function login()
     {
-        return view('auth_admin.login');
+        return view('auth.admin.login');
     }
 
     public function store(AdminRequest $request)
