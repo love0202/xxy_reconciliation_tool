@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/login', [App\Http\Controllers\Auth\UserController::class, 'login'])->name('auth_user.login');
-Route::post('/login/store', [App\Http\Controllers\Auth\UserController::class, 'store'])->name('auth_user.store');
-Route::post('/logout', [App\Http\Controllers\Auth\UserController::class, 'logout'])->name('auth_user.logout');
+Route::get('/login', [App\Http\Controllers\Auth\AdminController::class, 'login'])->name('auth_admin.login');
+Route::post('/login/store', [App\Http\Controllers\Auth\AdminController::class, 'store'])->name('auth_admin.store');
+Route::post('/logout', [App\Http\Controllers\Auth\AdminController::class, 'logout'])->name('auth_admin.logout');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard.index');

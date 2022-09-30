@@ -21,7 +21,7 @@
         <img src="{{ yxx_path_static('logo.png') }}" alt="logo" style="max-width: 80px;">
     </div>
     <div class="row justify-content-center">
-        <form method="POST" action="{{ route('auth_user.store') }}">
+        <form method="POST" action="{{ route('auth_admin.store') }}">
             @csrf
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">账号：</label>

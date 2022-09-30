@@ -48,12 +48,12 @@
                                     <button class="dropdown-item" type="button">管理中心</button>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('auth_user.logout') }}"
+                                    <a class="dropdown-item" href="{{ route('auth_admin.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         退出登录
                                     </a>
-                                    <form id="logout-form" action="{{ route('auth_user.logout') }}" method="POST"
+                                    <form id="logout-form" action="{{ route('auth_admin.logout') }}" method="POST"
                                           class="d-none">
                                         @csrf
                                     </form>
