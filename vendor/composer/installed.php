@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '3afbeebea55f467bd6df48d679f28a845df69807',
+    'reference' => '646900d863bb81b62bd59eeaacae2046eb6d1e27',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -445,7 +445,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '3afbeebea55f467bd6df48d679f28a845df69807',
+      'reference' => '646900d863bb81b62bd59eeaacae2046eb6d1e27',
     ),
     'laravel/serializable-closure' => 
     array (
@@ -500,6 +500,15 @@
       array (
       ),
       'reference' => 'ff6248ea87a9f116e78edd6002e39e5128a0d4dd',
+    ),
+    'mews/captcha' => 
+    array (
+      'pretty_version' => 'v3.2.9',
+      'version' => '3.2.9.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '68e35397f9d511e91ac67499e1baf53829571dca',
     ),
     'mockery/mockery' => 
     array (

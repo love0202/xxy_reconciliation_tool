@@ -26,6 +26,7 @@ class AdminRequest extends FormRequest
         return [
             'username' => 'required',
             'password' => 'required',
+            'captcha' => 'required|captcha'
         ];
     }
 
@@ -39,6 +40,8 @@ class AdminRequest extends FormRequest
         return [
             'username.required' => '账户不能为空',
             'password.required' => '密码不能为空',
+            'captcha.required' => '验证码不能为空',
+            'captcha.captcha' => '验证码错误',
         ];
     }
 }

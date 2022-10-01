@@ -22,11 +22,9 @@ class AdminController extends Controller
         if (Auth::guard()->attempt($input)) {
             $request->session()->regenerate();
             return redirect()->route('dashboard.index');
+        }else{
+            return back()->withErrors(['password' => '密码不正确']);
         }
-
-        return back()->withErrors([
-            'password' => '密码不正确',
-        ]);
     }
     public function logout()
     {
