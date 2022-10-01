@@ -48,7 +48,7 @@
                 <td>{{ $l->created_at }}</td>
                 <td>{{ $l->adminName }}</td>
                 <td>
-                    <a class="text-decoration-none" href="{{ route('project.enter',['guid'=>$l->guid]) }}">进入</a>
+                    <a class="text-decoration-none" href="{{ route('project.enter',['id'=>$l->id]) }}">进入</a>
                 </td>
             </tr>
         @endforeach

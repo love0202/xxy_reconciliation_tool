@@ -7,6 +7,7 @@ use App\Models\Project\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Common\WebProject;
 
 class ProjectController extends Controller
 {
@@ -37,11 +38,6 @@ class ProjectController extends Controller
         return view('project.index', $data);
     }
 
-    public function enter(Request $request)
-    {
-        return view('project.enter');
-    }
-
     public function create()
     {
         return view('project.create');
@@ -60,10 +56,24 @@ class ProjectController extends Controller
         $input['adminId'] = Auth::user()->id;
         $model = new Project();
         $ret = $model->create($input);
-        if ($ret) {
-            return redirect()->route('project.enter', ['guid' => $ret->guid]);
-        } else {
+        return redirect()->route('project.index');
+    }
+
+    public function enter(Request $request)
+    {
+        $id = $request->input('id', 0);
+
+        $ret = WebProject::enter($id);
+        if ($ret){
+            return redirect()->route('project.index');
+        }else{
             return redirect()->route('project.index');
         }
+    }
+
+    public function quit()
+    {
+        WebProject::quit();
+        return redirect()->route('project.index');
     }
 }

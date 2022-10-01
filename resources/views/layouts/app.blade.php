@@ -1,3 +1,8 @@
+<?php
+use App\Common\WebProject;
+$webProject = WebProject::getProject();
+
+?>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -19,9 +24,10 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <span href="" class="navbar-brand"
-               rel="{{ config('app.name', 'Laravel') }}">
+            <span class="navbar-brand"
+                  rel="{{ config('app.name', 'Laravel') }}">
                 <img src="{{ yxx_path_static('logo.png') }}" alt="logo" width="30" height="30">
+                {{ isset($webProject->name) ? $webProject->name : '' }}
             </span>
             @auth
                 <div class="d-flex">

@@ -45,9 +45,9 @@
                 </div>
                 <div class="col-12 mb-3">
                     <div class="input-group">
-                        <input type="text" name="captcha" class="form-control" placeholder="请输入验证码" maxlength="5">
-                        <img class="input-group-text p-0 ms-2" id="yxx-captcha" src="{{captcha_src()}}" alt="换一个"
-                             style="height: 37px;width: 120px;" onclick="this.src='/captcha/default?'+Math.random()">
+                        <input type="text" name="captcha" class="form-control" placeholder="请输入验证码" maxlength="4">
+                        <img class="input-group-text p-0 ms-2" id="yxx-captcha" src="{{captcha_src()}}" alt="换一个" title="换一个"
+                             style="height: 37px;width: 120px;cursor:pointer;" onclick="this.src='/captcha/default?'+Math.random()">
                     </div>
                     @error('captcha')
                     <div class="alert alert-danger m-0 p-0"><i class="bi bi-exclamation-circle me-1"
