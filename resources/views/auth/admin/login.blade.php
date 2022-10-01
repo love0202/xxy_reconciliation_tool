@@ -16,7 +16,7 @@
     <link href="{{ mix('static/css/app.css') }}" rel="stylesheet">
 </head>
 <body style="background-color: #f5f5f5">
-<div class="shadow p-3" style="min-height:500px;max-width: 450px;margin: 130px auto;background-color: #ffffff">
+<div class="shadow p-3" style="min-height:500px;max-width: 450px;margin: 130px auto;background-color: #ffffff;border-radius: 8px;">
     <div class="text-center p-3" style="height: 150px;">
         <img src="{{ yxx_path_static('logo.png') }}" alt="logo" style="max-width: 80px;">
     </div>

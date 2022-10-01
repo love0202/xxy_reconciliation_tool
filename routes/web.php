@@ -22,3 +22,4 @@ Route::get('/test/bootstrap', function () {
 Route::get('/test/components', function () {
     return view('test.components');
 });
+Route::get('/test/img', [App\Http\Controllers\TestController::class, 'img'])->name('test.img');
