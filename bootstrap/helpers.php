@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 if (!function_exists('yxx')) {
     function yxx($data)
@@ -42,9 +43,27 @@ if (!function_exists('make_guid')) {
     }
 }
 
-if (!function_exists('project_enter')) {
-    function project_enter($project)
+if (!function_exists('get_yxx_menu')) {
+    function get_yxx_menu($webProject = '')
     {
-        return $project;
+        $data = [];
+        $yxxMenu = config('yxx_menu');
+        $routeName = Route::currentRouteName();
+        foreach ($yxxMenu as $menu) {
+            if ($menu['routeName'] == $routeName){
+                $menu['active'] = 1;
+            }
+            if (empty($webProject)) {
+                if ($menu['show'] == 1) {
+                    $data[] = $menu;
+                }
+            } else {
+                if ($menu['show'] == 2) {
+                    $data[] = $menu;
+                }
+            }
+        }
+//        dd($yxxMenu);
+        return $data;
     }
 }

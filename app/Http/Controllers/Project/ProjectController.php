@@ -38,6 +38,11 @@ class ProjectController extends Controller
         return view('project.index', $data);
     }
 
+    public function show()
+    {
+        return view('project.show');
+    }
+
     public function create()
     {
         return view('project.create');
@@ -65,7 +70,7 @@ class ProjectController extends Controller
 
         $ret = WebProject::enter($id);
         if ($ret){
-            return redirect()->route('project.index');
+            return redirect()->route('project.show');
         }else{
             return redirect()->route('project.index');
         }

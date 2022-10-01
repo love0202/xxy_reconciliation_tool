@@ -27,6 +27,11 @@ php artisan make:controller Login\IndexController --resource --model=Home\Photo
 php artisan make:controller Auth\AdminController --model=Auth\Admin
 php artisan make:controller Project\ProjectController --model=Project\Project
 
+php artisan make:controller Merchant\MerchantController --resource
+php artisan make:controller Express\ExpressController --resource
+php artisan make:controller Weight\WeightController --resource
+
+
 php artisan ui bootstrap --auth
 
 =============================git命令====================================

@@ -1,48 +1,80 @@
 <?php
 return [
     '10' => [
-        'name'   => '首页',
-        'url'    => '/',
-        'pos'    => 'main', //位置显示 main、header、right三个选择
-        'show'   => 1,
-        'class'  => 'iconfont icon-home',
-        'items'  => [
+        'name' => '首页',
+        'routeName' => 'dashboard.index',
+        'show' => 1,
+        'class' => 'bi bi-house',
+        'items' => [
             '1001' => [
-                'name'    => '个人面板',
-                'url'     => '/dashboard/index/index',
-                'i-class' => 'iconfont icon-add',
+                'name' => '个人面板',
+                'routeName' => 'dashboard.index',
+                'i-class' => 'bi bi-house',
             ],
         ],
     ],
     '11' => [
-        'name'   => '计划管理',
-        'url'    => '/plan/myplan/index',
-        'pos'    => 'main',
-        'show'   => 1,
-        'class'  => 'iconfont icon-folder',
-        'items'  => [
+        'name' => '对账方案管理',
+        'routeName' => 'project.index',
+        'show' => 1,
+        'class' => 'bi bi-house',
+        'items' => [
             '1101' => [
-                'name'       => '创建计划',
-                'url'        => '/plan/add/index',
-                'i-class'    => 'iconfont',
+                'name' => '对账方案管理',
+                'routeName' => 'project.index',
+                'i-class' => 'bi bi-house',
             ],
-            '1102' => [
-                'name'       => '我的计划',
-                'url'        => '/plan/myplan/index',
-                'i-class'    => 'iconfont',
-                'privileges' => ['1105']
+        ],
+    ],
+    '20' => [
+        'name'   => '首页',
+        'routeName' => 'project.show',
+        'show'   => 2,
+        'class'  => 'bi bi-house',
+        'items'  => [
+            '2001' => [
+                'name'    => '对账方案查看',
+                'routeName' => 'project.show',
+                'i-class' => 'bi bi-house',
             ],
-            '1106' => [
-                'name'       => '审核计划',
-                'url'        => '/plan/audit/index',
-                'i-class'    => 'iconfont',
-                'privileges' => ['1106']
+        ],
+    ],
+    '21' => [
+        'name'   => '商户数据管理',
+        'routeName' => 'merchant.index',
+        'show'   => 2,
+        'class'  => 'bi bi-house',
+        'items'  => [
+            '2101' => [
+                'name'    => '文件管理',
+                'routeName' => 'merchant.index',
+                'i-class' => 'bi bi-house',
             ],
-            '1103' => [
-                'name'       => '响应计划',
-                'url'        => '/plan/response/index',
-                'i-class'    => 'iconfont',
-                'privileges' => ['1107']
+        ],
+    ],
+    '22' => [
+        'name'   => '快递数据管理',
+        'routeName' => 'express.index',
+        'show'   => 2,
+        'class'  => 'bi bi-house',
+        'items'  => [
+            '2201' => [
+                'name'    => '文件管理',
+                'routeName' => 'express.index',
+                'i-class' => 'bi bi-house',
+            ],
+        ],
+    ],
+    '23' => [
+        'name'   => '重量数据管理',
+        'routeName' => 'weight.index',
+        'show'   => 2,
+        'class'  => 'bi bi-house',
+        'items'  => [
+            '2301' => [
+                'name'    => '文件管理',
+                'routeName' => 'weight.index',
+                'i-class' => 'bi bi-house',
             ],
         ],
     ],
