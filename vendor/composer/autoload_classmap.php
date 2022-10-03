@@ -6,13 +6,17 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Common\\WebProject' => $baseDir . '/app/Common/WebProject.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\AdminController' => $baseDir . '/app/Http/Controllers/Auth/AdminController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\Dashboard\\DashboardController' => $baseDir . '/app/Http/Controllers/Dashboard/DashboardController.php',
+    'App\\Http\\Controllers\\Express\\ExpressController' => $baseDir . '/app/Http/Controllers/Express/ExpressController.php',
+    'App\\Http\\Controllers\\Merchant\\MerchantController' => $baseDir . '/app/Http/Controllers/Merchant/MerchantController.php',
     'App\\Http\\Controllers\\Project\\ProjectController' => $baseDir . '/app/Http/Controllers/Project/ProjectController.php',
     'App\\Http\\Controllers\\TestController' => $baseDir . '/app/Http/Controllers/TestController.php',
+    'App\\Http\\Controllers\\Weight\\WeightController' => $baseDir . '/app/Http/Controllers/Weight/WeightController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',

@@ -13,6 +13,11 @@ php artisan module:make-controller PostsController Blog
 
 
 php artisan make:migration create_reconciliation_project_table
+php artisan make:migration create_merchant_table
+php artisan make:migration create_express_table
+php artisan make:migration create_weight_table
+php artisan make:migration create_file_table
+
 php artisan make:migration create_user_table
 php artisan migrate:status
 php artisan migrate

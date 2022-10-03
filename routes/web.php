@@ -17,8 +17,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/project/quit', [App\Http\Controllers\Project\ProjectController::class, 'quit'])->name('project.quit');
 
     Route::get('/merchant/index', [App\Http\Controllers\Merchant\MerchantController::class, 'index'])->name('merchant.index');
+    Route::get('/merchant/create', [App\Http\Controllers\Merchant\MerchantController::class, 'create'])->name('merchant.create');
+    Route::get('/merchant/tianmao', [App\Http\Controllers\Merchant\MerchantController::class, 'tianmao'])->name('merchant.tianmao');
+    Route::get('/merchant/taobao', [App\Http\Controllers\Merchant\MerchantController::class, 'taobao'])->name('merchant.taobao');
+    Route::get('/merchant/pinduoduo', [App\Http\Controllers\Merchant\MerchantController::class, 'pinduoduo'])->name('merchant.pinduoduo');
     Route::get('/express/index', [App\Http\Controllers\Express\ExpressController::class, 'index'])->name('express.index');
+    Route::get('/express/file', [App\Http\Controllers\Express\ExpressController::class, 'file'])->name('express.file');
+    Route::get('/express/create', [App\Http\Controllers\Express\ExpressController::class, 'create'])->name('express.create');
     Route::get('/weight/index', [App\Http\Controllers\Weight\WeightController::class, 'index'])->name('weight.index');
+    Route::get('/weight/file', [App\Http\Controllers\Weight\WeightController::class, 'file'])->name('weight.file');
+    Route::get('/weight/create', [App\Http\Controllers\Weight\WeightController::class, 'create'])->name('weight.create');
 });
 
 // 测试页面

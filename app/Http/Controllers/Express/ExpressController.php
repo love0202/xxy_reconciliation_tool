@@ -24,7 +24,11 @@ class ExpressController extends Controller
      */
     public function create()
     {
-        //
+        return view('express.create');
+    }
+    public function file()
+    {
+        return view('express.file');
     }
 
     /**

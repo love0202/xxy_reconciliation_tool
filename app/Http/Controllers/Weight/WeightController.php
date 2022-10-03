@@ -24,7 +24,11 @@ class WeightController extends Controller
      */
     public function create()
     {
-        //
+        return view('weight.create');
+    }
+    public function file()
+    {
+        return view('weight.file');
     }
 
     /**

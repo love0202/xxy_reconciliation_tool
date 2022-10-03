@@ -507,13 +507,17 @@ class ComposerStaticInitb83d1d72d6feaf3e2efe75573478ac53
     );
 
     public static $classMap = array (
+        'App\\Common\\WebProject' => __DIR__ . '/../..' . '/app/Common/WebProject.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AdminController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Dashboard\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/DashboardController.php',
+        'App\\Http\\Controllers\\Express\\ExpressController' => __DIR__ . '/../..' . '/app/Http/Controllers/Express/ExpressController.php',
+        'App\\Http\\Controllers\\Merchant\\MerchantController' => __DIR__ . '/../..' . '/app/Http/Controllers/Merchant/MerchantController.php',
         'App\\Http\\Controllers\\Project\\ProjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/Project/ProjectController.php',
         'App\\Http\\Controllers\\TestController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestController.php',
+        'App\\Http\\Controllers\\Weight\\WeightController' => __DIR__ . '/../..' . '/app/Http/Controllers/Weight/WeightController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',

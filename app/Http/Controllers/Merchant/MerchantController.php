@@ -24,7 +24,19 @@ class MerchantController extends Controller
      */
     public function create()
     {
-        //
+        return view('merchant.create');
+    }
+    public function tianmao()
+    {
+        return view('merchant.tianmao');
+    }
+    public function taobao()
+    {
+        return view('merchant.taobao');
+    }
+    public function pinduoduo()
+    {
+        return view('merchant.pinduoduo');
     }
 
     /**

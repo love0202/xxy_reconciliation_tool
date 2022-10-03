@@ -35,43 +35,63 @@ return [
             '2001' => [
                 'name'    => '方案统计',
                 'routeName' => 'project.show',
-                'class' => 'bi bi-house',
+                'class' => 'bi bi-pc-display-horizontal',
             ],
         ],
     ],
     '21' => [
         'name'   => '商户管理',
-        'routeName' => 'merchant.index',
+        'routeName' => 'merchant.tianmao',
         'show'   => 2,
         'class'  => 'bi bi-cart4',
         'items'  => [
+            '2110' => [
+                'name'    => '添加文件',
+                'routeName' => 'merchant.create',
+                'class' => 'bi bi-filetype-xlsx',
+            ],
             '2101' => [
-                'name'    => '商户文件',
-                'routeName' => 'merchant.index',
+                'name'    => '天猫商户文件',
+                'routeName' => 'merchant.tianmao',
                 'class' => 'bi bi-filetype-xlsx',
             ],
             '2102' => [
-                'name'    => '商户数据汇总',
-                'routeName' => 'merchant.index',
+                'name'    => '淘宝商户文件',
+                'routeName' => 'merchant.taobao',
                 'class' => 'bi bi-filetype-xlsx',
+            ],
+            '2103' => [
+                'name'    => '拼多多商户文件',
+                'routeName' => 'merchant.pinduoduo',
+                'class' => 'bi bi-filetype-xlsx',
+            ],
+            '2105' => [
+                'name'    => '商户数据',
+                'routeName' => 'merchant.index',
+                'class' => 'bi bi-calendar-check',
             ],
         ],
     ],
     '22' => [
         'name'   => '快递管理',
-        'routeName' => 'express.index',
+        'routeName' => 'express.file',
         'show'   => 2,
         'class'  => 'bi bi-truck-front',
         'items'  => [
+            '2210' => [
+                'name'    => '添加文件',
+                'routeName' => 'express.create',
+                'class' => 'bi bi-filetype-xlsx',
+            ],
             '2201' => [
                 'name'    => '快递文件',
-                'routeName' => 'express.index',
+                'routeName' => 'express.file',
                 'class' => 'bi bi-filetype-xlsx',
             ],
             '2202' => [
-                'name'    => '快递数据汇总',
+                'name'    => '快递数据',
                 'routeName' => 'express.index',
-                'class' => 'bi bi-filetype-xlsx',
+                'class' => 'bi bi-calendar-check',
             ],
         ],
     ],
@@ -81,7 +101,17 @@ return [
         'show'   => 2,
         'class'  => 'bi bi-cash-coin',
         'items'  => [
+            '2310' => [
+                'name'    => '添加文件',
+                'routeName' => 'weight.create',
+                'class' => 'bi bi-filetype-xlsx',
+            ],
             '2301' => [
+                'name'    => '重量文件',
+                'routeName' => 'weight.file',
+                'class' => 'bi bi-filetype-xlsx',
+            ],
+            '2302' => [
                 'name'    => '重量数据汇总',
                 'routeName' => 'weight.index',
                 'class' => 'bi bi-calendar-check',
