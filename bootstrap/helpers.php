@@ -1,5 +1,7 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 if (!function_exists('yxx')) {
     function yxx($data)
@@ -13,7 +15,7 @@ if (!function_exists('yxx_path_static')) {
     {
         $file = '';
         if (!empty($fileName)) {
-            $file = '/static/' . $path . '/' . $fileName;
+            $file = config('app.url') . '/static/' . $path . '/' . $fileName;
         }
         return $file;
     }
@@ -50,7 +52,7 @@ if (!function_exists('get_yxx_menu')) {
         $yxxMenu = config('yxx_menu');
         $routeName = Route::currentRouteName();
         foreach ($yxxMenu as $menu) {
-            if ($menu['routeName'] == $routeName){
+            if ($menu['routeName'] == $routeName) {
                 $menu['active'] = 1;
             }
             if (empty($webProject)) {
@@ -65,5 +67,12 @@ if (!function_exists('get_yxx_menu')) {
         }
 //        dd($yxxMenu);
         return $data;
+    }
+}
+
+if (!function_exists('yxx_limit')) {
+    function yxx_limit($value, $limit = 20, $end = '...')
+    {
+        return Str::limit($value, $limit, $end);
     }
 }

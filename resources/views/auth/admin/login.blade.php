@@ -15,52 +15,56 @@
     <!-- Styles -->
     <link href="{{ mix('static/css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-color: #f5f5f5">
-<div class="shadow p-3"
-     style="min-height:500px;max-width: 450px;margin: 130px auto;background-color: #ffffff;border-radius: 8px;">
-    <div class="text-center p-3" style="height: 150px;">
-        <img src="{{ yxx_path_static('logo.png') }}" alt="logo" style="max-width: 80px;">
-    </div>
-    <div class="row justify-content-center">
-        <form method="POST" action="{{ route('auth.admin.store') }}">
-            @csrf
-            <div class="row">
-                <div class="col-12 mb-3">
-                    <input type="text" name="username" class="form-control" placeholder="用户名" maxlength="20">
-                    @error('username')
-                    <div class="alert alert-danger m-0 p-0"><i class="bi bi-exclamation-circle me-1"
-                                                               style="font-size: .875em;"></i>
-                        <small>{{ $message }}</small>
+<body style="background-color: #f5f5f5;background-image: url({{yxx_path_static('bg_body_1.jpg')}});background-size: cover;background-position: 50% 50%;">
+<div class="container-fluid" style="padding-top: 130px;padding-bottom: 130px;min-width: 450px;">
+    <div class="shadow p-3"
+         style="min-height:500px;width: 450px;background-color: #ffffff;border-radius: 8px;">
+        <div class="text-center p-3" style="height: 150px;">
+            <img src="{{ yxx_path_static('logo.png') }}" alt="logo" style="max-width: 80px;">
+        </div>
+        <div class="row justify-content-center">
+            <form method="POST" action="{{ route('auth.admin.store') }}">
+                @csrf
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <input type="text" name="username" class="form-control" placeholder="用户名" maxlength="20">
+                        @error('username')
+                        <div class="alert alert-danger m-0 p-0"><i class="bi bi-exclamation-circle me-1"
+                                                                   style="font-size: .875em;"></i>
+                            <small>{{ $message }}</small>
+                        </div>
+                        @enderror
                     </div>
-                    @enderror
-                </div>
-                <div class="col-12 mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="密码" maxlength="20">
-                    @error('password')
-                    <div class="alert alert-danger m-0 p-0"><i class="bi bi-exclamation-circle me-1"
-                                                               style="font-size: .875em;"></i>
-                        <small>{{ $message }}</small>
+                    <div class="col-12 mb-3">
+                        <input type="password" name="password" class="form-control" placeholder="密码" maxlength="20">
+                        @error('password')
+                        <div class="alert alert-danger m-0 p-0"><i class="bi bi-exclamation-circle me-1"
+                                                                   style="font-size: .875em;"></i>
+                            <small>{{ $message }}</small>
+                        </div>
+                        @enderror
                     </div>
-                    @enderror
-                </div>
-                <div class="col-12 mb-3">
-                    <div class="input-group">
-                        <input type="text" name="captcha" class="form-control" placeholder="请输入验证码" maxlength="4">
-                        <img class="input-group-text p-0 ms-2" id="yxx-captcha" src="{{captcha_src()}}" alt="换一个" title="换一个"
-                             style="height: 37px;width: 120px;cursor:pointer;" onclick="this.src='/captcha/default?'+Math.random()">
+                    <div class="col-12 mb-3">
+                        <div class="input-group">
+                            <input type="text" name="captcha" class="form-control" placeholder="请输入验证码" maxlength="4">
+                            <img class="input-group-text p-0 ms-2" id="yxx-captcha" src="{{captcha_src()}}" alt="换一个"
+                                 title="换一个"
+                                 style="height: 37px;width: 120px;cursor:pointer;"
+                                 onclick="this.src='/captcha/default?'+Math.random()">
+                        </div>
+                        @error('captcha')
+                        <div class="alert alert-danger m-0 p-0"><i class="bi bi-exclamation-circle me-1"
+                                                                   style="font-size: .875em;"></i>
+                            <small>{{ $message }}</small>
+                        </div>
+                        @enderror
                     </div>
-                    @error('captcha')
-                    <div class="alert alert-danger m-0 p-0"><i class="bi bi-exclamation-circle me-1"
-                                                               style="font-size: .875em;"></i>
-                        <small>{{ $message }}</small>
+                    <div class="col-sm-12 mb-3">
+                        <button type="submit" class="btn btn-primary text-white w-100">登录</button>
                     </div>
-                    @enderror
                 </div>
-                <div class="col-sm-12 mb-3">
-                    <button type="submit" class="btn btn-primary text-white w-100">登录</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 

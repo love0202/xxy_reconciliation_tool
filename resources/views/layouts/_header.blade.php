@@ -4,7 +4,10 @@
             <span class="navbar-brand"
                   rel="{{ config('app.name', 'Laravel') }}">
                 <img src="{{ yxx_path_static('logo.png') }}" alt="logo" width="30" height="30">
-                {{ isset($webProject->name) ? $webProject->name : '' }}
+                @if(isset($webProject->name))
+                    【<span class="text-decoration-underline fs-6"
+                           title="{{ $webProject->name }}">{{ yxx_limit($webProject->name,20) }}</span>】
+                @endif
             </span>
             @auth
                 <div class="d-flex">
@@ -32,18 +35,17 @@
     </nav>
     <nav class="navbar navbar-expand-lg navbar-dark p-0" style="background-color:#3f59ba">
         <div class="container-fluid p-0">
-            <button class="navbar-toggler m-auto" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#yxx-navbar-scroll"
-                    aria-controls="yxx-navbar-scroll" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <i class="bi bi-arrow-down-square text-white fs-2 navbar-toggler m-auto border-0" data-bs-toggle="collapse"
+               data-bs-target="#yxx-navbar-scroll"
+               aria-controls="yxx-navbar-scroll" aria-expanded="false"></i>
             <div class="collapse navbar-collapse" id="yxx-navbar-scroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
                     @foreach(get_yxx_menu($webProject) as $menu)
                         <li class="nav-item text-center" style="min-width: 100px;border:1px solid #8d8484">
-                            <a class="nav-link @if(isset($menu['active'])) active @endif " href="{{ route($menu['routeName']) }}">
+                            <a class="nav-link @if(isset($menu['active'])) active @endif "
+                               href="{{ route($menu['routeName']) }}">
                                 <div class="d-flex flex-column">
-                                    <i class="bi bi-house fs-3"></i>
+                                    <i class="{{ $menu['class'] }} fs-3"></i>
                                     <span>{{ $menu['name'] }}</span>
                                 </div>
                             </a>
@@ -51,13 +53,14 @@
                     @endforeach
                 </ul>
                 @if($webProject)
-                    <div class="d-flex">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#model-quit-project">
-                                <span class="me-2">切换对账方案</span><i class="bi bi-arrow-left-right"></i>
-                            </button>
-                        </div>
+                    <div class="d-flex me-2">
+                        <button type="button" class="btn btn-warning m-auto" data-bs-toggle="modal"
+                                data-bs-target="#model-quit-project">
+                            <div class="d-flex flex-column">
+                                <i class="bi bi-arrow-left-right"></i>
+                                <span>切换对账方案</span>
+                            </div>
+                        </button>
                     </div>
                 @endif
             </div>
@@ -74,7 +77,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                是否确定切换对账方案？
+                <p class="text-center">
+                    <i class="bi bi-exclamation-circle fs-3 text-warning"></i>
+                    <span class="ms-1">是否确定切换对账方案？</span>
+                </p>
             </div>
             <div class="modal-footer">
                 <a href="{{ route('project.quit') }}" class="btn btn-primary text-white">确认</a>

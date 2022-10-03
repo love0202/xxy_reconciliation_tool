@@ -17,12 +17,12 @@ return [
         'name' => '对账方案管理',
         'routeName' => 'project.index',
         'show' => 1,
-        'class' => 'bi bi-house',
+        'class' => 'bi bi-journal-check',
         'items' => [
             '1101' => [
                 'name' => '对账方案管理',
                 'routeName' => 'project.index',
-                'i-class' => 'bi bi-house',
+                'i-class' => 'bi bi-journal-check',
             ],
         ],
     ],
@@ -43,12 +43,12 @@ return [
         'name'   => '商户数据管理',
         'routeName' => 'merchant.index',
         'show'   => 2,
-        'class'  => 'bi bi-house',
+        'class'  => 'bi bi-cart4',
         'items'  => [
             '2101' => [
                 'name'    => '文件管理',
                 'routeName' => 'merchant.index',
-                'i-class' => 'bi bi-house',
+                'i-class' => 'bi bi-cart4',
             ],
         ],
     ],
@@ -56,12 +56,12 @@ return [
         'name'   => '快递数据管理',
         'routeName' => 'express.index',
         'show'   => 2,
-        'class'  => 'bi bi-house',
+        'class'  => 'bi bi-truck-front',
         'items'  => [
             '2201' => [
                 'name'    => '文件管理',
                 'routeName' => 'express.index',
-                'i-class' => 'bi bi-house',
+                'i-class' => 'bi bi-truck-front',
             ],
         ],
     ],
@@ -69,12 +69,12 @@ return [
         'name'   => '重量数据管理',
         'routeName' => 'weight.index',
         'show'   => 2,
-        'class'  => 'bi bi-house',
+        'class'  => 'bi bi-cash-coin',
         'items'  => [
             '2301' => [
                 'name'    => '文件管理',
                 'routeName' => 'weight.index',
-                'i-class' => 'bi bi-house',
+                'i-class' => 'bi bi-cash-coin',
             ],
         ],
     ],
