@@ -51,21 +51,41 @@ if (!function_exists('get_yxx_menu')) {
         $data = [];
         $yxxMenu = config('yxx_menu');
         $routeName = Route::currentRouteName();
-        foreach ($yxxMenu as $menu) {
-            if ($menu['routeName'] == $routeName) {
-                $menu['active'] = 1;
+        foreach ($yxxMenu as $key1 => $value1) {
+            foreach ($value1['items'] as $key2 => $value2) {
+                if ($value2['routeName'] == $routeName) {
+                    $value1['active'] = 1;
+                }
             }
             if (empty($webProject)) {
-                if ($menu['show'] == 1) {
-                    $data[] = $menu;
+                if ($value1['show'] == 1) {
+                    $data[] = $value1;
                 }
             } else {
-                if ($menu['show'] == 2) {
-                    $data[] = $menu;
+                if ($value1['show'] == 2) {
+                    $data[] = $value1;
                 }
             }
         }
-//        dd($yxxMenu);
+        return $data;
+    }
+}
+
+if (!function_exists('get_yxx_left_menu')) {
+    function get_yxx_left_menu()
+    {
+        $data = [];
+        $yxxMenu = config('yxx_menu');
+        $routeName = Route::currentRouteName();
+        foreach ($yxxMenu as $key1 => $value1) {
+            foreach ($value1['items'] as $key2 => $value2) {
+                if ($value2['routeName'] == $routeName) {
+                    $value1['items'][$key2]['active'] = 1;
+                    $value1['active'] = 1;
+                    $data = $value1['items'];
+                }
+            }
+        }
         return $data;
     }
 }
