@@ -28,7 +28,7 @@ $webProject = WebProject::getProject();
     <div class="flex-shrink-0 bg-white">
         <ul class="list-unstyled">
             @foreach(get_yxx_left_menu() as $menu)
-                <li class="text-center" style="width: 200px;border:1px solid #8d8484">
+                <li class="text-center" style="width: 100px;border:1px solid #8d8484">
                     <a class="nav-link @if(isset($menu['active'])) active @endif "
                        href="{{ route($menu['routeName']) }}">
                         <div class="d-flex flex-column">

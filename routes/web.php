@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/weight/index', [App\Http\Controllers\Weight\WeightController::class, 'index'])->name('weight.index');
     Route::get('/weight/file', [App\Http\Controllers\Weight\WeightController::class, 'file'])->name('weight.file');
     Route::get('/weight/create', [App\Http\Controllers\Weight\WeightController::class, 'create'])->name('weight.create');
+    Route::post('/weight/store', [App\Http\Controllers\Weight\WeightController::class, 'store'])->name('weight.store');
 });
 
 // 测试页面

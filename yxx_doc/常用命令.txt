@@ -37,6 +37,12 @@ php artisan make:controller Express\ExpressController --resource
 php artisan make:controller Weight\WeightController --resource
 
 
+php artisan make:model Merchant\Merchant
+php artisan make:model Express\Express
+php artisan make:model Weight\Weight
+php artisan make:model File\File
+
+
 php artisan ui bootstrap --auth
 
 =============================git命令====================================

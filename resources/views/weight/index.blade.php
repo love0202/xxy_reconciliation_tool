@@ -1,7 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mb-3">
-        <h1>重量数据管理</h1>
-    </div>
+    <table class="table table-hover mb-3">
+        <thead style="background-color: #F5F5F5">
+        <tr>
+            <th scope="col">商品详情</th>
+            <th scope="col">重量</th>
+            <th scope="col">文件ID</th>
+            <th scope="col">创建时间</th>
+            <th scope="col">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach ($list as $l)
+            <tr>
+                <th scope="row">
+                    {{ $l->shop_info }}
+                </th>
+                <td>{{ $l->weight }}</td>
+                <td>{{ $l->file_id }}</td>
+                <td>{{ $l->created_at }}</td>
+                <td>编辑</td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+    {{ $list->links('vendor.pagination.bootstrap-4') }}
 @endsection
