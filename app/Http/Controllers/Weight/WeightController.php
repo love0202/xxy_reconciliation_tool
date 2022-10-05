@@ -58,8 +58,16 @@ class WeightController extends Controller
             'file' => 'required',
         ]);
         $file = $request->file('file');
-        $fileName = Storage::put('weight', $file);
-        $fileArr = [['path'=>$fileName]];
+        $originalName = $file->getClientOriginalName();
+        $path = Storage::put('weight', $file);
+        $fileArr = [
+            [
+                'originalName' => $originalName,
+                'path' => $path,
+                'importNum' => 0,
+                'fileType' => 1,
+            ]
+        ];
         $data = [];
         $data['project_id'] = WebProject::getProjectId();
         $data['theme'] = 3;
