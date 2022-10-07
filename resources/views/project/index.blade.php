@@ -33,7 +33,7 @@
     <table class="table table-hover mb-3">
         <thead style="background-color: #F5F5F5">
         <tr>
-            <th scope="col">对账方案</th>
+            <th class="w-50" scope="col">对账方案</th>
             <th scope="col">创建时间</th>
             <th scope="col">创建人</th>
             <th scope="col">操作</th>

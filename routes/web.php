@@ -24,6 +24,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/express/index', [App\Http\Controllers\Express\ExpressController::class, 'index'])->name('express.index');
     Route::get('/express/file', [App\Http\Controllers\Express\ExpressController::class, 'file'])->name('express.file');
     Route::get('/express/create', [App\Http\Controllers\Express\ExpressController::class, 'create'])->name('express.create');
+    Route::post('/express/store', [App\Http\Controllers\Express\ExpressController::class, 'store'])->name('express.store');
+
     Route::get('/weight/index', [App\Http\Controllers\Weight\WeightController::class, 'index'])->name('weight.index');
     Route::get('/weight/file', [App\Http\Controllers\Weight\WeightController::class, 'file'])->name('weight.file');
     Route::get('/weight/create', [App\Http\Controllers\Weight\WeightController::class, 'create'])->name('weight.create');

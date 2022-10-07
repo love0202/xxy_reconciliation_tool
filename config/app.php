@@ -167,6 +167,7 @@ return [
          */
         Intervention\Image\ImageServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -234,6 +235,7 @@ return [
 
         'Image' => Intervention\Image\Facades\Image::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

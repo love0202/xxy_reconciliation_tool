@@ -26,6 +26,29 @@ return [
             ],
         ],
     ],
+    '12' => [
+        'name'   => '重量管理',
+        'routeName' => 'weight.index',
+        'show'   => 1,
+        'class'  => 'bi bi-cash-coin',
+        'items'  => [
+            '1210' => [
+                'name'    => '添加文件',
+                'routeName' => 'weight.create',
+                'class' => 'bi bi-filetype-xlsx',
+            ],
+            '1201' => [
+                'name'    => '重量文件',
+                'routeName' => 'weight.file',
+                'class' => 'bi bi-filetype-xlsx',
+            ],
+            '1202' => [
+                'name'    => '重量数据汇总',
+                'routeName' => 'weight.index',
+                'class' => 'bi bi-calendar-check',
+            ],
+        ],
+    ],
     '20' => [
         'name'   => '首页',
         'routeName' => 'project.show',
@@ -91,29 +114,6 @@ return [
             '2202' => [
                 'name'    => '快递数据',
                 'routeName' => 'express.index',
-                'class' => 'bi bi-calendar-check',
-            ],
-        ],
-    ],
-    '23' => [
-        'name'   => '重量管理',
-        'routeName' => 'weight.index',
-        'show'   => 2,
-        'class'  => 'bi bi-cash-coin',
-        'items'  => [
-            '2310' => [
-                'name'    => '添加文件',
-                'routeName' => 'weight.create',
-                'class' => 'bi bi-filetype-xlsx',
-            ],
-            '2301' => [
-                'name'    => '重量文件',
-                'routeName' => 'weight.file',
-                'class' => 'bi bi-filetype-xlsx',
-            ],
-            '2302' => [
-                'name'    => '重量数据汇总',
-                'routeName' => 'weight.index',
                 'class' => 'bi bi-calendar-check',
             ],
         ],

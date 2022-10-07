@@ -40,7 +40,7 @@ $webProject = WebProject::getProject();
             @endforeach
         </ul>
     </div>
-    <div class="flex-grow-1 bg-white ms-3 p-3" style="min-height: 400px;">
+    <div class="flex-grow-1 bg-white ms-3 p-3 table-responsive" style="min-height: 400px;">
             @yield('content')
     </div>
 </div>
