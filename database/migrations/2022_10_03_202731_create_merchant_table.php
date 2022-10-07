@@ -21,10 +21,10 @@ class CreateMerchantTable extends Migration
             $table->string('order_number_son')->default('')->comment('子订单号');
             $table->string('title')->default('')->comment('标题');
             $table->string('num')->default('')->comment('数量');
-            $table->string('shop_attribute')->comment('商品属性');
+            $table->string('shop_attribute')->default('')->comment('商品属性');
             $table->string('express_order_number')->default('')->comment('物流单号');
             $table->string('express_company')->default('')->comment('物流公司');
-            $table->string('shop_info')->default('')->comment('商品详情');
+            $table->mediumText('shop_info')->comment('商品详情');
 
             $table->timestamps();
         });
