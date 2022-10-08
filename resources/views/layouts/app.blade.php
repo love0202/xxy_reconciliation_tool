@@ -14,7 +14,7 @@ $webProject = WebProject::getProject();
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'yxxtool') }}</title>
+    <title>{{ get_yxx_title() }}【{{ config('app.name', 'yxxtool') }}】</title>
 
     <!-- Favicons -->
     <link rel="icon" href="{{ yxx_path_static('logo.ico') }}">

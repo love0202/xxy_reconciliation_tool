@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+use App\Common\WebProject;
 
 if (!function_exists('yxx')) {
     function yxx($data)
@@ -46,8 +47,9 @@ if (!function_exists('make_guid')) {
 }
 
 if (!function_exists('get_yxx_menu')) {
-    function get_yxx_menu($webProject = '')
+    function get_yxx_menu()
     {
+        $webProject = WebProject::getProject();
         $data = [];
         $yxxMenu = config('yxx_menu');
         $routeName = Route::currentRouteName();
@@ -75,18 +77,56 @@ if (!function_exists('get_yxx_left_menu')) {
     function get_yxx_left_menu()
     {
         $data = [];
+        $yxxTitle = '';
+        $k1 = 0;
         $yxxMenu = config('yxx_menu');
         $routeName = Route::currentRouteName();
-        foreach ($yxxMenu as $key1 => $value1) {
+        foreach ($yxxMenu as $key1 => &$value1) {
             foreach ($value1['items'] as $key2 => $value2) {
-                if ($value2['routeName'] == $routeName) {
-                    $value1['items'][$key2]['active'] = 1;
-                    $value1['active'] = 1;
-                    $data = $value1['items'];
+                if (isset($value2['isHidden']) && $value2['isHidden']) {
+                    unset($value1['items'][$key2]);
+                }
+                if (is_array($value2['routeName'])) {
+                    if (in_array($routeName, $value2['routeName'])) {
+                        $value1['items'][$key2]['active'] = 1;
+                        $value1['active'] = 1;
+                        $k1 = $key1;
+                    }
+                } else {
+                    if ($value2['routeName'] == $routeName) {
+                        $value1['items'][$key2]['active'] = 1;
+                        $value1['active'] = 1;
+                        $k1 = $key1;
+                        $yxxTitle = $value1['name'] . '-' . $value1['items'][$key2]['name'];
+                    }
                 }
             }
         }
+        $data = $yxxMenu[$k1]['items'];
         return $data;
+    }
+}
+
+if (!function_exists('get_yxx_title')) {
+    function get_yxx_title($sep = ' | ')
+    {
+        $yxxTitle = '';
+        $yxxMenu = config('yxx_menu');
+        $routeName = Route::currentRouteName();
+        foreach ($yxxMenu as $key1 => &$value1) {
+            foreach ($value1['items'] as $key2 => $value2) {
+                if (is_array($value2['routeName'])) {
+                    if (in_array($routeName, $value2['routeName'])) {
+                        $yxxTitle = $value1['name'] . $sep . $value1['items'][$key2]['name'];
+                    }
+                } else {
+                    if ($value2['routeName'] == $routeName) {
+                        $yxxTitle = $value1['name'] . $sep . $value1['items'][$key2]['name'];
+                    }
+                }
+            }
+        }
+        return $yxxTitle;
     }
 }
 
