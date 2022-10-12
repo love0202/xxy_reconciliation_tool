@@ -15,6 +15,12 @@ class WeightImport implements ToModel, WithValidation, SkipsOnError
 
     public function model(array $row)
     {
+        dd('nihao');
+        dd($row);
+        if (!isset($row[0])) {
+            return null;
+        }
+
         return new Weight([
             'shop_info' => $row[2],
             'weight' => $row[0],

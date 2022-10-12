@@ -24,6 +24,13 @@ return [
                 'routeName' => 'project.index',
                 'class' => 'bi bi-journal-check',
             ],
+            '1102' => [
+                'name' => '创建对账方案',
+                'routeName' => 'project.create',
+                'class' => 'bi bi-journal-check',
+                'isHidden' => 1,
+                'parentId' => '1101',
+            ],
         ],
     ],
     '12' => [
@@ -33,15 +40,18 @@ return [
         'class' => 'bi bi-cash-coin',
         'items' => [
             '1210' => [
-                'name' => '添加文件',
+                'name' => '导入重量',
                 'routeName' => 'weight.create',
                 'class' => 'bi bi-filetype-xlsx',
+                'isHidden' => 1,
+                'parentId' => '1202',
             ],
             '1201' => [
                 'name' => '重量文件',
                 'routeName' => 'weight.file',
                 'class' => 'bi bi-filetype-xlsx',
                 'isHidden' => 1,
+                'parentId' => '1202',
             ],
             '1202' => [
                 'name' => '重量数据汇总',
@@ -106,6 +116,8 @@ return [
                 'name' => '添加文件',
                 'routeName' => 'express.create',
                 'class' => 'bi bi-filetype-xlsx',
+                'isHidden' => 1,
+                'parentId' => '2201',
             ],
             '2201' => [
                 'name' => '快递文件',
@@ -116,6 +128,8 @@ return [
                 'name' => '快递数据',
                 'routeName' => 'express.index',
                 'class' => 'bi bi-calendar-check',
+                'isHidden' => 1,
+                'parentId' => '2201',
             ],
         ],
     ],

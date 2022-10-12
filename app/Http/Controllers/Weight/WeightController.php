@@ -63,20 +63,21 @@ class WeightController extends Controller
         $fileName = 'weight/' . time() . rand(1000, 9999) . '.' . $originalExtension;
         Storage::put($fileName, file_get_contents($file->getRealPath()));
         $excelFilePath = Storage::path($fileName);
-//        Excel::import(new WeightImport(), $excelFilePath);
+//        $array = (new WeightImport)->toArray($excelFilePath);
+        Excel::import(new WeightImport(), $excelFilePath);
 
-        try {
-            (new WeightImport())->import($excelFilePath);
-        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
-            $failures = $e->failures();
-            dd($e);
-            foreach ($failures as $failure) {
-                $failure->row(); // row that went wrong
-                $failure->attribute(); // either heading key (if using heading row concern) or column index
-                $failure->errors(); // Actual error messages from Laravel validator
-                $failure->values(); // The values of the row that has failed.
-            }
-        }
+//        try {
+//            (new WeightImport())->import($excelFilePath);
+//        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+//            $failures = $e->failures();
+//            dd($e);
+//            foreach ($failures as $failure) {
+//                $failure->row(); // row that went wrong
+//                $failure->attribute(); // either heading key (if using heading row concern) or column index
+//                $failure->errors(); // Actual error messages from Laravel validator
+//                $failure->values(); // The values of the row that has failed.
+//            }
+//        }
         $fileArr = [
             [
                 'path' => $fileName,
