@@ -113,7 +113,7 @@ return [
         'class' => 'bi bi-truck-front',
         'items' => [
             '2210' => [
-                'name' => '添加文件',
+                'name' => '导入快递',
                 'routeName' => 'express.create',
                 'class' => 'bi bi-filetype-xlsx',
                 'isHidden' => 1,
