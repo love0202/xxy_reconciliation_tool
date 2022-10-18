@@ -8,43 +8,33 @@ use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class WeightImport implements ToModel, WithValidation, SkipsOnError
+class WeightImport implements ToModel, WithHeadingRow
 {
-    use Importable, SkipsErrors;
+    use Importable;
+    public $importData = [];
+
+    public function __construct($importData)
+    {
+        $this->importData = $importData;
+    }
 
     public function model(array $row)
     {
-        dd('nihao');
-        dd($row);
         if (!isset($row[0])) {
             return null;
         }
 
         return new Weight([
-            'shop_info' => $row[2],
+            'file_id' => $this->importData['fileId'],
+            'shop_info' => $row[1],
             'weight' => $row[0],
         ]);
     }
 
-    public function rules(): array
-    {
-        return [
-            'shop_info' => [
-                'required',
-            ],
-            'weight' => [
-                'required',
-            ],
-        ];
-    }
-
-    public function customValidationAttributes()
-    {
-        return ['0' => 'weight','2' => 'shop_info'];
-    }
     public function headingRow()
     {
-        return 2;
+        return 0;
     }
 }

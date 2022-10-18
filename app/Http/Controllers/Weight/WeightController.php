@@ -8,7 +8,6 @@ use App\Models\File\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Maatwebsite\Excel\Facades\Excel;
 
 class WeightController extends Controller
 {
@@ -62,22 +61,6 @@ class WeightController extends Controller
         $originalExtension = $file->getClientOriginalExtension();
         $fileName = 'weight/' . time() . rand(1000, 9999) . '.' . $originalExtension;
         Storage::put($fileName, file_get_contents($file->getRealPath()));
-        $excelFilePath = Storage::path($fileName);
-//        $array = (new WeightImport)->toArray($excelFilePath);
-        Excel::import(new WeightImport(), $excelFilePath);
-
-//        try {
-//            (new WeightImport())->import($excelFilePath);
-//        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
-//            $failures = $e->failures();
-//            dd($e);
-//            foreach ($failures as $failure) {
-//                $failure->row(); // row that went wrong
-//                $failure->attribute(); // either heading key (if using heading row concern) or column index
-//                $failure->errors(); // Actual error messages from Laravel validator
-//                $failure->values(); // The values of the row that has failed.
-//            }
-//        }
         $fileArr = [
             [
                 'path' => $fileName,
@@ -95,6 +78,12 @@ class WeightController extends Controller
 
         $model = new File();
         $ret = $model->create($data);
+        $importData = [
+            'fileId' => $ret->id
+        ];
+        $excelFilePath = Storage::path($fileName);
+        $importModel = new WeightImport($importData);
+        $importModel->import($excelFilePath);
         return redirect()->route('weight.file');
     }
 

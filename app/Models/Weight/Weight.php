@@ -12,6 +12,7 @@ class Weight extends Model
     protected $table = 'weight';
 
     protected $fillable = [
+        'file_id',
         'shop_info',
         'weight',
     ];
