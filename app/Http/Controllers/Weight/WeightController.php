@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Weight;
 use App\Excel\Imports\Weight\WeightImport;
 use App\Http\Controllers\Controller;
 use App\Models\File\File;
+use App\Models\Weight\Weight;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -56,18 +57,17 @@ class WeightController extends Controller
             'file' => 'required|mimetypes:text/csv,application/xml,application/zip,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel',
         ]);
         $file = $request->file('file');
-        $originalName = $file->getClientOriginalName();
-        $originalMimeType = $file->getClientMimeType();
+        $fileKey = 'weight';
         $originalExtension = $file->getClientOriginalExtension();
-        $fileName = 'weight/' . time() . rand(1000, 9999) . '.' . $originalExtension;
+        $fileName = $fileKey . '/' . time() . rand(1000, 9999) . '.' . $originalExtension;
         Storage::put($fileName, file_get_contents($file->getRealPath()));
         $fileArr = [
-            [
+            $fileKey => [
                 'path' => $fileName,
                 'importNum' => 0,
                 'fileType' => 1,
-                'originalName' => $originalName,
-                'originalMimeType' => $originalMimeType,
+                'originalName' => $file->getClientOriginalName(),
+                'originalMimeType' => $file->getClientMimeType(),
                 'originalExtension' => $originalExtension,
             ]
         ];
@@ -83,8 +83,21 @@ class WeightController extends Controller
         ];
         $excelFilePath = Storage::path($fileName);
         $importModel = new WeightImport($importData);
-        $importModel->import($excelFilePath);
-        return redirect()->route('weight.file');
+
+        try {
+            $importModel->import($excelFilePath);
+            $importModel->end();
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+            foreach ($failures as $failure) {
+                dd($failure->errors());
+                $failure->row();
+                $failure->attribute();
+                $failure->errors();
+                $failure->values();
+            }
+        }
+        return redirect()->route('weight.index');
     }
 
     /**
@@ -106,7 +119,8 @@ class WeightController extends Controller
      */
     public function edit($id)
     {
-        //
+        $model = Weight::find($id);
+        return view('weight.edit',['model'=>$model]);
     }
 
     /**

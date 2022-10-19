@@ -15,7 +15,8 @@
     <!-- Styles -->
     <link href="{{ mix('static/css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-color: #f5f5f5;background-image: url({{yxx_path_static('bg_body_1.jpg')}});background-size: cover;background-position: 50% 50%;">
+{{--<body style="background-color: #f5f5f5;background-image: url({{yxx_path_static('bg_body_1.jpg')}});background-size: cover;background-position: 50% 50%;">--}}
+<body style="background-color: #f5f5f5;">
 <div class="container-fluid" style="padding-top: 130px;padding-bottom: 130px;min-width: 450px;">
     <div class="shadow p-3"
          style="min-height:500px;width: 450px;background-color: #ffffff;border-radius: 8px;">

@@ -42,6 +42,8 @@ php artisan make:model Express\Express
 php artisan make:model Weight\Weight
 php artisan make:model File\File
 
+创建组件
+php artisan make:component Modal/TableDelete
 
 php artisan ui bootstrap --auth
 

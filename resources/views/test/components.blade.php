@@ -17,7 +17,8 @@
 </head>
 <body style="background-color: #f5f5f5">
 <div class="container mt-3 p-3" style="min-height: 30px;background-color: #ffffff">
-    <x-forms.input type="error"/>
+{{--    <x-forms.input type="error"/>--}}
+    <x-modal.table-delete id="weight-delete" data="sss"/>
 </div>
 
 <!-- Scripts -->
