@@ -14,7 +14,7 @@
                 </a>
             </div>
             <div class="col-auto">
-                <x-modal.base type="error"/>
+                <x-modal.table-delete id="weight-delete" name="删除" message="确认删除选择数据？"/>
             </div>
         </div>
     </div>

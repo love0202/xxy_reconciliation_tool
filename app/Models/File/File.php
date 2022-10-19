@@ -14,6 +14,7 @@ class File extends Model
     protected $fillable = [
         'project_id',
         'theme',
+        'express_type',
         'file_json',
     ];
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Express;
 
+use App\Excel\Imports\Express\ExpressImport;
 use App\Http\Controllers\Controller;
 use App\Models\File\File;
 use Illuminate\Http\Request;
@@ -53,28 +54,51 @@ class ExpressController extends Controller
             'type' => 'required',
             'file' => 'required|mimetypes:text/csv,application/xml,application/zip,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel',
         ]);
+        $type = $request->input('type');
         $file = $request->file('file');
-        $originalName = $file->getClientOriginalName();
-        $originalMimeType = $file->getClientMimeType();
+        $fileKey = 'express';
         $originalExtension = $file->getClientOriginalExtension();
-        $path = Storage::put('weight', $file);
+        $fileName = $fileKey . '/' . time() . rand(1000, 9999) . '.' . $originalExtension;
+        Storage::put($fileName, file_get_contents($file->getRealPath()));
         $fileArr = [
-            [
-                'path' => $path,
+            $fileKey => [
+                'path' => $fileName,
                 'importNum' => 0,
                 'fileType' => 1,
-                'originalName' => $originalName,
-                'originalMimeType' => $originalMimeType,
+                'originalName' => $file->getClientOriginalName(),
+                'originalMimeType' => $file->getClientMimeType(),
                 'originalExtension' => $originalExtension,
             ]
         ];
+        $projectId = WebProject::getProjectId();
         $data = [];
-        $data['project_id'] = WebProject::getProjectId();
+        $data['project_id'] = $projectId;
         $data['theme'] = 2;
+        $data['express_type'] = $type;
         $data['file_json'] = json_encode($fileArr);
 
         $model = new File();
         $ret = $model->create($data);
+        $importData = [
+            'fileId' => $ret->id,
+            'projectId' => $projectId
+        ];
+        $excelFilePath = Storage::path($fileName);
+        $importModel = new ExpressImport($importData);
+
+        try {
+            $importModel->import($excelFilePath);
+            $importModel->end();
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+            foreach ($failures as $failure) {
+                dd($failure->errors());
+                $failure->row();
+                $failure->attribute();
+                $failure->errors();
+                $failure->values();
+            }
+        }
         return redirect()->route('express.file');
     }
 

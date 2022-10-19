@@ -7,7 +7,7 @@
 </button>
 <!-- model-{{ $id }} -->
 <div class="modal fade" id="model-{{ $id }}" tabindex="-1" aria-labelledby="model-{{ $id }}-label"
-     aria-hidden="true">
+     aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">

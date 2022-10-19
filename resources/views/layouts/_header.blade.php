@@ -69,7 +69,7 @@
 </header>
 <!-- model-quit-project -->
 <div class="modal fade" id="model-quit-project" tabindex="-1" aria-labelledby="model-quit-project-label"
-     aria-hidden="true">
+     aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">

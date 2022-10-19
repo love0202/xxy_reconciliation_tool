@@ -7,15 +7,19 @@ use Illuminate\View\Component;
 class TableDelete extends Component
 {
     public $id;
+    public $name;
+    public $message;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id)
+    public function __construct($id,$name,$message)
     {
         $this->id = $id;
+        $this->name = $name;
+        $this->message = $message;
     }
 
     /**
@@ -27,6 +31,8 @@ class TableDelete extends Component
     {
         $data = [
             'id' => $this->id,
+            'name' => $this->name,
+            'message' => $this->message,
         ];
         return view('components.modal.table-delete', $data);
     }
