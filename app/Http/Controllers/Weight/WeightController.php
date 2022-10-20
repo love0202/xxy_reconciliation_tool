@@ -100,49 +100,34 @@ class WeightController extends Controller
         return redirect()->route('weight.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $model = Weight::find($id);
-        return view('weight.edit',['model'=>$model]);
+        return view('weight.edit', ['model' => $model]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function ajax_destroy(Request $request)
     {
-        //
+        $idArr = $request->input('idArr', []);
+        if (empty($idArr)) {
+            return response()->json([
+                'success' => 0,
+                'message' => '无删除数据',
+                'data' => '',
+            ]);
+        }
+        Weight::whereIn('id', $idArr)->delete();
+
+        return response()->json([
+            'success' => 1,
+            'message' => '删除成功',
+            'data' => '',
+        ]);
     }
 }

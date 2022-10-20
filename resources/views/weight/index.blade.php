@@ -14,7 +14,9 @@
                 </a>
             </div>
             <div class="col-auto">
-                <x-modal.table-delete id="weight-delete" name="删除" message="确认删除选择数据？"/>
+                <button class="btn btn-danger text-light" id="batch-delete">
+                    <i class="bi bi-trash me-1"></i>删除
+                </button>
             </div>
         </div>
     </div>
@@ -55,4 +57,8 @@
         </tbody>
     </table>
     {{ $list->links('vendor.pagination.bootstrap-4') }}
+@endsection
+
+@section('script')
+    <x-modal.table-delete id="batch-delete" url="{{ route('weight.ajax_destroy') }}"/>
 @endsection

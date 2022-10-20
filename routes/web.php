@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/weight/create', [App\Http\Controllers\Weight\WeightController::class, 'create'])->name('weight.create');
     Route::post('/weight/store', [App\Http\Controllers\Weight\WeightController::class, 'store'])->name('weight.store');
     Route::get('/weight/edit', [App\Http\Controllers\Weight\WeightController::class, 'edit'])->name('weight.edit');
+    Route::post('/weight/ajax_destroy', [App\Http\Controllers\Weight\WeightController::class, 'ajax_destroy'])->name('weight.ajax_destroy');
     Route::get('/weight/file', [App\Http\Controllers\Weight\WeightController::class, 'file'])->name('weight.file');
 
 });
