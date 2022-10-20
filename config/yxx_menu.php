@@ -140,16 +140,14 @@ return [
         'class' => 'bi bi-truck-front',
         'items' => [
             '2201' => [
-                'name' => '快递文件',
-                'routeName' => 'express.file',
-                'class' => 'bi bi-filetype-xlsx',
-            ],
-            '2202' => [
                 'name' => '快递数据',
                 'routeName' => 'express.index',
                 'class' => 'bi bi-calendar-check',
-                'isHidden' => 1,
-                'parentId' => '2201',
+            ],
+            '2202' => [
+                'name' => '快递文件',
+                'routeName' => 'express.file',
+                'class' => 'bi bi-filetype-xlsx',
             ],
             '2203' => [
                 'name' => '导入快递',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Express;
 
 use App\Excel\Imports\Express\ExpressImport;
 use App\Http\Controllers\Controller;
+use App\Models\Express\Express;
 use App\Models\File\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,10 +15,13 @@ class ExpressController extends Controller
 {
     public function index(Request $request)
     {
-        $input = $request->only(['project_id', 'title']);
+        $input = $request->only(['project_id', 'title', 'file_id']);
 
         $data = [];
         $query = DB::table('express');
+        if (isset($input['file_id']) && !empty($input['file_id'])) {
+            $query->where(['file_id' => $input['file_id']]);
+        }
         if (isset($input['order_number']) && !empty($input['order_number'])) {
             $query->where('order_number', 'like', $input['order_number'] . '%');
         }
@@ -102,8 +106,23 @@ class ExpressController extends Controller
         return redirect()->route('express.file');
     }
 
-    public function destroy($id)
+    public function ajax_destroy_file(Request $request)
     {
-        //
+        $idArr = $request->input('idArr', []);
+        if (empty($idArr)) {
+            return response()->json([
+                'success' => 0,
+                'message' => '无删除数据',
+                'data' => '',
+            ]);
+        }
+        File::whereIn('id', $idArr)->delete();
+        Express::whereIn('file_id', $idArr)->delete();
+
+        return response()->json([
+            'success' => 1,
+            'message' => '删除成功',
+            'data' => '',
+        ]);
     }
 }

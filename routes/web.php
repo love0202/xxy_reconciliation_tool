@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/express/create', [App\Http\Controllers\Express\ExpressController::class, 'create'])->name('express.create');
     Route::post('/express/store', [App\Http\Controllers\Express\ExpressController::class, 'store'])->name('express.store');
     Route::get('/express/file', [App\Http\Controllers\Express\ExpressController::class, 'file'])->name('express.file');
+    Route::post('/express/ajax_destroy_file', [App\Http\Controllers\Express\ExpressController::class, 'ajax_destroy_file'])->name('express.ajax_destroy_file');
 
 
     Route::get('/weight/index', [App\Http\Controllers\Weight\WeightController::class, 'index'])->name('weight.index');

@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="mb-3">
+        <div class="row g-3">
+            <div class="col-auto">
+                <a href="{{ route('express.create') }}" class="btn btn-success text-light">
+                    <i class="bi bi-plus-circle-dotted me-1"></i>导入
+                </a>
+            </div>
+        </div>
+    </div>
     <table class="table table-hover mb-3">
         <thead style="background-color: #F5F5F5">
         <tr>
