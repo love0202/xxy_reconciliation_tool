@@ -37,7 +37,7 @@ class WeightController extends Controller
         $input = $request->only(['sort']);
 
         $data = [];
-        $query = DB::table('file')->where(['theme' => 3]);
+        $query = DB::table('file')->where(['theme' => 3, 'merchant_type' => 0]);
         $query->orderBy('created_at', 'desc');
         $list = $query->paginate(10);
         $list->appends($input);
@@ -110,7 +110,6 @@ class WeightController extends Controller
     {
         //
     }
-
 
     public function ajax_destroy(Request $request)
     {

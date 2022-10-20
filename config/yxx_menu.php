@@ -75,35 +75,57 @@ return [
     ],
     '21' => [
         'name' => '商户管理',
-        'routeName' => 'merchant.tianmao',
+        'routeName' => 'merchant.tianmao.file',
         'show' => 2,
         'class' => 'bi bi-cart4',
         'items' => [
             '2110' => [
-                'name' => '添加文件',
-                'routeName' => 'merchant.create',
-                'class' => 'bi bi-filetype-xlsx',
-            ],
-            '2101' => [
                 'name' => '天猫商户文件',
-                'routeName' => 'merchant.tianmao',
+                'routeName' => 'merchant.tianmao.file',
                 'class' => 'bi bi-filetype-xlsx',
             ],
-            '2102' => [
-                'name' => '淘宝商户文件',
-                'routeName' => 'merchant.taobao',
+            '2111' => [
+                'name' => '导入文件',
+                'routeName' => 'merchant.tianmao.create',
                 'class' => 'bi bi-filetype-xlsx',
+                'isHidden' => 1,
+                'parentId' => '2110',
             ],
-            '2103' => [
+            '2120' => [
                 'name' => '拼多多商户文件',
-                'routeName' => 'merchant.pinduoduo',
+                'routeName' => 'merchant.pinduoduo.file',
                 'class' => 'bi bi-filetype-xlsx',
             ],
-            '2105' => [
-                'name' => '商户数据',
-                'routeName' => 'merchant.index',
-                'class' => 'bi bi-calendar-check',
+            '2130' => [
+                'name' => '旺店通商户文件',
+                'routeName' => 'merchant.wangdiantong.file',
+                'class' => 'bi bi-filetype-xlsx',
             ],
+//            '2110' => [
+//                'name' => '添加文件',
+//                'routeName' => 'merchant.create',
+//                'class' => 'bi bi-filetype-xlsx',
+//            ],
+//            '2101' => [
+//                'name' => '天猫商户文件',
+//                'routeName' => 'merchant.tianmao',
+//                'class' => 'bi bi-filetype-xlsx',
+//            ],
+//            '2102' => [
+//                'name' => '淘宝商户文件',
+//                'routeName' => 'merchant.taobao',
+//                'class' => 'bi bi-filetype-xlsx',
+//            ],
+//            '2103' => [
+//                'name' => '拼多多商户文件',
+//                'routeName' => 'merchant.pinduoduo',
+//                'class' => 'bi bi-filetype-xlsx',
+//            ],
+//            '2105' => [
+//                'name' => '商户数据',
+//                'routeName' => 'merchant.index',
+//                'class' => 'bi bi-calendar-check',
+//            ],
         ],
     ],
     '22' => [

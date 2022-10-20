@@ -33,6 +33,9 @@ php artisan make:controller Auth\AdminController --model=Auth\Admin
 php artisan make:controller Project\ProjectController --model=Project\Project
 
 php artisan make:controller Merchant\MerchantController --resource
+php artisan make:controller Merchant\TianmaoController --resource
+php artisan make:controller Merchant\PinduoduoController --resource
+php artisan make:controller Merchant\WangdiantongController --resource
 php artisan make:controller Express\ExpressController --resource
 php artisan make:controller Weight\WeightController --resource
 
