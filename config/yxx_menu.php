@@ -39,24 +39,29 @@ return [
         'show' => 1,
         'class' => 'bi bi-cash-coin',
         'items' => [
-            '1210' => [
+            '1201' => [
+                'name' => '重量数据',
+                'routeName' => 'weight.index',
+                'class' => 'bi bi-calendar-check',
+            ],
+            '1202' => [
+                'name' => '重量文件',
+                'routeName' => 'weight.file',
+                'class' => 'bi bi-filetype-xlsx',
+            ],
+            '1203' => [
                 'name' => '导入重量',
                 'routeName' => 'weight.create',
                 'class' => 'bi bi-filetype-xlsx',
                 'isHidden' => 1,
-                'parentId' => '1202',
+                'parentId' => '1201',
             ],
-            '1201' => [
-                'name' => '重量文件',
-                'routeName' => 'weight.file',
-                'class' => 'bi bi-filetype-xlsx',
+            '1204' => [
+                'name' => '编辑重量',
+                'routeName' => 'weight.edit',
+                'class' => 'bi bi-pencil-square',
                 'isHidden' => 1,
-                'parentId' => '1202',
-            ],
-            '1202' => [
-                'name' => '重量数据汇总',
-                'routeName' => 'weight.index',
-                'class' => 'bi bi-calendar-check',
+                'parentId' => '1201',
             ],
         ],
     ],
@@ -134,13 +139,6 @@ return [
         'show' => 2,
         'class' => 'bi bi-truck-front',
         'items' => [
-            '2210' => [
-                'name' => '导入快递',
-                'routeName' => 'express.create',
-                'class' => 'bi bi-filetype-xlsx',
-                'isHidden' => 1,
-                'parentId' => '2201',
-            ],
             '2201' => [
                 'name' => '快递文件',
                 'routeName' => 'express.file',
@@ -150,6 +148,13 @@ return [
                 'name' => '快递数据',
                 'routeName' => 'express.index',
                 'class' => 'bi bi-calendar-check',
+                'isHidden' => 1,
+                'parentId' => '2201',
+            ],
+            '2203' => [
+                'name' => '导入快递',
+                'routeName' => 'express.create',
+                'class' => 'bi bi-filetype-xlsx',
                 'isHidden' => 1,
                 'parentId' => '2201',
             ],

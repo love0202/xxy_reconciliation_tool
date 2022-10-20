@@ -22,7 +22,7 @@ $webProject = WebProject::getProject();
     <!-- Styles -->
     <link href="{{ mix('static/css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-color: #f5f5f5">
+<body style="background-color: #dfdfdf">
 @include('layouts._header')
 <div class="d-flex mt-3">
     <div class="flex-shrink-0 bg-white">

@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/weight/store', [App\Http\Controllers\Weight\WeightController::class, 'store'])->name('weight.store');
     Route::get('/weight/edit', [App\Http\Controllers\Weight\WeightController::class, 'edit'])->name('weight.edit');
     Route::post('/weight/ajax_destroy', [App\Http\Controllers\Weight\WeightController::class, 'ajax_destroy'])->name('weight.ajax_destroy');
+    Route::post('/weight/ajax_destroy_file', [App\Http\Controllers\Weight\WeightController::class, 'ajax_destroy_file'])->name('weight.ajax_destroy_file');
     Route::get('/weight/file', [App\Http\Controllers\Weight\WeightController::class, 'file'])->name('weight.file');
 
 });

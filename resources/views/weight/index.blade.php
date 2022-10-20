@@ -9,11 +9,6 @@
                 </a>
             </div>
             <div class="col-auto">
-                <a href="{{ route('weight.file') }}" class="btn btn-primary text-light">
-                    <i class="bi bi-eye me-1"></i>查看重量文件
-                </a>
-            </div>
-            <div class="col-auto">
                 <button class="btn btn-danger text-light" id="table-delete">
                     <i class="bi bi-trash me-1"></i>删除
                 </button>
@@ -50,7 +45,9 @@
                 <td>{{ $l->file_id }}</td>
                 <td>{{ $l->created_at }}</td>
                 <td>
-                    <a type="button" class="btn btn-primary text-white">编辑</a>
+                    <a href="{{ route('weight.edit',['id'=>$l->id]) }}" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-pencil-square me-1"></i>编辑
+                    </a>
                 </td>
             </tr>
         @endforeach

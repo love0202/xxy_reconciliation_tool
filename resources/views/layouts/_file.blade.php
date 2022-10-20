@@ -12,9 +12,9 @@
             <td>
                 <?php $fileArr = json_decode($l->file_json, true);?>
                 @foreach ($fileArr as $f)
-                    <p><span class="fw-bold">原文件名【导入数量】：</span>{{$f['originalName']}}【{{$f['importNum']}}】</p>
-                    <p><span class="fw-bold">原文件后缀【源文件类型】：</span>{{$f['originalExtension']}}【{{$f['originalMimeType']}}】</p>
-                    <p><span class="fw-bold">新文件路径：</span>{{$f['path']}}</p>
+                    <p class="m-0"><span class="fw-bold">原文件名【导入数量】：</span>{{$f['originalName']}}【{{$f['importNum']}}】</p>
+{{--                    <p><span class="fw-bold">原文件后缀【源文件类型】：</span>{{$f['originalExtension']}}【{{$f['originalMimeType']}}】</p>--}}
+                    <p class="m-0"><span class="fw-bold">新文件路径：</span>{{$f['path']}}</p>
                 @endforeach
             </td>
             <td>{{ $l->created_at }}</td>

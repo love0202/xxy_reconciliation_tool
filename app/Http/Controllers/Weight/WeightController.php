@@ -14,12 +14,15 @@ class WeightController extends Controller
 {
     public function index(Request $request)
     {
-        $input = $request->only(['project_id', 'title']);
+        $input = $request->only(['project_id', 'title', 'file_id']);
 
         $data = [];
         $query = DB::table('weight');
         if (isset($input['project_id']) && !empty($input['project_id'])) {
             $query->where(['project_id' => $input['project_id']]);
+        }
+        if (isset($input['file_id']) && !empty($input['file_id'])) {
+            $query->where(['file_id' => $input['file_id']]);
         }
         if (isset($input['title']) && !empty($input['title'])) {
             $query->where('title', 'like', $input['title'] . '%');
@@ -100,8 +103,9 @@ class WeightController extends Controller
         return redirect()->route('weight.index');
     }
 
-    public function edit($id)
+    public function edit(Request $request)
     {
+        $id = $request->input('id',0);
         $model = Weight::find($id);
         return view('weight.edit', ['model' => $model]);
     }
@@ -122,6 +126,26 @@ class WeightController extends Controller
             ]);
         }
         Weight::whereIn('id', $idArr)->delete();
+
+        return response()->json([
+            'success' => 1,
+            'message' => '删除成功',
+            'data' => '',
+        ]);
+    }
+
+    public function ajax_destroy_file(Request $request)
+    {
+        $idArr = $request->input('idArr', []);
+        if (empty($idArr)) {
+            return response()->json([
+                'success' => 0,
+                'message' => '无删除数据',
+                'data' => '',
+            ]);
+        }
+        File::whereIn('id', $idArr)->delete();
+        Weight::whereIn('file_id', $idArr)->delete();
 
         return response()->json([
             'success' => 1,

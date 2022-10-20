@@ -62,7 +62,7 @@
             $("#model-execute-{{ $id }}").modal("show");
         }
     })
-    $("#model-execute-{{ $id }}-confirm").click(function () {
+    $("#model-check-{{ $id }}-confirm").click(function () {
         $("#model-check-{{ $id }}").modal("hide");
         if (window.reload)
             location.reload();
