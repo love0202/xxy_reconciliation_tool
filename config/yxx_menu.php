@@ -84,53 +84,42 @@ return [
         'show' => 2,
         'class' => 'bi bi-cart4',
         'items' => [
-            '2110' => [
+            '2101' => [
                 'name' => '天猫商户文件',
                 'routeName' => 'merchant.tianmao.file',
                 'class' => 'bi bi-filetype-xlsx',
             ],
-            '2111' => [
+            '2102' => [
                 'name' => '导入文件',
                 'routeName' => 'merchant.tianmao.create',
                 'class' => 'bi bi-filetype-xlsx',
                 'isHidden' => 1,
-                'parentId' => '2110',
+                'parentId' => '2101',
             ],
-            '2120' => [
+            '2121' => [
                 'name' => '拼多多商户文件',
                 'routeName' => 'merchant.pinduoduo.file',
                 'class' => 'bi bi-filetype-xlsx',
             ],
-            '2130' => [
+            '2131' => [
                 'name' => '旺店通商户文件',
                 'routeName' => 'merchant.wangdiantong.file',
                 'class' => 'bi bi-filetype-xlsx',
             ],
-//            '2110' => [
-//                'name' => '添加文件',
-//                'routeName' => 'merchant.create',
-//                'class' => 'bi bi-filetype-xlsx',
-//            ],
-//            '2101' => [
-//                'name' => '天猫商户文件',
-//                'routeName' => 'merchant.tianmao',
-//                'class' => 'bi bi-filetype-xlsx',
-//            ],
-//            '2102' => [
-//                'name' => '淘宝商户文件',
-//                'routeName' => 'merchant.taobao',
-//                'class' => 'bi bi-filetype-xlsx',
-//            ],
-//            '2103' => [
-//                'name' => '拼多多商户文件',
-//                'routeName' => 'merchant.pinduoduo',
-//                'class' => 'bi bi-filetype-xlsx',
-//            ],
-//            '2105' => [
-//                'name' => '商户数据',
-//                'routeName' => 'merchant.index',
-//                'class' => 'bi bi-calendar-check',
-//            ],
+            '2132' => [
+                'name' => '旺店通商户数据',
+                'routeName' => 'merchant.wangdiantong.index',
+                'class' => 'bi bi-calendar-check',
+                'isHidden' => 1,
+                'parentId' => '2131',
+            ],
+            '2133' => [
+                'name' => '导入旺店通数据',
+                'routeName' => 'merchant.wangdiantong.create',
+                'class' => 'bi bi-filetype-xlsx',
+                'isHidden' => 1,
+                'parentId' => '2131',
+            ],
         ],
     ],
     '22' => [
@@ -140,14 +129,16 @@ return [
         'class' => 'bi bi-truck-front',
         'items' => [
             '2201' => [
-                'name' => '快递数据',
-                'routeName' => 'express.index',
-                'class' => 'bi bi-calendar-check',
-            ],
-            '2202' => [
                 'name' => '快递文件',
                 'routeName' => 'express.file',
                 'class' => 'bi bi-filetype-xlsx',
+            ],
+            '2202' => [
+                'name' => '快递数据',
+                'routeName' => 'express.index',
+                'class' => 'bi bi-calendar-check',
+                'isHidden' => 1,
+                'parentId' => '2201',
             ],
             '2203' => [
                 'name' => '导入快递',

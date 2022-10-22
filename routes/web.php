@@ -18,8 +18,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/project/quit', [App\Http\Controllers\Project\ProjectController::class, 'quit'])->name('project.quit');
 
 
-    Route::get('/merchant/index', [App\Http\Controllers\Merchant\MerchantController::class, 'index'])->name('merchant.index');
-    Route::get('/merchant/create', [App\Http\Controllers\Merchant\MerchantController::class, 'create'])->name('merchant.create');
     Route::get('/merchant/tianmao/file', [App\Http\Controllers\Merchant\TianmaoController::class, 'file'])->name('merchant.tianmao.file');
     Route::get('/merchant/tianmao/create', [App\Http\Controllers\Merchant\TianmaoController::class, 'create'])->name('merchant.tianmao.create');
     Route::post('/merchant/tianmao/store', [App\Http\Controllers\Merchant\TianmaoController::class, 'store'])->name('merchant.tianmao.store');
@@ -28,6 +26,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/merchant/pinduoduo/file', [App\Http\Controllers\Merchant\PinduoduoController::class, 'file'])->name('merchant.pinduoduo.file');
 
     Route::get('/merchant/wangdiantong/file', [App\Http\Controllers\Merchant\WangdiantongController::class, 'file'])->name('merchant.wangdiantong.file');
+    Route::get('/merchant/wangdiantong/index', [App\Http\Controllers\Merchant\WangdiantongController::class, 'index'])->name('merchant.wangdiantong.index');
+    Route::get('/merchant/wangdiantong/create', [App\Http\Controllers\Merchant\WangdiantongController::class, 'create'])->name('merchant.wangdiantong.create');
+    Route::post('/merchant/wangdiantong/store', [App\Http\Controllers\Merchant\WangdiantongController::class, 'store'])->name('merchant.wangdiantong.store');
+    Route::post('/merchant/wangdiantong/ajax_destroy_file', [App\Http\Controllers\Merchant\WangdiantongController::class, 'ajax_destroy_file'])->name('merchant.wangdiantong.ajax_destroy_file');
+
 
     Route::get('/express/index', [App\Http\Controllers\Express\ExpressController::class, 'index'])->name('express.index');
     Route::get('/express/create', [App\Http\Controllers\Express\ExpressController::class, 'create'])->name('express.create');

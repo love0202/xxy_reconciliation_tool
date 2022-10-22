@@ -81,6 +81,7 @@ class WeightController extends Controller
 
         $model = new File();
         $ret = $model->create($data);
+        $fileId = $ret->id;
         $importData = [
             'fileId' => $ret->id
         ];
@@ -100,12 +101,12 @@ class WeightController extends Controller
                 $failure->values();
             }
         }
-        return redirect()->route('weight.index');
+        return redirect()->route('weight.index', ['fileId' => $fileId]);
     }
 
     public function edit(Request $request)
     {
-        $id = $request->input('id',0);
+        $id = $request->input('id', 0);
         $model = Weight::find($id);
         return view('weight.edit', ['model' => $model]);
     }

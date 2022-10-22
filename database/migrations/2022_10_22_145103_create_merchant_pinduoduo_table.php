@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExpressTable extends Migration
+class CreateMerchantPinduoduoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateExpressTable extends Migration
      */
     public function up()
     {
-        Schema::create('express', function (Blueprint $table) {
+        Schema::create('merchant_pinduoduo', function (Blueprint $table) {
             $table->id();
             $table->integer('project_id')->default(0)->comment('方案ID');
             $table->integer('file_id')->default(0)->comment('文件ID');
-            $table->string('express_number')->default('')->comment('（快递）单号');
-            $table->string('express_weight')->default('')->comment('（快递）重量');
-            $table->string('merchant_weight')->default('')->comment('（商户）重量');
+            $table->integer('type')->default(0)->comment('快递类型 0无 1韵达 2邮政 3圆通');
+            $table->string('merchant_number')->default('')->comment('（商户）单号');
             $table->mediumText('merchant_shop_info')->comment('（商户）商品详情');
-            $table->string('merchant_shop_member')->default('')->comment('（商户）买家会员名');
+            $table->string('express_company')->default('')->comment('（快递）公司');
+            $table->string('express_number')->default('')->comment('（快递）单号');
 
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ class CreateExpressTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('express');
+        Schema::dropIfExists('merchant_pinduoduo');
     }
 }

@@ -83,8 +83,9 @@ class ExpressController extends Controller
 
         $model = new File();
         $ret = $model->create($data);
+        $fileId = $ret->id;
         $importData = [
-            'fileId' => $ret->id,
+            'fileId' => $fileId,
             'projectId' => $projectId
         ];
         $excelFilePath = Storage::path($fileName);
@@ -103,7 +104,7 @@ class ExpressController extends Controller
                 $failure->values();
             }
         }
-        return redirect()->route('express.file');
+        return redirect()->route('express.file', ['fileId' => $fileId]);
     }
 
     public function ajax_destroy_file(Request $request)

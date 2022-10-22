@@ -22,7 +22,7 @@
         @foreach ($list as $l)
             <tr>
                 <th>
-                    {{ $l->order_number }}【{{ $l->express_weight }}】
+                    {{ $l->express_number }}【{{ $l->express_weight }}】
                 </th>
                 <td>{{ $l->created_at }}</td>
                 <td>{{ $l->merchant_weight }}【{{ $l->merchant_shop_info }}】</td>

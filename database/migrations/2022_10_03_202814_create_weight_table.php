@@ -17,7 +17,7 @@ class CreateWeightTable extends Migration
             $table->id();
             $table->integer('project_id')->default(0)->comment('方案ID');
             $table->integer('file_id')->default(0)->comment('文件ID');
-            $table->mediumText('shop_info')->comment('商品详情');
+            $table->mediumText('shop_info')->comment('（重量）商品详情');
             $table->string('weight')->default('')->comment('重量');
             $table->timestamps();
         });
