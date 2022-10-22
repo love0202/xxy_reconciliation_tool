@@ -90,7 +90,14 @@ return [
                 'class' => 'bi bi-filetype-xlsx',
             ],
             '2102' => [
-                'name' => '导入文件',
+                'name' => '天猫商户数据',
+                'routeName' => 'merchant.tianmao.index',
+                'class' => 'bi bi-calendar-check',
+                'isHidden' => 1,
+                'parentId' => '2101',
+            ],
+            '2103' => [
+                'name' => '导入天猫订单数据',
                 'routeName' => 'merchant.tianmao.create',
                 'class' => 'bi bi-filetype-xlsx',
                 'isHidden' => 1,
@@ -109,7 +116,7 @@ return [
                 'parentId' => '2121',
             ],
             '2123' => [
-                'name' => '导入拼多多手工订单数据',
+                'name' => '导入拼多多订单数据',
                 'routeName' => 'merchant.pinduoduo.create',
                 'class' => 'bi bi-filetype-xlsx',
                 'isHidden' => 1,

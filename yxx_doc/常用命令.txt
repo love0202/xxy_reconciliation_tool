@@ -49,6 +49,7 @@ php artisan make:model Weight\Weight
 php artisan make:model File\File
 php artisan make:model Merchant\MerchantWangdiantong
 php artisan make:model Merchant\MerchantPinduoduo
+php artisan make:model Merchant\MerchantTianmao
 
 创建组件
 php artisan make:component Modal/TableDelete

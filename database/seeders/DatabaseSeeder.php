@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
             'email' => '18320220001@qq.com',
             'phone' => '18320220001',
         ]);
-        $this->call([
-            ProjectSeeder::class,
-        ]);
+//        $this->call([
+//            ProjectSeeder::class,
+//        ]);
     }
 }

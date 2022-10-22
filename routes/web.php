@@ -19,9 +19,10 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/merchant/tianmao/file', [App\Http\Controllers\Merchant\TianmaoController::class, 'file'])->name('merchant.tianmao.file');
+    Route::get('/merchant/tianmao/index', [App\Http\Controllers\Merchant\TianmaoController::class, 'index'])->name('merchant.tianmao.index');
     Route::get('/merchant/tianmao/create', [App\Http\Controllers\Merchant\TianmaoController::class, 'create'])->name('merchant.tianmao.create');
     Route::post('/merchant/tianmao/store', [App\Http\Controllers\Merchant\TianmaoController::class, 'store'])->name('merchant.tianmao.store');
-    Route::post('/merchant/tianmao/ajax_destroy', [App\Http\Controllers\Merchant\TianmaoController::class, 'ajax_destroy'])->name('merchant.tianmao.ajax_destroy');
+    Route::post('/merchant/tianmao/ajax_destroy_file', [App\Http\Controllers\Merchant\TianmaoController::class, 'ajax_destroy_file'])->name('merchant.tianmao.ajax_destroy_file');
 
     Route::get('/merchant/pinduoduo/file', [App\Http\Controllers\Merchant\PinduoduoController::class, 'file'])->name('merchant.pinduoduo.file');
     Route::get('/merchant/pinduoduo/index', [App\Http\Controllers\Merchant\PinduoduoController::class, 'index'])->name('merchant.pinduoduo.index');
