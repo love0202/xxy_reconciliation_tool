@@ -22,7 +22,7 @@ class CreateMerchantTianmaoTable extends Migration
             $table->string('title')->default('')->comment('标题');
             $table->string('shop_attribute')->default('')->comment('商品属性');
             $table->string('num')->default('')->comment('数量');
-            $table->mediumText('merchant_shop_info')->default('')->comment('（商户）商品详情');
+            $table->mediumText('merchant_shop_info')->comment('（商户）商品详情');
             $table->string('express_company')->default('')->comment('（快递）公司');
             $table->string('express_number')->default('')->comment('（快递）单号');
 
