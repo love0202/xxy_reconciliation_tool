@@ -18,10 +18,8 @@ class ExpressController extends Controller
         $input = $request->only(['project_id', 'title', 'file_id']);
 
         $data = [];
-        $query = DB::table('express');
-        if (isset($input['file_id']) && !empty($input['file_id'])) {
-            $query->where(['file_id' => $input['file_id']]);
-        }
+        $projectId = WebProject::getProjectId();
+        $query = DB::table('express')->where(['project_id' => $projectId]);
         if (isset($input['order_number']) && !empty($input['order_number'])) {
             $query->where('order_number', 'like', $input['order_number'] . '%');
         }
@@ -38,7 +36,8 @@ class ExpressController extends Controller
         $input = $request->only(['sort']);
 
         $data = [];
-        $query = DB::table('file')->where(['theme' => 2]);
+        $projectId = WebProject::getProjectId();
+        $query = DB::table('file')->where(['project_id' => $projectId])->where(['theme' => 2]);
         $query->orderBy('created_at', 'desc');
         $list = $query->paginate(10);
         $list->appends($input);

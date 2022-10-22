@@ -9,7 +9,7 @@ class MerchantPinduoduo extends Model
 {
     use HasFactory;
 
-    protected $table = 'merchant_wangdiantong';
+    protected $table = 'merchant_pinduoduo';
 
     protected $fillable = [
         'project_id',

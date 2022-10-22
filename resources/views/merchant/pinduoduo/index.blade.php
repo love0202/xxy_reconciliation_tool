@@ -19,7 +19,7 @@
                 </div>
             </th>
             <th scope="col">（快递）单号</th>
-            <th scope="col">（快递）重量</th>
+            <th scope="col">（商户）商品详情</th>
             <th scope="col">文件ID</th>
             <th scope="col">创建时间</th>
         </tr>
@@ -35,7 +35,7 @@
                 <th scope="row">
                     {{ $l->express_number }}
                 </th>
-                <td>{{ $l->express_weight }}</td>
+                <td>{{ $l->merchant_shop_info }}</td>
                 <td>{{ $l->file_id }}</td>
                 <td>{{ $l->created_at }}</td>
             </tr>

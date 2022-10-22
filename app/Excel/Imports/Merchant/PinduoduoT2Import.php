@@ -3,14 +3,14 @@
 namespace App\Excel\Imports\Merchant;
 
 use App\Models\File\File;
-use App\Models\Merchant\MerchantWangdiantong;
+use App\Models\Merchant\MerchantPinduoduo;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\RemembersRowNumber;
 
-class MerchantWangdiantongImport implements ToModel, WithValidation, WithBatchInserts
+class PinduoduoT2Import implements ToModel, WithValidation, WithBatchInserts
 {
     use Importable;
     use RemembersRowNumber;
@@ -27,19 +27,23 @@ class MerchantWangdiantongImport implements ToModel, WithValidation, WithBatchIn
 
     public function model(array $row)
     {
+        if (count($row) != 4) {
+            return null;
+        }
         $currentRowNumber = $this->getRowNumber();
         if ($currentRowNumber == 1) {
             return null;
         }
-        if (empty($row[0])) {
+        if (empty($row[1])) {
             return null;
         }
 
-        return new MerchantWangdiantong([
+        return new MerchantPinduoduo([
             'project_id' => $this->projectId,
             'file_id' => $this->fileId,
-            'express_number' => $row[0],
-            'express_weight' => $row[1],
+            'merchant_shop_info' => '【' . $row[1] . '【' . $row[2] . '】' . '】',
+            'express_number' => $row[3],
+            'merchant_number' => $row[0],
         ]);
     }
 

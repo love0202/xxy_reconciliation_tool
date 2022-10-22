@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Merchant;
 
 use App\Common\WebProject;
-use App\Excel\Imports\Merchant\MerchantWangdiantongImport;
+use App\Excel\Imports\Merchant\WangdiantongImport;
 use App\Http\Controllers\Controller;
 use App\Models\File\File;
 use App\Models\Merchant\MerchantWangdiantong;
@@ -39,7 +39,8 @@ class WangdiantongController extends Controller
         $input = $request->only(['sort']);
 
         $data = [];
-        $query = DB::table('file')->where(['theme' => 3, 'merchant_type' => 4]);
+        $projectId = WebProject::getProjectId();
+        $query = DB::table('file')->where(['project_id' => $projectId])->where(['theme' => 3, 'merchant_type' => 4]);
         $query->orderBy('created_at', 'desc');
         $list = $query->paginate(10);
         $list->appends($input);
@@ -88,7 +89,7 @@ class WangdiantongController extends Controller
             'projectId' => $projectId
         ];
         $excelFilePath = Storage::path($fileName);
-        $importModel = new MerchantWangdiantongImport($importData);
+        $importModel = new WangdiantongImport($importData);
 
         try {
             $importModel->import($excelFilePath);

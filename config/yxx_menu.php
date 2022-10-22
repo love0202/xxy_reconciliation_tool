@@ -101,6 +101,20 @@ return [
                 'routeName' => 'merchant.pinduoduo.file',
                 'class' => 'bi bi-filetype-xlsx',
             ],
+            '2122' => [
+                'name' => '拼多多商户数据',
+                'routeName' => 'merchant.pinduoduo.index',
+                'class' => 'bi bi-calendar-check',
+                'isHidden' => 1,
+                'parentId' => '2121',
+            ],
+            '2123' => [
+                'name' => '导入拼多多手工订单数据',
+                'routeName' => 'merchant.pinduoduo.create',
+                'class' => 'bi bi-filetype-xlsx',
+                'isHidden' => 1,
+                'parentId' => '2121',
+            ],
             '2131' => [
                 'name' => '旺店通商户文件',
                 'routeName' => 'merchant.wangdiantong.file',

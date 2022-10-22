@@ -22,10 +22,16 @@ $webProject = WebProject::getProject();
     <!-- Styles -->
     <link href="{{ mix('static/css/app.css') }}" rel="stylesheet">
 </head>
+<style>
+    #yxx-left-menu .list-unstyled .active{
+        color: #ffffff;
+        background-color: #8ca7e0;
+    }
+</style>
 <body style="background-color: #dfdfdf">
 @include('layouts._header')
 <div class="d-flex mt-3">
-    <div class="flex-shrink-0 bg-white">
+    <div id="yxx-left-menu" class="flex-shrink-0" style="background-color: #dbe5fa;">
         <ul class="list-unstyled">
             @foreach(get_yxx_left_menu() as $menu)
                 <li class="text-center" style="width: 100px;border:1px solid #8d8484">

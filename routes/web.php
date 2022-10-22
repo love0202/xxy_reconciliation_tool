@@ -24,6 +24,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/merchant/tianmao/ajax_destroy', [App\Http\Controllers\Merchant\TianmaoController::class, 'ajax_destroy'])->name('merchant.tianmao.ajax_destroy');
 
     Route::get('/merchant/pinduoduo/file', [App\Http\Controllers\Merchant\PinduoduoController::class, 'file'])->name('merchant.pinduoduo.file');
+    Route::get('/merchant/pinduoduo/index', [App\Http\Controllers\Merchant\PinduoduoController::class, 'index'])->name('merchant.pinduoduo.index');
+    Route::get('/merchant/pinduoduo/create', [App\Http\Controllers\Merchant\PinduoduoController::class, 'create'])->name('merchant.pinduoduo.create');
+    Route::post('/merchant/pinduoduo/store', [App\Http\Controllers\Merchant\PinduoduoController::class, 'store'])->name('merchant.pinduoduo.store');
+    Route::post('/merchant/pinduoduo/ajax_destroy_file', [App\Http\Controllers\Merchant\PinduoduoController::class, 'ajax_destroy_file'])->name('merchant.pinduoduo.ajax_destroy_file');
 
     Route::get('/merchant/wangdiantong/file', [App\Http\Controllers\Merchant\WangdiantongController::class, 'file'])->name('merchant.wangdiantong.file');
     Route::get('/merchant/wangdiantong/index', [App\Http\Controllers\Merchant\WangdiantongController::class, 'index'])->name('merchant.wangdiantong.index');
