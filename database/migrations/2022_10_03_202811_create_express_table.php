@@ -20,7 +20,7 @@ class CreateExpressTable extends Migration
             $table->string('express_number')->default('')->comment('（快递）单号');
             $table->string('express_weight')->default('')->comment('（快递）重量');
             $table->string('merchant_weight')->default('')->comment('（商户）重量');
-            $table->mediumText('merchant_shop_info')->comment('（商户）商品详情');
+            $table->mediumText('merchant_shop_info')->default('')->comment('（商户）商品详情');
             $table->string('merchant_shop_member')->default('')->comment('（商户）买家会员名');
 
             $table->timestamps();
