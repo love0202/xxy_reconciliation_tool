@@ -40,7 +40,7 @@ class WeightController extends Controller
         $input = $request->only(['sort']);
 
         $data = [];
-        $query = DB::table('file')->where(['theme' => 3, 'merchant_type' => 0]);
+        $query = DB::table('file')->where(['theme' => yxx_dict_value('THEME_TYPE','T3'), 'merchant_type' => 0]);
         $query->orderBy('created_at', 'desc');
         $list = $query->paginate(10);
         $list->appends($input);
@@ -76,7 +76,7 @@ class WeightController extends Controller
         ];
         $data = [];
         $data['project_id'] = 0;
-        $data['theme'] = 3;
+        $data['theme'] = yxx_dict_value('THEME_TYPE','T3');
         $data['file_json'] = json_encode($fileArr);
 
         $model = new File();

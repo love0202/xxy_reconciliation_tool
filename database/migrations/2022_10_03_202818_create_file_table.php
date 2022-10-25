@@ -20,7 +20,7 @@ class CreateFileTable extends Migration
             $table->integer('merchant_type')->default(0)->comment('商户类型 0无 1淘宝 2天猫 3拼多多 4旺店通');
             $table->integer('express_type')->default(0)->comment('快递类型 0无 1韵达 2邮政 3圆通');
             $table->integer('status')->default(0)->comment('状态 0未导入 1已导入');
-            $table->json('file_json');
+            $table->text('file_json')->nullable();
             $table->timestamps();
         });
     }

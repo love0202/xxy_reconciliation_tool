@@ -41,7 +41,7 @@ class PinduoduoController extends Controller
 
         $data = [];
         $projectId = WebProject::getProjectId();
-        $query = DB::table('file')->where(['project_id' => $projectId])->where(['theme' => 3, 'merchant_type' => 3]);
+        $query = DB::table('file')->where(['project_id' => $projectId])->where(['theme' => yxx_dict_value('THEME_TYPE','T1'), 'merchant_type' => yxx_dict_value('MERCHANT_TYPE','T3')]);
         $query->orderBy('created_at', 'desc');
         $list = $query->paginate(10);
         $list->appends($input);
@@ -79,8 +79,8 @@ class PinduoduoController extends Controller
         $projectId = WebProject::getProjectId();;
         $data = [];
         $data['project_id'] = $projectId;
-        $data['theme'] = 3;
-        $data['merchant_type'] = 3;
+        $data['theme'] = yxx_dict_value('THEME_TYPE','T1');
+        $data['merchant_type'] = yxx_dict_value('MERCHANT_TYPE','T3');
         $data['file_json'] = json_encode($fileArr);
 
         $model = new File();

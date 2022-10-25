@@ -1,0 +1,93 @@
+=============================文档链接====================================
+https://nwidart.com/laravel-modules/v2/advanced-tools/artisan-commands
+
+http://local.yxxtool.test/telescope
+
+=============================artisan命令====================================
+php artisan key:generate
+php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"
+php artisan module:make User
+php artisan module:make-migration create_posts_table Blog
+php artisan module:make-seed seed_fake_blog_posts Blog
+php artisan module:make-controller PostsController Blog
+
+
+php artisan make:migration create_reconciliation_project_table
+php artisan make:migration create_merchant_table
+php artisan make:migration create_express_table
+php artisan make:migration create_weight_table
+php artisan make:migration create_file_table
+php artisan make:migration create_merchant_wangdiantong_table
+php artisan make:migration create_merchant_pinduoduo_table
+php artisan make:migration create_merchant_tianmao_table
+
+php artisan make:migration create_user_table
+php artisan migrate:status
+php artisan migrate
+php artisan migrate:reset
+php artisan migrate:fresh
+php artisan migrate:fresh --seed
+D:\xampp\php\php.exe artisan migrate:fresh --seed
+D:\xampp\php\php.exe -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
+D:\xampp\php\php.exe composer-setup.php
+D:\xampp\php\php.exe -r "unlink('composer-setup.php');"
+
+php artisan make:seeder ProjectSeeder
+
+php artisan make:controller DashboardController
+php artisan make:controller Login\IndexController --resource --model=Home\Photo
+php artisan make:controller Auth\AdminController --model=Auth\Admin
+php artisan make:controller Project\ProjectController --model=Project\Project
+
+php artisan make:controller Merchant\MerchantController --resource
+php artisan make:controller Merchant\TianmaoController --resource
+php artisan make:controller Merchant\PinduoduoController --resource
+php artisan make:controller Merchant\WangdiantongController --resource
+php artisan make:controller Express\ExpressController --resource
+php artisan make:controller Weight\WeightController --resource
+
+
+php artisan make:model Merchant\Merchant
+php artisan make:model Express\Express
+php artisan make:model Weight\Weight
+php artisan make:model File\File
+php artisan make:model Merchant\MerchantWangdiantong
+php artisan make:model Merchant\MerchantPinduoduo
+php artisan make:model Merchant\MerchantTianmao
+
+创建组件
+php artisan make:component Modal/TableDelete
+
+php artisan ui bootstrap --auth
+
+=============================git命令====================================
+ssh-keygen -t rsa -C "qpzmvv123@qq.com"
+ssh-keygen -t rsa -b 4096 -C "qpzmvv123@qq.com"
+eval "$(ssh-agent -s)"
+eval 'ssh-agent'
+git clone git@github.com:love0202/yxx_reconciliation_tool.git
+git config --global user.name "相伟"
+git config --global user.email "qpzmvv123@qq.com"
+git remote add origin https://gitee.com/yao-xiaoxian/hello.git
+git push -u origin master
+git pull -u origin master
+
+
+=============================composer命令====================================
+composer create-project laravel/laravel yxx_reconciliation_tool 8.5
+composer require laravel/ui:^3.0  --dev
+composer require overtrue/laravel-lang:~5.0
+
+
+=============================npm命令====================================
+npm config set registry=https://registry.npm.taobao.org
+npm install
+npm run watch-poll
+npm fund
+
+=============================提交代码默认日志====================================
+【提交类型】：修改BUG/添加扩展包/添加新功能/需求修改/代码重构/代码优化/修改配置/修改样式
+【相关缺陷】：BUG号+BUG标题
+【详细描述】：原因分析或者是对修改的技术性描述
+【影响范围】：本次改动影响的范围(不影响到其他页面或功能)
+【备　　注】：

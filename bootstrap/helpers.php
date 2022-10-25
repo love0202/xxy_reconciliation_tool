@@ -89,7 +89,7 @@ if (!function_exists('get_yxx_left_menu')) {
                         $k1 = $key1;
                     }
                     unset($value1['items'][$key2]);
-                }else{
+                } else {
                     if ($value2['routeName'] == $routeName) {
                         $value1['items'][$key2]['active'] = 1;
                         $value1['active'] = 1;
@@ -124,5 +124,52 @@ if (!function_exists('yxx_limit')) {
     function yxx_limit($value, $limit = 20, $end = '...')
     {
         return Str::limit($value, $limit, $end);
+    }
+}
+
+// 字典相关方法 - 获取字典数组 yxx_dict_list('THEME_TYPE')
+if (!function_exists('yxx_dict_list')) {
+    function yxx_dict_list($dictKey)
+    {
+        $data = [];
+        $dictList = config('yxx_dict.' . $dictKey);
+        if (!is_null($dictList)) {
+            foreach ($dictList as $k => $v) {
+                $data[$v['value']] = $v['name'];
+            }
+        }
+        return $data;
+    }
+}
+// 字典相关方法 - 获取字典key对应的值 yxx_dict_value('THEME_TYPE','T1')
+if (!function_exists('yxx_dict_value')) {
+    function yxx_dict_value($dictKey, $key)
+    {
+        $value = '';
+        $dictList = config('yxx_dict.' . $dictKey);
+        if (!is_null($dictList)) {
+            foreach ($dictList as $k => $v) {
+                if ($k == $key) {
+                    $value = $v['value'];
+                }
+            }
+        }
+        return $value;
+    }
+}
+// 字典相关方法 - 获取字典值对应的名称 yxx_dict_name('THEME_TYPE','T1') 或者 yxx_dict_name('THEME_TYPE','1')
+if (!function_exists('yxx_dict_name')) {
+    function yxx_dict_name($dictKey, $value)
+    {
+        $name = '';
+        $dictList = config('yxx_dict.' . $dictKey);
+        if (!is_null($dictList)) {
+            foreach ($dictList as $k => $v) {
+                if ($k == $value || $v['value'] == $value) {
+                    $name = $v['name'];
+                }
+            }
+        }
+        return $name;
     }
 }
