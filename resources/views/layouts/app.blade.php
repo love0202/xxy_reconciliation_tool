@@ -23,14 +23,16 @@ $webProject = WebProject::getProject();
     <link href="{{ mix('static/css/app.css') }}" rel="stylesheet">
 </head>
 <style>
-    #yxx-left-menu .list-unstyled .active{
+    #yxx-left-menu .list-unstyled .active {
         color: #ffffff;
         background-color: #8ca7e0;
     }
 </style>
 <body style="background-color: #dfdfdf">
+{{-- 主菜单 --}}
 @include('layouts._header')
 <div class="d-flex mt-3">
+    {{-- 左侧菜单 --}}
     <div id="yxx-left-menu" class="flex-shrink-0" style="background-color: #dbe5fa;">
         <ul class="list-unstyled">
             @foreach(get_yxx_left_menu() as $menu)
@@ -47,7 +49,20 @@ $webProject = WebProject::getProject();
         </ul>
     </div>
     <div class="flex-grow-1 bg-white ms-3 p-3 table-responsive" style="min-height: 400px;">
-            @yield('content')
+        {{-- 面包屑 --}}
+        <div class="d-flex justify-content-between mb-3" style="background-color: #ebe1ef">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                </ol>
+            </nav>
+            <div>
+                返回
+            </div>
+        </div>
+        {{-- 内容区 --}}
+        @yield('content')
     </div>
 </div>
 

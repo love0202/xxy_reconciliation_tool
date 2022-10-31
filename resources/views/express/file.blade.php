@@ -49,6 +49,9 @@
                     <a href="{{ route('express.index',['file_id'=>$l->id]) }}" class="btn btn-outline-primary btn-sm">
                         <i class="bi bi-eye me-1"></i>查看
                     </a>
+                    <a href="{{ route('express.index',['file_id'=>$l->id]) }}" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-eye me-1"></i>导出
+                    </a>
                 </td>
             </tr>
         @endforeach
