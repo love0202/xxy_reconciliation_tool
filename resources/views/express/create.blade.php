@@ -9,7 +9,7 @@
                 <div class="col-sm-10">
                     <select name="type" class="form-select">
                         @foreach(yxx_dict_list('MERCHANT_TYPE') as $k=>$v)
-                            <option value="{$k}">{$v}</option>
+                            <option value="{{ $k }}">{{ $v }}</option>
                         @endforeach
                     </select>
                     @error('type')

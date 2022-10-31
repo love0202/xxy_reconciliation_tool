@@ -2,13 +2,16 @@
 
 @section('content')
     <div class="mb-3">
-        <div class="row g-3">
+        <form class="row g-3" action="{{ route('express.index') }}">
             <div class="col-auto">
-                <a href="{{ route('express.create') }}" class="btn btn-success text-light">
-                    <i class="bi bi-plus-circle-dotted me-1"></i>导入
-                </a>
+                <input type="text" name="express_number" class="form-control"
+                       value="{{ isset($input['express_number']) ? $input['express_number'] : '' }}"
+                       placeholder="（快递）单号">
             </div>
-        </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary text-white"><i class="bi bi-search"></i></button>
+            </div>
+        </form>
     </div>
     <table class="table table-hover mb-3">
         <thead style="background-color: #F5F5F5">

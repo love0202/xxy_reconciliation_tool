@@ -15,13 +15,13 @@ class ExpressController extends Controller
 {
     public function index(Request $request)
     {
-        $input = $request->only(['project_id', 'title', 'file_id']);
+        $input = $request->only(['project_id', 'express_number', 'file_id']);
 
         $data = [];
         $projectId = WebProject::getProjectId();
         $query = DB::table('express')->where(['project_id' => $projectId]);
-        if (isset($input['order_number']) && !empty($input['order_number'])) {
-            $query->where('order_number', 'like', $input['order_number'] . '%');
+        if (isset($input['express_number']) && !empty($input['express_number'])) {
+            $query->where('express_number', 'like', $input['express_number'] . '%');
         }
         $query->orderBy('created_at', 'desc');
         $list = $query->paginate(10);
