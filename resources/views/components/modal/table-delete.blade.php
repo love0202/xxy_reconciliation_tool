@@ -99,4 +99,18 @@
             }
         });
     })
+    {{--  全选  --}}
+    $(".yxx-table-check-all").click(function () {
+        var isAll = $(this).is(":checked");
+        if (isAll) {
+            $(".yxx-table-check:checkbox").each(function () {
+                $(this).attr("checked", "checked");
+            });
+
+        } else {
+            $(".yxx-table-check:checkbox").each(function () {
+                $(this).removeAttr("checked");
+            });
+        }
+    })
 </script>

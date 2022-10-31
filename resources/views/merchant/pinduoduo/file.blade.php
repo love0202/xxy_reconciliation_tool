@@ -20,7 +20,7 @@
         <tr>
             <th scope="col">
                 <div class="form-check">
-                    <input class="form-check-input yxx-table-check" type="checkbox" value="">
+                    <input class="form-check-input yxx-table-check-all" type="checkbox" value="">
                 </div>
             </th>
             <th class="w-75" scope="col">文件详情</th>

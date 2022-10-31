@@ -20,7 +20,7 @@
         <tr>
             <th scope="col">
                 <div class="form-check">
-                    <input class="form-check-input yxx-table-check" type="checkbox" value="">
+                    <input class="form-check-input yxx-table-check-all" type="checkbox" value="">
                 </div>
             </th>
             <th scope="col">商品详情</th>
