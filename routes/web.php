@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/express/store', [App\Http\Controllers\Express\ExpressController::class, 'store'])->name('express.store');
     Route::get('/express/file', [App\Http\Controllers\Express\ExpressController::class, 'file'])->name('express.file');
     Route::post('/express/ajax_destroy_file', [App\Http\Controllers\Express\ExpressController::class, 'ajax_destroy_file'])->name('express.ajax_destroy_file');
+    Route::get('/express/export_file', [App\Http\Controllers\Express\ExpressController::class, 'export_file'])->name('express.export_file');
 
 
     Route::get('/weight/index', [App\Http\Controllers\Weight\WeightController::class, 'index'])->name('weight.index');
@@ -52,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/weight/ajax_destroy_file', [App\Http\Controllers\Weight\WeightController::class, 'ajax_destroy_file'])->name('weight.ajax_destroy_file');
     Route::get('/weight/file', [App\Http\Controllers\Weight\WeightController::class, 'file'])->name('weight.file');
 
+    Route::post('/public/ajax_export_status', [App\Http\Controllers\Controller::class, 'ajax_export_status'])->name('public.ajax_export_status');
 });
 
 // 测试页面

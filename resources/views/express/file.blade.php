@@ -49,7 +49,7 @@
                     <a href="{{ route('express.index',['file_id'=>$l->id]) }}" class="btn btn-outline-primary btn-sm">
                         <i class="bi bi-eye me-1"></i>查看
                     </a>
-                    <button class="btn btn-outline-primary btn-sm export-file">
+                    <button class="btn btn-outline-primary btn-sm table-export">
                         <i class="bi bi-trash me-1"></i>导出
                     </button>
                 </td>
@@ -62,5 +62,5 @@
 
 @section('script')
     <x-modal.table-delete id="table-delete" url="{{ route('express.ajax_destroy_file') }}"/>
-    <x-modal.tips id="export" url=""/>
+    @include('express.ajax_export')
 @endsection

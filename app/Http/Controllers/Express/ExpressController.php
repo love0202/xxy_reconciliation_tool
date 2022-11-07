@@ -125,4 +125,9 @@ class ExpressController extends Controller
             'data' => '',
         ]);
     }
+
+    public function export_file(Request $request)
+    {
+        dd('导出成功');
+    }
 }

@@ -23,7 +23,7 @@ $url = '';
     <x-modal.tips id="{{ $id }}" title="信息提示"/>
     <x-modal.loading id="{{ $id }}" title=""/>
     <script>
-        {{--  验证  --}}
+        {{--  按钮点击事件  --}}
         $(".{{ $id }}").click(function () {
             var total = parseInt("{{ $totalCount }}");
             if (total > 100000) {
@@ -41,13 +41,13 @@ $url = '';
                 setTimeout(getExportStatus, 3000);
             } else {
                 setTimeout(function () {
-                    $(this).attr("disabled", true);
+                    $(this).attr("disabled", false);
                 }, 3000);
             }
             window.location.href = "";
         })
 
-        {{--  验证  --}}
+        {{--  导出状态  --}}
         function getExportStatus() {
             $.ajax({
                 type: "POST",
