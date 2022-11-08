@@ -31,7 +31,7 @@ $webProject = WebProject::getProject();
 <body style="background-color: #dfdfdf">
 {{-- 主菜单 --}}
 @include('layouts._header')
-<div class="d-flex mt-3">
+<div class="d-flex mt-1">
     {{-- 左侧菜单 --}}
     <div id="yxx-left-menu" class="flex-shrink-0" style="background-color: #dbe5fa;">
         <ul class="list-unstyled">
@@ -48,21 +48,23 @@ $webProject = WebProject::getProject();
             @endforeach
         </ul>
     </div>
-    <div class="flex-grow-1 bg-white ms-3 p-3 table-responsive" style="min-height: 400px;">
+    <div class="flex-grow-1 table-responsive">
         {{-- 面包屑 --}}
-        <div class="d-flex justify-content-between mb-3" style="background-color: #ebe1ef">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
+        <div class="d-flex justify-content-between ms-2 pl-2 px-2" style="background-color: #ebe1ef">
+            <nav aria-label="breadcrumb" class="p-2">
+                <ol class="breadcrumb" style="--bs-breadcrumb-margin-bottom: 0rem;">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Library</li>
                 </ol>
             </nav>
-            <div>
-                返回
+            <div class="p-2">
+                <a href="" class="btn btn-outline-primary btn-sm">返回</a>
             </div>
         </div>
         {{-- 内容区 --}}
-        @yield('content')
+        <div class="bg-white ms-2 p-2" style="min-height: 400px;">
+            @yield('content')
+        </div>
     </div>
 </div>
 
