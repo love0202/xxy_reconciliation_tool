@@ -2,7 +2,6 @@
 $id = 'table-export';
 $time = time();
 $totalCount = 70000;
-$url = '';
 ?>
 <x-modal.tips id="{{ $id }}" title="信息提示"/>
 <x-modal.loading id="{{ $id }}" title=""/>
@@ -28,7 +27,7 @@ $url = '';
                 $(this).attr("disabled", false);
             }, 3000);
         }
-        window.location.href = "{{ route('express.export_file') }}";
+        window.location.href = "{{ route('express.export_file',["export_time"=>$time]) }}";
     })
 
     {{--  导出状态  --}}
@@ -38,13 +37,13 @@ $url = '';
             dataType: "json",
             url: "{{ route('public.ajax_export_status') }}",
             data: {
-                "export_status_time": "{{ $time }}",
+                "export_time": "{{ $time }}",
                 "count": parseInt("{{ $totalCount }}"),
                 "_token": "{{ csrf_token() }}"
             },
             success: function (data) {
                 if (data.success) {
-                    if (data.export_status == 1) {
+                    if (data.status == 1) {
                         closeLoading();
                     } else {
                         setTimeout(getExportStatus, 3000);

@@ -15,27 +15,22 @@ class Controller extends BaseController
     public function ajax_export_status(Request $request)
     {
         try {
-            $export_status_time = $request->input('export_status_time');
-            $export_status_time_str = trim('export_status_time_' . $export_status_time);
-            $export_status_arr = isset($_SESSION[$export_status_time_str]) ? $_SESSION[$export_status_time_str] : [];
+            $export_time = $request->input('export_time');
+            $sessionKey = trim('export_time' . $export_time);
+            $sessionRetArr = app('session')->get($sessionKey, []);
 
-            $params['success'] = 1;
-            if ($export_status_arr) {
-                $params['export_status'] = $export_status_arr['export_status'];
-                if ($export_status_arr['export_status'] == 1) {
-                    unset($_SESSION[$export_status_time_str]);
-                }
-                $count = $request->input('count');
-                if ($count > 20000) { //如果数据量超过2W。提供缓冲3S下载时间；
-                    sleep(3);
+            if ($sessionRetArr) {
+                $params['status'] = $sessionRetArr['status'];
+                if ($sessionRetArr['status'] == 1) {
+                    app('session')->forget($sessionKey);
                 }
             } else {
-                $params['export_status'] = 0;
+                $params['status'] = 0;
             }
         } catch (Exception $exc) {
-            $params['success'] = 1;
-            $params['export_status'] = 0;
+            $params['status'] = 0;
         }
+        $params['success'] = 1;
         return response()->json($params);
     }
 }

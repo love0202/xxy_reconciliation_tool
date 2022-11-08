@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Express;
 
 use App\Excel\Imports\Express\ExpressImport;
-use App\Exports\Express\ExpressExport;
+use App\Excel\Exports\Express\ExpressExport;
 use App\Http\Controllers\Controller;
 use App\Models\Express\Express;
 use App\Models\File\File;
@@ -129,8 +129,10 @@ class ExpressController extends Controller
 
     public function export_file(Request $request)
     {
+        $exportTime = $request->input('export_time');
         $exportModel = new ExpressExport();
         $title = '快递对账单' . date('Y-m-d') . '.xlsx';
+        app('session')->put('export_time' . $exportTime, ['status' => 1, 'export_time' => $exportTime]);
         return $exportModel->download($title);
     }
 }
