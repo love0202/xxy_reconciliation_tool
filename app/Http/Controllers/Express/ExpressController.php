@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Express;
 
 use App\Excel\Imports\Express\ExpressImport;
+use App\Exports\Express\ExpressExport;
 use App\Http\Controllers\Controller;
 use App\Models\Express\Express;
 use App\Models\File\File;
@@ -37,7 +38,7 @@ class ExpressController extends Controller
 
         $data = [];
         $projectId = WebProject::getProjectId();
-        $query = DB::table('file')->where(['project_id' => $projectId])->where(['theme' => yxx_dict_value('THEME_TYPE','T2')]);
+        $query = DB::table('file')->where(['project_id' => $projectId])->where(['theme' => yxx_dict_value('THEME_TYPE', 'T2')]);
         $query->orderBy('created_at', 'desc');
         $list = $query->paginate(10);
         $list->appends($input);
@@ -76,7 +77,7 @@ class ExpressController extends Controller
         $projectId = WebProject::getProjectId();
         $data = [];
         $data['project_id'] = $projectId;
-        $data['theme'] = yxx_dict_value('THEME_TYPE','T2');
+        $data['theme'] = yxx_dict_value('THEME_TYPE', 'T2');
         $data['express_type'] = $type;
         $data['file_json'] = json_encode($fileArr);
 
@@ -128,6 +129,8 @@ class ExpressController extends Controller
 
     public function export_file(Request $request)
     {
-        dd('导出成功');
+        $exportModel = new ExpressExport();
+        $title = '快递对账单' . date('Y-m-d') . '.xlsx';
+        return $exportModel->download($title);
     }
 }
