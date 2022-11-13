@@ -50,7 +50,7 @@ $webProject = WebProject::getProject();
     </div>
     <div class="flex-grow-1 table-responsive">
         {{-- 面包屑 --}}
-        <div class="d-flex justify-content-between ms-2 pl-2 px-2" style="background-color: #ebe1ef">
+        <div class="d-flex justify-content-between ms-2 pl-2 px-2" style="background-color: #dbe5fa">
             <nav aria-label="breadcrumb" class="p-2">
                 <ol class="breadcrumb" style="--bs-breadcrumb-margin-bottom: 0rem;">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
