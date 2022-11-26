@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use App\Common\WebProject;
 
+// 快捷调试输出
 if (!function_exists('yxx')) {
     function yxx($data)
     {
@@ -11,6 +12,7 @@ if (!function_exists('yxx')) {
     }
 }
 
+// 资源链接
 if (!function_exists('yxx_path_static')) {
     function yxx_path_static($fileName = '', $path = 'images')
     {
@@ -22,6 +24,7 @@ if (!function_exists('yxx_path_static')) {
     }
 }
 
+// 唯一编码
 if (!function_exists('make_guid')) {
     function make_guid($long = false, $oldguid = null)
     {
@@ -46,8 +49,9 @@ if (!function_exists('make_guid')) {
     }
 }
 
-if (!function_exists('get_yxx_menu')) {
-    function get_yxx_menu()
+// 全部导航
+if (!function_exists('yxx_get_menu')) {
+    function yxx_get_menu()
     {
         $webProject = WebProject::getProject();
         $data = [];
@@ -73,8 +77,9 @@ if (!function_exists('get_yxx_menu')) {
     }
 }
 
-if (!function_exists('get_yxx_left_menu')) {
-    function get_yxx_left_menu()
+// 当前页面-左侧导航
+if (!function_exists('yxx_get_left_menu')) {
+    function yxx_get_left_menu()
     {
         $data = [];
         $k1 = 0;
@@ -103,8 +108,55 @@ if (!function_exists('get_yxx_left_menu')) {
     }
 }
 
-if (!function_exists('get_yxx_title')) {
-    function get_yxx_title($sep = ' | ')
+// 当前页面-面包屑
+if (!function_exists('yxx_get_breadcrumb')) {
+    function yxx_get_breadcrumb()
+    {
+        $data = [];
+        $yxxMenu = config('yxx_menu');
+        $routeName = Route::currentRouteName();
+        foreach ($yxxMenu as $key1 => &$value1) {
+            foreach ($value1['items'] as $key2 => $value2) {
+                if (isset($value2['isHidden']) && isset($value2['parentId'])) {
+                    if ($value2['routeName'] == $routeName) {
+                        $data[] = $value1;
+                        $data[] = $value2;
+                    }
+                } else {
+                    if ($value2['routeName'] == $routeName) {
+                        $data[] = $value1;
+                        $data[] = $value2;
+                    }
+                }
+            }
+        }
+        return $data;
+    }
+}
+
+// 当前页面-返回链接
+if (!function_exists('yxx_back_url')) {
+    function yxx_back_url()
+    {
+        $url = '';
+        $yxxMenu = config('yxx_menu');
+        $routeName = Route::currentRouteName();
+        foreach ($yxxMenu as $key1 => &$value1) {
+            foreach ($value1['items'] as $key2 => $value2) {
+                if (isset($value2['isHidden']) && isset($value2['parentId'])) {
+                    if ($value2['routeName'] == $routeName) {
+                        $url = route($value1['routeName']);
+                    }
+                }
+            }
+        }
+        return $url;
+    }
+}
+
+// 当前页面-标题
+if (!function_exists('yxx_get_title')) {
+    function yxx_get_title($sep = ' | ')
     {
         $yxxTitle = '';
         $yxxMenu = config('yxx_menu');

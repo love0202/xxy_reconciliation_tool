@@ -40,7 +40,7 @@
                aria-controls="yxx-navbar-scroll" aria-expanded="false"></i>
             <div class="collapse navbar-collapse" id="yxx-navbar-scroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
-                    @foreach(get_yxx_menu() as $menu)
+                    @foreach(yxx_get_menu() as $menu)
                         <li class="nav-item text-center" style="min-width: 100px;border:1px solid #8d8484">
                             <a class="nav-link @if(isset($menu['active'])) active @endif "
                                href="{{ route($menu['routeName']) }}">
