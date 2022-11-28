@@ -5,7 +5,7 @@ use App\Common\WebProject;
 $webProject = WebProject::getProject();
 
 ?>
-        <!doctype html>
+    <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -51,25 +51,31 @@ $webProject = WebProject::getProject();
     <div class="flex-grow-1 table-responsive">
         {{-- 面包屑 --}}
         @if(yxx_get_breadcrumb())
-        <div class="d-flex justify-content-between ms-2 pl-2 px-2" style="background-color: #dbe5fa">
-            <nav aria-label="breadcrumb" class="p-2">
-                <ol class="breadcrumb" style="--bs-breadcrumb-margin-bottom: 0rem;">
-                    @foreach(yxx_get_breadcrumb() as $menu)
-                        <li class="breadcrumb-item">
-                            <a href="{{ route($menu['routeName']) }}">{{ $menu['name'] }}</a>
-                        </li>
-                    @endforeach
-                </ol>
-            </nav>
-            <div class="p-2">
-                @if(yxx_back_url())
-                    <a href="{{ yxx_back_url() }}" class="btn btn-outline-primary btn-sm">返回</a>
-                @endif
+            <div class="d-flex justify-content-between ms-2 pl-4 px-4" style="background-color: #dbe5fa">
+                <nav aria-label="breadcrumb" class="p-2" style="--bs-breadcrumb-divider: '>';">
+                    <ol class="breadcrumb" style="--bs-breadcrumb-margin-bottom: 0rem;">
+                        @foreach(yxx_get_breadcrumb() as $menu)
+                            @if ($loop->last)
+                                <li class="breadcrumb-item">
+                                    {{ $menu['name'] }}
+                                </li>
+                            @else
+                                <li class="breadcrumb-item">
+                                    <a href="{{ route($menu['routeName']) }}">{{ $menu['name'] }}</a>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ol>
+                </nav>
+                <div class="p-2">
+                    @if(yxx_back_url())
+                        <a href="{{ yxx_back_url() }}" class="btn btn-outline-primary btn-sm">返回</a>
+                    @endif
+                </div>
             </div>
-        </div>
         @endif
         {{-- 内容区 --}}
-        <div class="bg-white ms-2 p-2" style="min-height: 400px;">
+        <div class="bg-white ms-2 p-4" style="min-height: 400px;">
             @yield('content')
         </div>
     </div>

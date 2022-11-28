@@ -62,7 +62,7 @@ class TianmaoController extends Controller
             'file' => 'required|mimetypes:text/csv,application/xml,application/zip,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel',
         ]);
         $file = $request->file('file');
-        $fileKey = 'Merchant';
+        $fileKey = 'merchant';
         $originalExtension = $file->getClientOriginalExtension();
         $fileName = $fileKey . '/' . time() . rand(1000, 9999) . '.' . $originalExtension;
         Storage::put($fileName, file_get_contents($file->getRealPath()));
