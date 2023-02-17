@@ -34,6 +34,9 @@ class ExpressImport implements ToModel, WithValidation, WithBatchInserts
         if ($currentRowNumber == 1) {
             return null;
         }
+        if (empty($row[0])) {
+            return null;
+        }
 
         return new Express([
             'project_id' => $this->projectId,
@@ -48,12 +51,12 @@ class ExpressImport implements ToModel, WithValidation, WithBatchInserts
         return [
             '0' => function ($attribute, $value, $onFailure) {
                 if (empty($value)) {
-                    $onFailure('快递单号不能为空');
+//                    $onFailure('快递单号不能为空');
                 }
             },
             '1' => function ($attribute, $value, $onFailure) {
                 if (empty($value)) {
-                    $onFailure('快递重量不能为空');
+//                    $onFailure('快递重量不能为空');
                 }
             },
         ];
