@@ -2,8 +2,3 @@
 # --------yxx-------------
 127.0.0.1 account.yxx.test
 127.0.0.1 base.yxx.test
-
-# --------frame------------
-127.0.0.1 thinkphp.frame.test
-127.0.0.1 laravel.frame.test
-127.0.0.1 yii.frame.test
