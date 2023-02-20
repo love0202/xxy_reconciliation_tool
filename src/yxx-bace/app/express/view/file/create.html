@@ -1,0 +1,39 @@
+{extend name="layout/base" /}
+
+{block name="main"}
+<div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="{:url('express/file/list')}">返回</a>
+            </li>
+        </ol>
+    </nav>
+    <form action="{:url('express/file/save')}" enctype="multipart/form-data" method="post">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">月份标题:</label>
+            <div class="col-sm-5">
+                <input type="text" name="name" class="form-control">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">快递类别:</label>
+            <div class="col-sm-5">
+                <select class="form-control" name="type">
+                    <?php $expressTypeList = yxx_config_list('EXPRESS_TYPE'); ?>
+                    {foreach $expressTypeList as $key => $value }
+                    <option value="{$key}">{$value}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">快递对账单文件：</label>
+            <div class="col-sm-5">
+                <input type="file" name="order_file" class="form-control-file">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm">保存</button>
+    </form>
+</div>
+{/block}

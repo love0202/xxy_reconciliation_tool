@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{block name="title"}标题{/block}</title>
+
+    {css href="/static/bootstrap-4.6.0/css/bootstrap.min.css" /}
+</head>
+<body>
+{include file="layout/header" /}
+{include file="layout/message" /}
+<div class="main" style="min-height: 400px;">
+    {block name="main"}主内容区域{/block}
+</div>
+{include file="layout/footer" /}
+
+{js href="/static/jquery-3.5.1/jquery-3.5.1.min.js" /}
+{js href="/static/popper.js@1.16.1/dist/umd/popper.min.js" /}
+{js href="/static/bootstrap-4.6.0/js/bootstrap.min.js" /}
+{block name="ajaxjs"}{/block}
+</body>
+</html>
