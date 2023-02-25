@@ -78,25 +78,25 @@ class FileController extends Controller
         $nameArray = $this->setCacheNameArray();
 
         // 获取 excel 数据
-        //0 => "原始重量" 1 => "核对" 2 => "导出商品详情"
-        $colArr = ['A', 'B', 'C'];
+        //0 => "原始重量" 1 => "导出商品详情"
+        $colArr = ['A', 'B'];
         $excelModel = new YxxExcel();
         $excelModel->setColArr($colArr);
-        $data = $excelModel->read($fileInfo['path'],true);
+        $data = $excelModel->read($fileInfo['path'], false);
         foreach ($data as $v) {
-            if ($v[2] == null || empty($v[2]) || in_array($v[2], $nameArray)) {
+            if ($v[1] == null || empty($v[1])) {
                 continue;
             }
-            if ($v[1] == "已核") {
-                $weight = $v[0];
+            if (in_array($v[1], $nameArray)) {
+                continue;
             } else {
-                $weight = $v[1];
+                $nameArray[] = $v[1];
             }
-            $nameArray[] = $v[2];
+            $weight = $v[0];
             $str = json_encode($v);
             $insertData[] = [
                 "weight_file_id" => $fileId,
-                "shopinfo" => $v[2],
+                "shopinfo" => $v[1],
                 "weight" => $weight,
                 "dataJSON" => $str,
             ];

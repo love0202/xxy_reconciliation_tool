@@ -80,7 +80,7 @@ EOT;
                 $sqlUpdate = <<<EOT
                     UPDATE {$expressTable} AS express
                     LEFT JOIN {$wangdiantongTable} AS store ON express.order_number = store.order_express_number SET 
-                    express.weight = store.weight
+                    express.weight = store.weight,express.member = store.express_address
                     WHERE store.order_number != '';
 EOT;
                 $ret = Db::execute($sqlUpdate);
@@ -143,7 +143,7 @@ EOT;
         foreach ($all as $row) {
             $expressTypeEname = yxx_config_ename('EXPRESS_TYPE', $row['type']);
             $dbTableName = 'express_' . $expressTypeEname;
-            $count = Db::name($dbTableName)->where(['express_file_id' => $row['id'], 'shopinfo' => ''])->count();
+            $count = Db::name($dbTableName)->where(['express_file_id' => $row['id'], 'shopinfo' => '', 'weight' => ''])->count();
 
             $updateArr['num_no'] = $count;
             $ret = Db::name('express_file')->where(['id' => $row['id']])->update($updateArr);

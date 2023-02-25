@@ -117,7 +117,7 @@ class FileController extends Controller
             $str = json_encode($v);
             $insertOrderData[] = [
                 "express_file_id" => $fileId,
-                "order_number" => $orderExpressNumber,
+                "order_number" => trim($orderExpressNumber),
                 "express_weight" => $expressWeight,
                 "dataJSON" => $str,
             ];
@@ -320,8 +320,8 @@ class FileController extends Controller
         $colArr = ['A', 'B', 'C', 'D', 'E', 'G', 'R'];
         switch ($type) {
             case yxx_config_value('EXPRESS_TYPE', 'T1'):
-//                $colArr = ['A', 'G'];
-                $colArr = ['A', 'F']; // 新韵达
+                $colArr = ['A', 'G'];
+//                $colArr = ['A', 'F']; // 新韵达
                 break;
             case yxx_config_value('EXPRESS_TYPE', 'T2'):
                 $colArr = ['C', 'R'];
@@ -333,7 +333,7 @@ class FileController extends Controller
                 $colArr = ['B'];
                 break;
             case yxx_config_value('EXPRESS_TYPE', 'T5'):
-                $colArr = ['A', 'D'];
+                $colArr = ['B', 'D'];
                 break;
             case yxx_config_value('EXPRESS_TYPE', 'T6'):
                 $colArr = ['A', 'D'];

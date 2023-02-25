@@ -33,6 +33,7 @@ class WangdiantongOrder extends Migrator
             ->addColumn('order_number', 'string', array('limit' => 50, 'default' => '', 'comment' => '原单号'))
             ->addColumn('order_express_number', 'string', array('limit' => 50, 'default' => '', 'comment' => '物流单号'))
             ->addColumn('express_company', 'string', array('limit' => 50, 'default' => '', 'comment' => '物流公司'))
+            ->addColumn('express_address', 'string', array('limit' => 50, 'default' => '', 'comment' => '物流地址'))
             ->addColumn('weight', 'string', array('limit' => 100, 'default' => '', 'comment' => '重量'))
             ->addColumn('dataJSON', 'text', array('null' => true, 'comment' => 'excel的内容'))
             ->addIndex(array('order_express_number'))

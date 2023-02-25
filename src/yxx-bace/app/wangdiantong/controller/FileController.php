@@ -76,10 +76,10 @@ class FileController extends Controller
         $insertData = [];
         // 获取 excel 数据
         //0 => "原始单号" 1 => "物流公司" 2 => "物流单号" 3 => "实际重量"
-        $colArr = ['A', 'F', 'G', 'K'];
+        $colArr = ['A', 'F', 'G', 'K', 'N'];
         $excelModel = new YxxExcel();
         $excelModel->setColArr($colArr);
-        $data = $excelModel->read($fileInfo['order_path'], true);
+        $data = $excelModel->read($fileInfo['order_path']);
         foreach ($data as $v) {
             $str = json_encode($v);
             $insertData[] = [
@@ -87,7 +87,8 @@ class FileController extends Controller
                 "order_number" => $v[0],
                 "order_express_number" => $v[2],
                 "express_company" => $v[1],
-                "weight" => $v[3],
+                "express_address" => $v[3],
+                "weight" => $v[4],
                 "dataJSON" => $str,
             ];
         }
