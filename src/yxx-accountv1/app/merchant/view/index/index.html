@@ -1,0 +1,26 @@
+{extend name="layout/base" /}
+
+{block name="main"}
+<div class="container mt-4 h6">
+    <div class="alert alert-warning" role="alert">
+        <p>1.商户数据源的操作</p>
+        <div class="pl-3">
+            <p>1.1 <a href="{:url('tianmao/file/list')}">天猫v1</a>【1文件添加-2导入数据-3合并数据】
+            </p>
+            <p>1.2 <a href="{:url('tianmaov2/file/list')}">天猫v2</a>【1文件添加-2导入数据】
+            </p>
+            <p>1.3 <a href="{:url('wangdiantong/file/list')}">旺店通</a>【1文件添加-2导入数据】
+            </p>
+        </div>
+    </div>
+    <div class="alert alert-warning" role="alert">
+        <p>2.重量的操作</p>
+        <div class="pl-3">
+            <p>2.1 已核对过的快递对账单的文件添加</p>
+            <p>2.2 已核对过的快递对账单的导入数据</p>
+            <p><a href="{:url('weight/file/list')}"class="btn btn-primary btn-sm">重量</a>
+            </p>
+        </div>
+    </div>
+</div>
+{/block}
