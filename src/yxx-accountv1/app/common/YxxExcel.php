@@ -34,15 +34,20 @@ class YxxExcel
      *
      * @param $fileName
      * @param bool $isHeard
+     * @param bool $isPath
      * @return array
      * @throws \PHPExcel_Exception
      * @throws \PHPExcel_Reader_Exception
      */
-    public function read($fileName, $isHeard = false)
+    public function read($fileName, $isHeard = false, $isPath = false)
     {
         $data = [];
-        $basePath = config('filesystem.disks.public.root');
-        $filePath = $basePath . "/" . $fileName;
+        if ($isPath) {
+            $filePath = $fileName;
+        } else {
+            $basePath = config('filesystem.disks.public.root');
+            $filePath = $basePath . "/" . $fileName;
+        }
         if (!is_file($filePath)) {
             dd('文件不存在' . $filePath);
         }
@@ -97,6 +102,7 @@ class YxxExcel
     public function export(array $data, $fileName = 'export_file_name')
     {
         $capitalArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+        $LongNumberCapitalArr = ['A'];
         $headerArr = $this->headerArr;
         $headerNewArr = array_values($headerArr);
         $headerKeyArr = array_keys($headerArr);
@@ -104,7 +110,7 @@ class YxxExcel
         $objWriter = \PHPExcel_IOFactory::createWriter($objExcel, 'Excel2007');
         $objActSheet = $objExcel->getActiveSheet(0);
         $objActSheet->setTitle($fileName); //设置excel的标题
-
+        $objActSheet->getStyle('A')->getNumberFormat()->setFormatCode(\PHPExcel_Style_NumberFormat::FORMAT_TEXT);
         foreach ($headerNewArr as $key => $value) {
             $cellKey = $capitalArr[$key] . '1';
             $objActSheet->setCellValue($cellKey, $value);
@@ -115,7 +121,11 @@ class YxxExcel
             $i = $baseRow + $key;
             foreach ($headerKeyArr as $k => $v) {
                 $cellKey = $capitalArr[$k] . $i;
-                $objExcel->getActiveSheet()->setCellValue($cellKey, $value[$v]);
+                if (in_array($capitalArr[$k], $LongNumberCapitalArr)) {
+                    $objActSheet->setCellValueExplicit($cellKey, $value[$v], \PHPExcel_Cell_DataType::TYPE_STRING);
+                } else {
+                    $objActSheet->setCellValue($cellKey, $value[$v]);
+                }
             }
         }
 

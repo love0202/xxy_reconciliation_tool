@@ -185,7 +185,7 @@ class FileController extends Controller
                     }
                 }
             }
-            $temp['orderNum'] = '="' . $value['order_number'] . '"';
+            $temp['orderNum'] = $value['order_number'];
             $temp['member'] = $value['member'];
             $temp['shopinfo'] = $value['shopinfo'];
             $temp['express_weight'] = $value['express_weight'];
@@ -320,7 +320,7 @@ class FileController extends Controller
         $colArr = ['A', 'B', 'C', 'D', 'E', 'G', 'R'];
         switch ($type) {
             case yxx_config_value('EXPRESS_TYPE', 'T1'):
-                $colArr = ['A', 'G'];
+                $colArr = ['A', 'F'];
 //                $colArr = ['A', 'F']; // 新韵达
                 break;
             case yxx_config_value('EXPRESS_TYPE', 'T2'):
@@ -336,7 +336,7 @@ class FileController extends Controller
                 $colArr = ['B', 'D'];
                 break;
             case yxx_config_value('EXPRESS_TYPE', 'T6'):
-                $colArr = ['A', 'D'];
+                $colArr = ['A', 'C'];
                 break;
             default:
                 break;

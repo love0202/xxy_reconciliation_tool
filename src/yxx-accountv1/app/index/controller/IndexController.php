@@ -4,6 +4,7 @@ declare (strict_types=1);
 namespace app\index\controller;
 
 use app\common\Controller;
+use app\common\YxxExcel;
 use think\facade\Db;
 
 class IndexController extends Controller
@@ -54,6 +55,28 @@ class IndexController extends Controller
      */
     public function test()
     {
+//        dd('数据转化操作');
+        $filePath = 'C:\Users\qpzmv\work\work_xiangwei\yxx\doc\需求\2023年账单\1月账单\韵达淘咖12月.xls';
+        // 获取 excel 数据
+        $excelModel = new YxxExcel();
+        $colArr = ['N'];
+        $excelModel->setColArr($colArr);
+        $ret = $excelModel->read($filePath, false, true);
+        $data = [];
+        foreach ($ret as $key => $value) {
+            $temp = $value[0];
+            $temp = str_replace('=','',$temp);
+            $temp = str_replace('"','',$temp);
+            $data[] = ['ni'=>$temp];
+        }
+
+        // 导出excel
+        $headerArr = [
+            'ni' => '转化数据',
+        ];
+        $fileName = '数据转化';
+        $excelModel->setHeaderArr($headerArr);
+        $excelModel->export($data, $fileName);
 
     }
 }
