@@ -1,4 +1,5 @@
 # -----------------------work_xw---------------------------
 # --------yxx-------------
-127.0.0.1 account.yxx.test
+127.0.0.1 accountv1.yxx.test
+127.0.0.1 accountv2.yxx.test
 127.0.0.1 base.yxx.test
