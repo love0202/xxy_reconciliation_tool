@@ -320,7 +320,7 @@ class FileController extends Controller
         $colArr = ['A', 'B', 'C', 'D', 'E', 'G', 'R'];
         switch ($type) {
             case yxx_config_value('EXPRESS_TYPE', 'T1'):
-                $colArr = ['A', 'F'];
+                $colArr = ['A', 'G'];
 //                $colArr = ['A', 'F']; // 新韵达
                 break;
             case yxx_config_value('EXPRESS_TYPE', 'T2'):
