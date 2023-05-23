@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -5,6 +6,11 @@ import Nav from 'react-bootstrap/Nav';
 function BrandExample() {
     return (
         <header>
+            <Head>
+                <title>NEXT_APP</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/icon.png"/>
+            </Head>
             <Navbar bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home">
@@ -15,12 +21,12 @@ function BrandExample() {
                             height="30"
                             className="d-inline-block align-top"
                         />
-                        next-app
+                        NEXT_APP
                     </Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <Nav.Link href="\">Home</Nav.Link>
+                        <Nav.Link href="\log">Features</Nav.Link>
+                        <Nav.Link href="\about">Pricing</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
