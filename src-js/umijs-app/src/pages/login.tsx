@@ -1,7 +1,7 @@
 import styles from './index.less';
 import { Link } from 'umi';
 
-export default function IndexPage() {
+export default function LoginPage() {
   return (
     <div>
       <h1 className={styles.title}>Page index</h1>
