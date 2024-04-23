@@ -20,6 +20,7 @@ class ComposerStaticInit517c5bbb697d482dc14138ff9f1fd1b1
         array (
             'think\\view\\driver\\' => 18,
             'think\\trace\\' => 12,
+            'think\\app\\' => 10,
             'think\\' => 6,
         ),
         'a' => 
@@ -57,6 +58,10 @@ class ComposerStaticInit517c5bbb697d482dc14138ff9f1fd1b1
         'think\\trace\\' => 
         array (
             0 => __DIR__ . '/..' . '/topthink/think-trace/src',
+        ),
+        'think\\app\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/topthink/think-multi-app/src',
         ),
         'think\\' => 
         array (
