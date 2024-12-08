@@ -7,8 +7,8 @@
         <tr>
             <th scope="col">序号</th>
             <th scope="col">运单号</th>
-            <th scope="col">会员名</th>
-            <th scope="col">商品标题</th>
+            <th scope="col">地址</th>
+            <th scope="col">快递重量</th>
         </tr>
         </thead>
         <tbody>
@@ -17,7 +17,7 @@
             <td scope="row">{$row['id']}</td>
             <td>{$row['order_number']}</td>
             <td>{$row['member']}</td>
-            <td>{$row['shopinfo']}</td>
+            <td>{$row['express_weight']}</td>
         </tr>
         {/foreach}
         </tbody>

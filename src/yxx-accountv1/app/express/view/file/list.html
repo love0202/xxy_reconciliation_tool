@@ -62,14 +62,18 @@
                         class="btn btn-info btn-sm yxx-list-import">导入
                 </button>
                 {else /}
-                <a href="{:url('express/order/list',['type'=>$row['type'],'fileId'=>$row['id']])}" class="btn btn-primary btn-sm">查看</a>
+                <button data-id="{$row['id']}"
+                        class="btn btn-danger btn-sm yxx-list-delete-express">清空
+                </button>
                 {/if}
             </td>
             <td>
+                {if $row['status'] == 1}
+                <a href="{:url('express/order/list',['type'=>$row['type'],'fileId'=>$row['id']])}"
+                   class="btn btn-primary btn-sm">查看</a>
                 <a href="{:url('express/file/export',['id'=>$row['id']])}"
                    class="btn btn-info btn-sm">导出</a>
-                <a href="{:url('express/file/exportRank',['id'=>$row['id']])}"
-                   class="btn btn-info btn-sm mt-2">导出商品排行榜</a>
+                {/if}
             </td>
         </tr>
         {/foreach}
@@ -100,6 +104,33 @@
                 type: "get",
                 dataType: "json",
                 url: "{:url('express/file/import')}",
+                data: {
+                    "id": id
+                },
+                success: function (data) {
+                    if (data.success == 0) {
+                        alert(data.message);
+                    }
+                    window.location.reload();
+                }
+            });
+        });
+        $(".yxx-list-delete-express").click(function () {
+            // 是否刷新页面
+            if (window.reload)
+                location.reload();
+
+            // 防止重复点击
+            $(this).attr('disabled', 'disabled');
+            $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
+
+            // ajax请求
+            var id = $(this).attr('data-id');
+            console.log(id);
+            $.ajax({
+                type: "get",
+                dataType: "json",
+                url: "{:url('express/file/deleteExpress')}",
                 data: {
                     "id": id
                 },

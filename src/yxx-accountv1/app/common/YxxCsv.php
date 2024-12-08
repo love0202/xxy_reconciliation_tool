@@ -58,7 +58,11 @@ class YxxCsv
                     }
                 }
                 if (!empty($line)) {
-                    $data[] = $line;
+                    $temp = [];
+                    foreach ($colArr as $num) {
+                        $temp[] = isset($line[$num]) ? $line[$num] : '';
+                    }
+                    $data[] = $temp;
                 }
             }
             fclose($handle);

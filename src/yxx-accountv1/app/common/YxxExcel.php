@@ -41,6 +41,8 @@ class YxxExcel
      */
     public function read($fileName, $isHeard = false, $isPath = false)
     {
+        // 或者设置为0表示无限制执行时长
+        set_time_limit(0);
         $data = [];
         if ($isPath) {
             $filePath = $fileName;
@@ -68,6 +70,12 @@ class YxxExcel
 
             //获取总行数
             $row_num = $sheet->getHighestRow();
+//            dd($row_num);
+//            $row_num = 129948;
+
+//            if ($row_num>110000) {
+//                dd('chaoguo100000hang' . $filePath);
+//            }
             //获取总列数
             $col_num = $sheet->getHighestColumn();
 
