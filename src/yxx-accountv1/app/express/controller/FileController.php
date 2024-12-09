@@ -54,6 +54,36 @@ class FileController extends Controller
         return view('create', $params);
     }
 
+    public function deleteExpress()
+    {
+        $fileId = \request()->param('id');
+        $fileInfo = Db::name('express_file')->where(['id' => $fileId, 'status' => 1])->find();
+
+        if (empty($fileInfo)) {
+            echo json_encode(['success' => 0, 'message' => '数据不存在']);
+            die();
+        }
+
+        $expressTypeEname = yxx_config_ename('EXPRESS_TYPE', $fileInfo['type']);
+        $dbTableName = 'express_' . $expressTypeEname;
+        // 启动事务
+        Db::startTrans();
+        try {
+            $retOrder = Db::name($dbTableName)->where(['express_file_id' => $fileId])->delete();
+            Db::name('express_file')->where(['id' => $fileId])->update(['status' => 0]);
+            // 提交事务
+            Db::commit();
+        } catch (\Exception $e) {
+            // 回滚事务
+            Db::rollback();
+            echo json_encode(['success' => 0, 'message' => $e->getMessage()]);
+            die();
+        }
+
+        echo json_encode(['success' => 1, 'message' => '删除快递成功']);
+        die();
+    }
+
     /**
      * 保存新建的资源
      *
@@ -98,7 +128,7 @@ class FileController extends Controller
         // 获取 excel 数据
         $excelModel = new YxxExcel();
         $excelModel->setColArr($colArr);
-        $orderData = $excelModel->read($fileInfo['order_path']);
+        $orderData = $excelModel->read($fileInfo['order_path'], true);
 
         if ($fileInfo['type'] == yxx_config_value('EXPRESS_TYPE', 'T4')) {
             array_shift($orderData);
@@ -117,7 +147,8 @@ class FileController extends Controller
             $str = json_encode($v);
             $insertOrderData[] = [
                 "express_file_id" => $fileId,
-                "order_number" => trim($orderExpressNumber),
+//                "order_number" => trim($orderExpressNumber),
+                "order_number" => $orderExpressNumber,
                 "express_weight" => $expressWeight,
                 "dataJSON" => $str,
             ];
@@ -172,13 +203,13 @@ class FileController extends Controller
                 if ($value['weight'] == $value['express_weight']) {
                     $isDiff = '已核对';
                 } else {
-                    $leveExpress = $this->judgeLeve($value['express_weight']);
-                    $leve = $this->judgeLeve($value['weight']);
-                    if ($leveExpress == '等级不存在') {
+                    $leveExpress = $this->judgeLeveExpress($value['express_weight']);
+                    $leveWdt = $this->judgeLeveWdt($value['weight']);
+                    if ($leveExpress == '等级不存在' || $leveWdt == '等级不存在') {
                         $isDiff = '等级不存在';
                     } else {
-                        if ($leveExpress != $leve) {
-                            $isDiff = '有差异(' . $leve . ')';
+                        if ($leveWdt < $leveExpress) {
+                            $isDiff = '有差异(旺店通：' . $leveWdt . '，快递：' . $leveExpress . ')';
                         } else {
                             $isDiff = '已核对';
                         }
@@ -198,9 +229,9 @@ class FileController extends Controller
         $headerArr = [
             'orderNum' => '运单号',
             'member' => '买家会员名',
-            'shopinfo' => '导出商品详情',
+            'shopinfo' => '所属店铺',
             'express_weight' => '快递重量',
-            'weight' => '重量',
+            'weight' => '旺店通重量',
             'isDiff' => '差异标注',
         ];
         $excelModel = new YxxExcel();
@@ -285,12 +316,13 @@ class FileController extends Controller
     }
 
     /**
-     * 运费重量区间所对应的等级
+     * 快递重量 运费重量区间所对应的等级
      * @param $weight
      * @return float|int
      */
-    public function judgeLeve($weight)
+    public function judgeLeveExpress($weight)
     {
+        $weight = floatval($weight);
         if ($weight > 0 && $weight <= 0.5) {
             $leve = 0.5;
         } elseif ($weight > 0.5 && $weight <= 1) {
@@ -305,6 +337,51 @@ class FileController extends Controller
             $leve = 5;
         } elseif ($weight > 5 && $weight <= 6) {
             $leve = 6;
+        } elseif ($weight > 6 && $weight <= 7) {
+            $leve = 7;
+        } elseif ($weight > 7 && $weight <= 8) {
+            $leve = 8;
+        } elseif ($weight > 8 && $weight <= 9) {
+            $leve = 9;
+        } elseif ($weight > 9 && $weight <= 10) {
+            $leve = 10;
+        } else {
+            $leve = '等级不存在';
+        }
+
+        return $leve;
+    }
+
+    /**
+     * 旺店通 运费重量区间所对应的等级
+     * @param $weight
+     * @return float|int
+     */
+    public function judgeLeveWdt($weight)
+    {
+        $weight = floatval($weight);
+        if ($weight > 0 && $weight <= 0.44) {
+            $leve = 0.5;
+        } elseif ($weight > 0.44 && $weight <= 0.85) {
+            $leve = 1;
+        } elseif ($weight > 0.85 && $weight <= 1.85) {
+            $leve = 2;
+        } elseif ($weight > 1.85 && $weight <= 2.85) {
+            $leve = 3;
+        } elseif ($weight > 2.85 && $weight <= 3.85) {
+            $leve = 4;
+        } elseif ($weight > 3.85 && $weight <= 4.85) {
+            $leve = 5;
+        } elseif ($weight > 4.85 && $weight <= 5.85) {
+            $leve = 6;
+        } elseif ($weight > 5.85 && $weight <= 6.85) {
+            $leve = 7;
+        } elseif ($weight > 6.85 && $weight <= 7.85) {
+            $leve = 8;
+        } elseif ($weight > 7.85 && $weight <= 8.85) {
+            $leve = 9;
+        } elseif ($weight > 8.85 && $weight <= 9.85) {
+            $leve = 10;
         } else {
             $leve = '等级不存在';
         }
@@ -320,14 +397,13 @@ class FileController extends Controller
         $colArr = ['A', 'B', 'C', 'D', 'E', 'G', 'R'];
         switch ($type) {
             case yxx_config_value('EXPRESS_TYPE', 'T1'):
-                $colArr = ['A', 'G'];
-//                $colArr = ['A', 'F']; // 新韵达
+                $colArr = ['A', 'C'];
                 break;
             case yxx_config_value('EXPRESS_TYPE', 'T2'):
-                $colArr = ['C', 'R'];
+                $colArr = ['C', 'H'];
                 break;
             case yxx_config_value('EXPRESS_TYPE', 'T3'):
-                $colArr = ['A'];
+                $colArr = ['A', 'K'];
                 break;
             case yxx_config_value('EXPRESS_TYPE', 'T4'):
                 $colArr = ['B'];
@@ -336,7 +412,7 @@ class FileController extends Controller
                 $colArr = ['B', 'D'];
                 break;
             case yxx_config_value('EXPRESS_TYPE', 'T6'):
-                $colArr = ['A', 'C'];
+                $colArr = ['C', 'E'];
                 break;
             default:
                 break;

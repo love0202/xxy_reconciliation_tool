@@ -80,8 +80,8 @@ EOT;
                 $sqlUpdate = <<<EOT
                     UPDATE {$expressTable} AS express
                     LEFT JOIN {$wangdiantongTable} AS store ON express.order_number = store.order_express_number SET 
-                    express.weight = store.weight,express.member = store.express_address
-                    WHERE store.order_number != '';
+                    express.weight = store.weight,express.member = store.express_address,express.shopinfo = store.express_company
+                    WHERE store.order_express_number != '';
 EOT;
                 $ret = Db::execute($sqlUpdate);
             }
