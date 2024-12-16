@@ -33,7 +33,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m2225333896708">
+  <Style ss:ID="m2432075160436">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -42,7 +42,7 @@
     <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
    </Borders>
   </Style>
-  <Style ss:ID="m2225333896728">
+  <Style ss:ID="m2432075160456">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -51,7 +51,7 @@
     <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
    </Borders>
   </Style>
-  <Style ss:ID="m2225333896748">
+  <Style ss:ID="m2432075160476">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
@@ -60,7 +60,7 @@
     <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
    </Borders>
   </Style>
-  <Style ss:ID="m2225333896768">
+  <Style ss:ID="m2432075160496">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
@@ -69,7 +69,7 @@
     <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
    </Borders>
   </Style>
-  <Style ss:ID="m2225333896788">
+  <Style ss:ID="m2432075160516">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
@@ -78,61 +78,7 @@
     <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
    </Borders>
   </Style>
-  <Style ss:ID="m2225333896808">
-   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="m2225032809284">
-   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="2"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="m2225032809304">
-   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="m2225032809324">
-   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="2"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="m2225032809344">
-   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="m2225032809364">
-   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="2"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="m2225032809384">
+  <Style ss:ID="m2432075160536">
    <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
@@ -205,7 +151,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="固定名称">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="37" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="18" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="14.25">
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
     <Cell ss:MergeAcross="6" ss:StyleID="s64"><Data ss:Type="String">职业技能等级申请表</Data></Cell>
@@ -216,7 +162,7 @@
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"><Data ss:Type="String">性别</Data></Cell>
     <Cell ss:StyleID="s66"/>
-    <Cell ss:MergeAcross="1" ss:MergeDown="4" ss:StyleID="m2225032809284"/>
+    <Cell ss:MergeAcross="1" ss:MergeDown="4" ss:StyleID="m2432075160436"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
     <Cell ss:StyleID="s76"><Data ss:Type="String">文化程度</Data></Cell>
@@ -284,14 +230,14 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
     <Cell ss:StyleID="s76"><Data ss:Type="String">个人简历</Data></Cell>
-    <Cell ss:MergeAcross="5" ss:StyleID="m2225032809304"/>
+    <Cell ss:MergeAcross="5" ss:StyleID="m2432075160456"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:MergeDown="5" ss:StyleID="m2225032809324"><Data ss:Type="String">单位或培训机构</Data></Cell>
+    <Cell ss:MergeDown="5" ss:StyleID="m2432075160476"><Data ss:Type="String">单位或培训机构</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">鉴定职业</Data></Cell>
     <Cell ss:StyleID="s90"/>
-    <Cell ss:MergeDown="5" ss:StyleID="m2225032809344"><Data ss:Type="String">单位或培训机构</Data></Cell>
-    <Cell ss:MergeAcross="2" ss:MergeDown="5" ss:StyleID="m2225032809364"/>
+    <Cell ss:MergeDown="5" ss:StyleID="m2432075160496"><Data ss:Type="String">单位或培训机构</Data></Cell>
+    <Cell ss:MergeAcross="2" ss:MergeDown="5" ss:StyleID="m2432075160516"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
     <Cell ss:Index="2" ss:StyleID="s90"><Data ss:Type="String">鉴定等级</Data></Cell>
@@ -310,117 +256,7 @@
     <Cell ss:StyleID="s90"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="m2225032809384"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell><Data ss:Type="String">填表单位：</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">填表人：</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">日期：</Data></Cell>
-   </Row>
-   <Row ss:Index="20" ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:MergeAcross="6" ss:StyleID="s64"><Data ss:Type="String">职业技能等级申请表</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:StyleID="s65"><Data ss:Type="String">姓名</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">性别</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:MergeAcross="1" ss:MergeDown="4" ss:StyleID="m2225333896708"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">文化程度</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">出生年月</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">证件号码</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">工作单位</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">单位地址</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">电话</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">邮编</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s78"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">参加工作时间</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">原工种</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s78"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">原技术等级</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">原证书编号</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s78"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">申报工种</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">申报等级</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">职业年限</Data></Cell>
-    <Cell ss:StyleID="s78"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">个人简历</Data></Cell>
-    <Cell ss:MergeAcross="5" ss:StyleID="m2225333896728"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:MergeDown="5" ss:StyleID="m2225333896748"><Data ss:Type="String">单位或培训机构</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">鉴定职业</Data></Cell>
-    <Cell ss:StyleID="s90"/>
-    <Cell ss:MergeDown="5" ss:StyleID="m2225333896768"><Data ss:Type="String">单位或培训机构</Data></Cell>
-    <Cell ss:MergeAcross="2" ss:MergeDown="5" ss:StyleID="m2225333896788"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:Index="2" ss:StyleID="s90"><Data ss:Type="String">鉴定等级</Data></Cell>
-    <Cell ss:StyleID="s90"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:Index="2" ss:StyleID="s90"><Data ss:Type="String">理论成绩</Data></Cell>
-    <Cell ss:StyleID="s90"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:Index="2" ss:StyleID="s90"><Data ss:Type="String">实操成绩</Data></Cell>
-    <Cell ss:StyleID="s90"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:Index="2" ss:StyleID="s90"><Data ss:Type="String">综合成绩</Data></Cell>
-    <Cell ss:StyleID="s90"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
-    <Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="m2225333896808"/>
+    <Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="m2432075160536"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s62">
     <Cell><Data ss:Type="String">填表单位：</Data></Cell>
@@ -434,12 +270,11 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Unsynced/>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>12</ActiveRow>
+     <ActiveRow>8</ActiveRow>
      <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
