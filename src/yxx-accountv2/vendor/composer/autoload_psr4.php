@@ -7,7 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'think\\trace\\' => array($vendorDir . '/topthink/think-trace/src'),
-    'think\\' => array($vendorDir . '/topthink/think-helper/src', $vendorDir . '/topthink/think-orm/src', $vendorDir . '/topthink/framework/src/think', $vendorDir . '/topthink/think-filesystem/src'),
+    'think\\app\\' => array($vendorDir . '/topthink/think-multi-app/src'),
+    'think\\' => array($vendorDir . '/topthink/framework/src/think', $vendorDir . '/topthink/think-filesystem/src', $vendorDir . '/topthink/think-helper/src', $vendorDir . '/topthink/think-orm/src'),
     'app\\' => array($baseDir . '/app'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
