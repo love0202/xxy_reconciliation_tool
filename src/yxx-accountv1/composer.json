@@ -29,7 +29,8 @@
         "phpoffice/phpexcel": "^1.8",
         "topthink/think-migration": "^3.0",
         "wenhainan/thinkcsv": "^1.0",
-        "topthink/think-api": "^1.0"
+        "topthink/think-api": "^1.0",
+        "phpoffice/phpspreadsheet": "^1.25"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.2",
