@@ -35,6 +35,7 @@ class ExpressFile extends Migrator
             ->addColumn('num_order', 'integer', array('limit' => 10, 'default' => 0, 'comment' => '导入订单行数'))
             ->addColumn('num_no', 'integer', array('limit' => 10, 'default' => 0, 'comment' => '统计未取得商品信息的运单总数'))
             ->addColumn('type', 'boolean',array('limit'  =>  2,'default'=>0,'comment'=>'类目，1韵达 2邮政 3极兔'))
+            ->addColumn('dataJSON', 'text', array('null' => true, 'comment' => 'excel的内容'))
             ->addColumn('status', 'boolean',array('limit'  =>  1,'default'=>0,'comment'=>'导入状态，1已导入 0未导入'))
             ->addColumn('create_time', 'integer',array('limit'  =>  11,'default'=>0,'comment'=>'创建时间'))
             ->create();

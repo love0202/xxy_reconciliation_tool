@@ -109,7 +109,7 @@ class Merchant
         $array = [];
         $query = Db::name('merchant_file');
         $list = $query->order('id', 'asc')->paginate([
-            'query' => [],
+            'query' => $params,
             'list_rows' => 15,
         ]);
         $ret = $list->toArray();

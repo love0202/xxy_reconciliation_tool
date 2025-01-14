@@ -17,15 +17,15 @@ class FileController extends Controller
         $params = [];
 
         $query = Db::name('express_file');
-        $list = $query->order('id', 'asc')->paginate([
-            'query' => [],
+        $list  = $query->order('id', 'asc')->paginate([
+            'query' => $params,
             'list_rows' => 15,
         ]);
-        $page = $list->render();
-        $list = $list->toArray();
+        $page  = $list->render();
+        $list  = $list->toArray();
 
-        $params['list'] = $list;
-        $params['page'] = $page;
+        $params['list']       = $list;
+        $params['page']       = $page;
         $params['statistics'] = $this->statistics();
         return view('list', $params);
     }
@@ -41,7 +41,7 @@ class FileController extends Controller
         ];
         $all = Db::name('express_file')->select();
         foreach ($all as $row) {
-            $ret['express_total'] += $row['num_order'];
+            $ret['express_total']    += $row['num_order'];
             $ret['express_total_no'] += $row['num_no'];
         }
         return $ret;
@@ -56,7 +56,7 @@ class FileController extends Controller
 
     public function deleteExpress()
     {
-        $fileId = \request()->param('id');
+        $fileId   = \request()->param('id');
         $fileInfo = Db::name('express_file')->where(['id' => $fileId, 'status' => 1])->find();
 
         if (empty($fileInfo)) {
@@ -65,7 +65,7 @@ class FileController extends Controller
         }
 
         $expressTypeEname = yxx_config_ename('EXPRESS_TYPE', $fileInfo['type']);
-        $dbTableName = 'express_' . $expressTypeEname;
+        $dbTableName      = 'express_' . $expressTypeEname;
         // 启动事务
         Db::startTrans();
         try {
@@ -84,6 +84,52 @@ class FileController extends Controller
         die();
     }
 
+    public function edit()
+    {
+        $fileId   = \request()->param('id');
+        $fileInfo = Db::name('express_file')->where(['id' => $fileId])->find();
+
+        if (empty($fileInfo)) {
+            dd('数据不存在');
+        }
+        $configData  = !empty($fileInfo['configData']) ? json_decode($fileInfo['configData'], true) : [];
+        $excelRowNum = (isset($configData['excelRowNum']) && !empty($configData['excelRowNum'])) ? $configData['excelRowNum'] : 0;
+        $excelTitle  = (isset($configData['excelTitle']) && !empty($configData['excelTitle'])) ? $configData['excelTitle'] : $this->getColArr($fileInfo['type']);
+
+        $cacheKey       = 'express_file_excel-title-' . $fileId;
+        $excelTitleData = cache($cacheKey);
+        if (empty($excelTitleData)) {
+            $excelModel = new YxxExcel();
+            $excelModel->setExcelRowNum(2);
+            $excelTitleData = $excelModel->readTitle($fileInfo['order_path']);
+            cache($cacheKey, $excelTitleData);
+        }
+
+        $params = [
+            'id' => $fileId,
+            'excelRowNum' => ['content' => $excelRowNum],
+            'excelTitle' => ['data' => $excelTitleData, 'content' => $excelTitle],
+        ];
+
+        return view('edit', $params);
+    }
+
+    public function saveEdit(Request $request)
+    {
+        $params = $request->all();
+
+        $configData                = [];
+        $configData['excelRowNum'] = $params['excelRowNum'];
+        $configData['excelTitle']  = $params['excelTitle'];
+
+        $ret = Db::name('express_file')->where(['id' => $params['id']])->update(['dataJSON' => json_encode($configData)]);
+        if ($ret) {
+            return redirect((string)url('express/file/list'));
+        } else {
+            return redirect((string)url('express/file/list'));
+        }
+    }
+
     /**
      * 保存新建的资源
      *
@@ -98,13 +144,13 @@ class FileController extends Controller
 
         $saveOrderName = \think\facade\Filesystem::disk('public')->putFile($path, $params['order_file'], 'uniqid');
 
-        $insertData = [];
-        $insertData['name'] = $params['name'];
+        $insertData                   = [];
+        $insertData['name']           = $params['name'];
         $insertData['order_filename'] = $params['order_file']->getOriginalName();
-        $insertData['order_path'] = $saveOrderName;
-        $insertData['type'] = $params['type'];
-        $insertData['status'] = 0;
-        $insertData['create_time'] = time();
+        $insertData['order_path']     = $saveOrderName;
+        $insertData['type']           = $params['type'];
+        $insertData['status']         = 0;
+        $insertData['create_time']    = time();
 
         $ret = Db::name('express_file')->insert($insertData);
         if ($ret) {
@@ -116,18 +162,21 @@ class FileController extends Controller
 
     public function import()
     {
-        $fileId = \request()->param('id');
+        $fileId   = \request()->param('id');
         $fileInfo = Db::name('express_file')->where(['id' => $fileId, 'status' => 0])->find();
 
         if (empty($fileInfo)) {
             echo json_encode(['success' => 0, 'message' => '数据不存在']);
             die();
         }
+        $configData  = !empty($fileInfo['configData']) ? json_decode($fileInfo['configData'], true) : [];
+        $excelRowNum = (isset($configData['excelRowNum']) && !empty($configData['excelRowNum'])) ? $configData['excelRowNum'] : 0;
+        $excelTitle  = (isset($configData['excelTitle']) && !empty($configData['excelTitle'])) ? $configData['excelRowNum'] : $this->getColArr($fileInfo['type']);
 
-        $colArr = $this->getColArr($fileInfo['type']);
         // 获取 excel 数据
         $excelModel = new YxxExcel();
-        $excelModel->setColArr($colArr);
+        $excelModel->setExcelRowNum($excelRowNum);
+        $excelModel->setColArr($excelTitle);
         $orderData = $excelModel->read($fileInfo['order_path'], true);
 
         if ($fileInfo['type'] == yxx_config_value('EXPRESS_TYPE', 'T4')) {
@@ -138,13 +187,13 @@ class FileController extends Controller
         $insertOrderData = [];
         foreach ($orderData as $v) {
             $orderExpressNumber = isset($v[0]) ? $v[0] : '';
-            $expressWeight = isset($v[1]) ? $v[1] : 0;
+            $expressWeight      = isset($v[1]) ? $v[1] : 0;
             if ($fileInfo['type'] == yxx_config_value('EXPRESS_TYPE', 'T2')) {
                 if (is_numeric($expressWeight)) {
                     $expressWeight = $expressWeight / 1000;
                 }
             }
-            $str = json_encode($v);
+            $str               = json_encode($v);
             $insertOrderData[] = [
                 "express_file_id" => $fileId,
 //                "order_number" => trim($orderExpressNumber),
@@ -155,14 +204,14 @@ class FileController extends Controller
         }
 
         $expressTypeEname = yxx_config_ename('EXPRESS_TYPE', $fileInfo['type']);
-        $dbTableName = 'express_' . $expressTypeEname;
+        $dbTableName      = 'express_' . $expressTypeEname;
         // 启动事务
         Db::startTrans();
         try {
             $retOrder = Db::name($dbTableName)->insertAll($insertOrderData, 1000);
             if (!empty($retOrder)) {
-                $updateArr = [];
-                $updateArr['status'] = 1;
+                $updateArr              = [];
+                $updateArr['status']    = 1;
                 $updateArr['num_order'] = count($insertOrderData);
 
                 Db::name('express_file')->where(['id' => $fileId])->update($updateArr);
@@ -182,14 +231,14 @@ class FileController extends Controller
 
     public function export()
     {
-        $fileId = \request()->param('id');
+        $fileId   = \request()->param('id');
         $fileInfo = Db::name('express_file')->where(['id' => $fileId])->find();
 
         $expressTypeEname = yxx_config_ename('EXPRESS_TYPE', $fileInfo['type']);
-        $dbTableName = 'express_' . $expressTypeEname;
+        $dbTableName      = 'express_' . $expressTypeEname;
 
         $expressTypeName = yxx_config_name('EXPRESS_TYPE', $fileInfo['type']);
-        $fileName = $expressTypeName . date('Ymd');
+        $fileName        = $expressTypeName . date('Ymd');
         if ($fileInfo['name'] != '') {
             $fileName = $fileInfo['name'] . $fileName;
         }
@@ -197,14 +246,14 @@ class FileController extends Controller
         $data = [];
         $list = Db::name($dbTableName)->where(['express_file_id' => $fileId])->select()->toArray();
         foreach ($list as $key => $value) {
-            $temp = [];
+            $temp   = [];
             $isDiff = '';
             if (!empty($value['weight']) && !empty($value['express_weight'])) {
                 if ($value['weight'] == $value['express_weight']) {
                     $isDiff = '已核对';
                 } else {
                     $leveExpress = $this->judgeLeveExpress($value['express_weight']);
-                    $leveWdt = $this->judgeLeveWdt($value['weight']);
+                    $leveWdt     = $this->judgeLeveWdt($value['weight']);
                     if ($leveExpress == '等级不存在' || $leveWdt == '等级不存在') {
                         $isDiff = '等级不存在';
                     } else {
@@ -216,17 +265,17 @@ class FileController extends Controller
                     }
                 }
             }
-            $temp['orderNum'] = $value['order_number'];
-            $temp['member'] = $value['member'];
-            $temp['shopinfo'] = $value['shopinfo'];
+            $temp['orderNum']       = $value['order_number'];
+            $temp['member']         = $value['member'];
+            $temp['shopinfo']       = $value['shopinfo'];
             $temp['express_weight'] = $value['express_weight'];
-            $temp['weight'] = $value['weight'];
-            $temp['isDiff'] = $isDiff;
+            $temp['weight']         = $value['weight'];
+            $temp['isDiff']         = $isDiff;
 
             $data[] = $temp;
         }
         // 导出excel
-        $headerArr = [
+        $headerArr  = [
             'orderNum' => '运单号',
             'member' => '买家会员名',
             'shopinfo' => '所属店铺',
@@ -237,6 +286,7 @@ class FileController extends Controller
         $excelModel = new YxxExcel();
         $excelModel->setHeaderArr($headerArr);
         $excelModel->export($data, $fileName);
+        exit;
     }
 
     /**
@@ -244,14 +294,14 @@ class FileController extends Controller
      */
     public function exportRank()
     {
-        $fileId = \request()->param('id');
+        $fileId   = \request()->param('id');
         $fileInfo = Db::name('express_file')->where(['id' => $fileId])->find();
 
         $expressTypeEname = yxx_config_ename('EXPRESS_TYPE', $fileInfo['type']);
-        $dbTableName = 'express_' . $expressTypeEname;
+        $dbTableName      = 'express_' . $expressTypeEname;
 
         $expressTypeName = yxx_config_name('EXPRESS_TYPE', $fileInfo['type']);
-        $fileName = $expressTypeName . date('Ymd');
+        $fileName        = $expressTypeName . date('Ymd');
         if ($fileInfo['name'] != '') {
             $fileName = $fileInfo['name'] . $fileName;
         }
@@ -265,7 +315,7 @@ class FileController extends Controller
             ->select()->toArray();
 
         // 导出excel
-        $headerArr = [
+        $headerArr  = [
             'shopinfo' => '导出商品详情',
             'num' => '数目排行榜',
             'weight' => '重量',
@@ -277,14 +327,14 @@ class FileController extends Controller
 
     public function exportCsv()
     {
-        $fileId = \request()->param('id');
+        $fileId   = \request()->param('id');
         $fileInfo = Db::name('express_file')->where(['id' => $fileId])->find();
 
         $expressTypeEname = yxx_config_ename('EXPRESS_TYPE', $fileInfo['type']);
-        $dbTableName = 'express_' . $expressTypeEname;
+        $dbTableName      = 'express_' . $expressTypeEname;
 
         $expressTypeName = yxx_config_name('EXPRESS_TYPE', $fileInfo['type']);
-        $fileName = $expressTypeName . date('Ymd');
+        $fileName        = $expressTypeName . date('Ymd');
         if ($fileInfo['name'] != '') {
             $fileName = $fileInfo['name'] . $fileName;
         }
@@ -295,11 +345,11 @@ class FileController extends Controller
         foreach ($list as $key => $value) {
 
             if ($value['order_number'] != '') {
-                $temp = [];
+                $temp     = [];
                 $orderNum = '="' . $value['order_number'] . '"';
-                $temp[] = $orderNum;
-                $temp[] = $value['member'];
-                $temp[] = $value['shopinfo'];
+                $temp[]   = $orderNum;
+                $temp[]   = $value['member'];
+                $temp[]   = $value['shopinfo'];
 
                 $data[] = $temp;
             }
@@ -310,7 +360,7 @@ class FileController extends Controller
             'member' => '买家会员名',
             'shopinfo' => '导出商品详情',
         ];
-        $csvModel = new YxxCsv();
+        $csvModel  = new YxxCsv();
         $csvModel->setHeaderArr($headerArr);
         $csvModel->export($data, $fileName);
     }

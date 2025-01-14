@@ -14,7 +14,7 @@ class ShopController extends Controller
 
         $query = Db::name('tianmao_order_shop');
         $list = $query->order('id', 'asc')->paginate([
-            'query' => [],
+            'query' => $params,
             'list_rows' => 15,
         ]);
         $page = $list->render();

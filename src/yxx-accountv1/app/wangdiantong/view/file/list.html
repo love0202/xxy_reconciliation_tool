@@ -13,6 +13,7 @@
             <th scope="col">创建时间</th>
             <th scope="col">导入状态</th>
             <th scope="col">特殊操作</th>
+            <th scope="col">操作</th>
         </tr>
         </thead>
         <tbody>
@@ -33,10 +34,20 @@
             </td>
             <td>
                 {if $row['status'] == 0}
+                <a href="{:url('wangdiantong/file/edit',['id'=>$row['id']])}"
+                   class="btn btn-primary btn-sm">设置</a>
                 <button data-id="{$row['id']}"
                         class="btn btn-info btn-sm yxx-list-import">导入
                 </button>
+                {else /}
+                <button data-id="{$row['id']}"
+                        class="btn btn-danger btn-sm yxx-list-delete-express">清空
+                </button>
                 {/if}
+            </td>
+            <td>
+                <a href="{:url('wangdiantong/order/list',['fileId'=>$row['id']])}"
+                   class="btn btn-primary btn-sm">查看</a>
             </td>
         </tr>
         {/foreach}
@@ -67,6 +78,33 @@
                 type: "get",
                 dataType: "json",
                 url: "{:url('wangdiantong/file/import')}",
+                data: {
+                    "id": id
+                },
+                success: function (data) {
+                    if (data.success == 0) {
+                        alert(data.message);
+                    }
+                    window.location.reload();
+                }
+            });
+        });
+        $(".yxx-list-delete-express").click(function () {
+            // 是否刷新页面
+            if (window.reload)
+                location.reload();
+
+            // 防止重复点击
+            $(this).attr('disabled', 'disabled');
+            $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
+
+            // ajax请求
+            var id = $(this).attr('data-id');
+            console.log(id);
+            $.ajax({
+                type: "get",
+                dataType: "json",
+                url: "{:url('wangdiantong/file/deleteExpress')}",
                 data: {
                     "id": id
                 },

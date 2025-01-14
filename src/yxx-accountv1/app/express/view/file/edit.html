@@ -1,0 +1,44 @@
+{extend name="layout/base" /}
+
+{block name="main"}
+<div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="{:url('express/file/list')}">返回</a>
+            </li>
+        </ol>
+    </nav>
+    <form action="{:url('express/file/saveEdit',['id'=>$id])}" enctype="multipart/form-data" method="post">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">excel文件内容行数:</label>
+            <div class="col-sm-5">
+                <input type="text" name="excelRowNum" class="form-control" value="{$excelRowNum['content']}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">
+                excel文件title
+                <i class="bi bi-exclamation-circle-fill tooltip-right-html"
+                   title="<div>1-原始单号、2-店铺、3-物流单号、4-收货地区、5-实际重量</div"></i>
+                ：
+            </label>
+            <div class="col-sm-5">
+                {foreach $excelTitle['data'] as $k => $row }
+                <div class="form-check">
+                    <input class="form-check-input" name="excelTitle[]" type="checkbox" value="{$k}"
+                    <?php if(in_array($k,$excelTitle['content'])){ ?>
+                    checked
+                    <?php } ?>
+                           id="excelTitle{$k}">
+                    <label class="form-check-label" for="excelTitle{$k}">
+                        {$row}
+                    </label>
+                </div>
+                {/foreach}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm">保存</button>
+    </form>
+</div>
+{/block}

@@ -1,0 +1,33 @@
+{extend name="layout/base" /}
+
+{block name="main"}
+<div class="container mt-4">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">序号</th>
+            <th scope="col">原单号</th>
+            <th scope="col">物流单号</th>
+            <th scope="col">物流公司</th>
+            <th scope="col">地址</th>
+            <th scope="col">快递重量</th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $list['data'] as $k => $row }
+        <tr>
+            <td scope="row">{$row['id']}</td>
+            <td>{$row['order_number']}</td>
+            <td>{$row['order_express_number']}</td>
+            <td>{$row['express_company']}</td>
+            <td>{$row['express_address']}</td>
+            <td>{$row['weight']}</td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+        {$page|raw}
+    </nav>
+</div>
+{/block}

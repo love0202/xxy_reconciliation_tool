@@ -6,6 +6,7 @@ use PHPExcel;
 
 class YxxExcel
 {
+    public $excelRowNum = 0;
     public $colArr = [];
     public $headerArr = [];
 
@@ -27,6 +28,70 @@ class YxxExcel
     public function setHeaderArr(array $headerArr)
     {
         $this->headerArr = $headerArr;
+    }
+
+    /**
+     * 设置导入数量
+     * @param int $excelRowNum
+     */
+    public function setExcelRowNum(int $excelRowNum): void
+    {
+        $this->excelRowNum = $excelRowNum;
+    }
+
+    /**
+     * 读取excel格式文件的数据
+     *
+     * @param $fileName
+     * @param bool $isHeard
+     * @param bool $isPath
+     * @return array
+     * @throws \PHPExcel_Exception
+     * @throws \PHPExcel_Reader_Exception
+     */
+    public function readTitle($fileName)
+    {
+        // 或者设置为0表示无限制执行时长
+        set_time_limit(0);
+        $data     = [];
+        $basePath = config('filesystem.disks.public.root');
+        $filePath = $basePath . "/" . $fileName;
+        if (!is_file($filePath)) {
+            dd('文件不存在' . $filePath);
+        }
+        $suffixArr = explode('.', $fileName);
+        $suffix    = end($suffixArr);
+        $suffix    = strtoupper($suffix);
+        if ($suffix == 'XLSX' || $suffix == 'XLS') {
+            header("content-type:text/html;charset=utf-8");
+            if ($suffix == 'XLSX') {
+                $reader = \PHPExcel_IOFactory::createReader('Excel2007');
+            } else {
+                $reader = \PHPExcel_IOFactory::createReader('Excel5');
+            }
+            //载入excel文件
+            $excel = $reader->load($filePath, $encode = 'utf-8');
+            //读取第一张表
+            $sheet = $excel->getSheet(0);
+
+            //获取总行数
+            $row = 1;
+            //获取总列数
+            $highestColumn = $sheet->getHighestColumn(); // 获取最高列号，例如 'Z'
+            $col_num       = \PHPExcel_Cell::columnIndexFromString($highestColumn); // 转换为数字索引
+
+            $temp = [];
+            for ($col = 1; $col <= $col_num; $col++) {
+                $cell = $sheet->getCellByColumnAndRow($col, $row)->getValue();
+                if ($cell instanceof \PHPExcel_RichText) {
+                    $cell = $cell->__toString();
+                }
+                $columnLetter        = \PHPExcel_Cell::stringFromColumnIndex($col-1);
+                $temp[$columnLetter] = $columnLetter . '-' . $cell;
+            }
+            $data = $temp;
+        }
+        return $data;
     }
 
     /**
@@ -54,8 +119,8 @@ class YxxExcel
             dd('文件不存在' . $filePath);
         }
         $suffixArr = explode('.', $fileName);
-        $suffix = end($suffixArr);
-        $suffix = strtoupper($suffix);
+        $suffix    = end($suffixArr);
+        $suffix    = strtoupper($suffix);
         if ($suffix == 'XLSX' || $suffix == 'XLS') {
             header("content-type:text/html;charset=utf-8");
             if ($suffix == 'XLSX') {
@@ -69,16 +134,12 @@ class YxxExcel
             $sheet = $excel->getSheet(0);
 
             //获取总行数
-            $row_num = $sheet->getHighestRow();
-//            dd($row_num);
-//            $row_num = 129948;
-
-//            if ($row_num>110000) {
-//                dd('chaoguo100000hang' . $filePath);
-//            }
+            if (!empty($this->excelRowNum)) {
+                $row_num = $this->excelRowNum;
+            } else {
+                $row_num = $sheet->getHighestRow();
+            }
             //获取总列数
-            $col_num = $sheet->getHighestColumn();
-
             $colArr = $this->colArr;
 
             $startNum = $isHeard ? 1 : 2;
@@ -109,14 +170,14 @@ class YxxExcel
      */
     public function export(array $data, $fileName = 'export_file_name')
     {
-        $capitalArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+        $capitalArr           = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
         $LongNumberCapitalArr = ['A'];
-        $headerArr = $this->headerArr;
-        $headerNewArr = array_values($headerArr);
-        $headerKeyArr = array_keys($headerArr);
-        $objExcel = new PHPExcel();
-        $objWriter = \PHPExcel_IOFactory::createWriter($objExcel, 'Excel2007');
-        $objActSheet = $objExcel->getActiveSheet(0);
+        $headerArr            = $this->headerArr;
+        $headerNewArr         = array_values($headerArr);
+        $headerKeyArr         = array_keys($headerArr);
+        $objExcel             = new PHPExcel();
+        $objWriter            = \PHPExcel_IOFactory::createWriter($objExcel, 'Excel2007');
+        $objActSheet          = $objExcel->getActiveSheet(0);
         $objActSheet->setTitle($fileName); //设置excel的标题
         $objActSheet->getStyle('A')->getNumberFormat()->setFormatCode(\PHPExcel_Style_NumberFormat::FORMAT_TEXT);
         foreach ($headerNewArr as $key => $value) {

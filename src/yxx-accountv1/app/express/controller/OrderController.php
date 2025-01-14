@@ -21,7 +21,7 @@ class OrderController extends Controller
 
         $query->where('express_file_id', $params['fileId']);
         $list = $query->order('id', 'asc')->paginate([
-            'query' => [],
+            'query' => $params,
             'list_rows' => 15,
         ]);
         $page = $list->render();

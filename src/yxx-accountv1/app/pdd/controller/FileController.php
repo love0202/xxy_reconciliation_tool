@@ -16,7 +16,7 @@ class FileController extends Controller
 
         $query = Db::name('pdd_file');
         $list = $query->order('id', 'asc')->paginate([
-            'query' => [],
+            'query' => $params,
             'list_rows' => 15,
         ]);
         $page = $list->render();

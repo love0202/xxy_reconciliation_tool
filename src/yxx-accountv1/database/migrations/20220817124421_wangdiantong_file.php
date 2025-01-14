@@ -33,6 +33,7 @@ class WangdiantongFile extends Migrator
             ->addColumn('order_filename', 'string', array('limit' => 200, 'default' => '', 'comment' => '订单商品详情文件名'))
             ->addColumn('order_path', 'string', array('limit' => 200, 'default' => '', 'comment' => '订单商品详情文件地址'))
             ->addColumn('num', 'integer', array('limit' => 10, 'default' => 0, 'comment' => '导入行数'))
+            ->addColumn('dataJSON', 'text', array('null' => true, 'comment' => 'excel的内容'))
             ->addColumn('status', 'boolean',array('limit'  =>  1,'default'=>0,'comment'=>'导入状态，1已导入 0未导入'))
             ->addColumn('create_time', 'integer',array('limit'  =>  11,'default'=>0,'comment'=>'创建时间'))
             ->create();

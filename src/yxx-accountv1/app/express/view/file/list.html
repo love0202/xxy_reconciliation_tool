@@ -58,6 +58,8 @@
             </td>
             <td>
                 {if $row['status'] == 0}
+                <a href="{:url('express/file/edit',['id'=>$row['id']])}"
+                   class="btn btn-primary btn-sm">设置</a>
                 <button data-id="{$row['id']}"
                         class="btn btn-info btn-sm yxx-list-import">导入
                 </button>
@@ -69,11 +71,11 @@
             </td>
             <td>
                 {if $row['status'] == 1}
-                <a href="{:url('express/order/list',['type'=>$row['type'],'fileId'=>$row['id']])}"
-                   class="btn btn-primary btn-sm">查看</a>
                 <a href="{:url('express/file/export',['id'=>$row['id']])}"
                    class="btn btn-info btn-sm">导出</a>
                 {/if}
+                <a href="{:url('express/order/list',['type'=>$row['type'],'fileId'=>$row['id']])}"
+                   class="btn btn-primary btn-sm">查看</a>
             </td>
         </tr>
         {/foreach}
