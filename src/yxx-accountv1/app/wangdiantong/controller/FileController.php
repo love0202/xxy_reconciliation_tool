@@ -151,7 +151,7 @@ class FileController extends Controller
         }
         $configData  = !empty($fileInfo['configData']) ? json_decode($fileInfo['configData'], true) : [];
         $excelRowNum = (isset($configData['excelRowNum']) && !empty($configData['excelRowNum'])) ? $configData['excelRowNum'] : 0;
-        $excelTitle  = (isset($configData['excelTitle']) && !empty($configData['excelTitle'])) ? $configData['excelRowNum'] : ['A', 'B', 'G', 'L', 'O'];
+        $excelTitle  = (isset($configData['excelTitle']) && !empty($configData['excelTitle'])) ? $configData['excelTitle'] : ['A', 'B', 'G', 'L', 'O'];
 
         $insertData = [];
         // 获取 excel 数据

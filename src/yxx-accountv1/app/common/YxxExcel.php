@@ -81,12 +81,12 @@ class YxxExcel
             $col_num       = \PHPExcel_Cell::columnIndexFromString($highestColumn); // 转换为数字索引
 
             $temp = [];
-            for ($col = 1; $col <= $col_num; $col++) {
+            for ($col = 0; $col < $col_num; $col++) {
                 $cell = $sheet->getCellByColumnAndRow($col, $row)->getValue();
                 if ($cell instanceof \PHPExcel_RichText) {
                     $cell = $cell->__toString();
                 }
-                $columnLetter        = \PHPExcel_Cell::stringFromColumnIndex($col-1);
+                $columnLetter        = \PHPExcel_Cell::stringFromColumnIndex($col);
                 $temp[$columnLetter] = $columnLetter . '-' . $cell;
             }
             $data = $temp;

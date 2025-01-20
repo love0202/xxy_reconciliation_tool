@@ -96,7 +96,7 @@ class FileController extends Controller
         $excelRowNum = (isset($configData['excelRowNum']) && !empty($configData['excelRowNum'])) ? $configData['excelRowNum'] : 0;
         $excelTitle  = (isset($configData['excelTitle']) && !empty($configData['excelTitle'])) ? $configData['excelTitle'] : $this->getColArr($fileInfo['type']);
 
-        $cacheKey       = 'express_file_excel-title-' . $fileId;
+        $cacheKey       = 'express_file_excel-title' . date('Ym') . $fileId;
         $excelTitleData = cache($cacheKey);
         if (empty($excelTitleData)) {
             $excelModel = new YxxExcel();
@@ -171,7 +171,7 @@ class FileController extends Controller
         }
         $configData  = !empty($fileInfo['configData']) ? json_decode($fileInfo['configData'], true) : [];
         $excelRowNum = (isset($configData['excelRowNum']) && !empty($configData['excelRowNum'])) ? $configData['excelRowNum'] : 0;
-        $excelTitle  = (isset($configData['excelTitle']) && !empty($configData['excelTitle'])) ? $configData['excelRowNum'] : $this->getColArr($fileInfo['type']);
+        $excelTitle  = (isset($configData['excelTitle']) && !empty($configData['excelTitle'])) ? $configData['excelTitle'] : $this->getColArr($fileInfo['type']);
 
         // 获取 excel 数据
         $excelModel = new YxxExcel();
